@@ -47,4 +47,5 @@ gem 'devise'
 gem 'devise-i18n' # translation for devise
 gem 'letter_opener', group: :development
 
-# gem 'devise-security'
+gem 'devise-security'
+gem "valid_email2"
