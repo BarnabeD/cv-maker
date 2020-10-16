@@ -31,5 +31,7 @@ module CvMaker
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
+    config.i18n.default_locale = :fr
   end
 end
