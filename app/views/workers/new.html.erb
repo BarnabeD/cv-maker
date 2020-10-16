@@ -1,0 +1,9 @@
+<%= simple_form_for(@worker) do |f| %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :birth_date %>
+    <%= f.input :hire_date %>
+    <%= f.input :matricule %>
+<% end %>
+<br>
+<%= link_to 'retour', workers_path %>
