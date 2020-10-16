@@ -49,3 +49,5 @@ gem 'letter_opener', group: :development
 
 gem 'devise-security'
 gem "valid_email2"
+
+gem 'simple_form'
