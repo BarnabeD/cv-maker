@@ -49,3 +49,7 @@ gem 'letter_opener', group: :development
 
 gem 'devise-security'
 gem "valid_email2"
+
+gem 'simple_form'
+gem 'autoprefixer-rails'
+gem 'font-awesome-sass', '~> 5.6.1'
