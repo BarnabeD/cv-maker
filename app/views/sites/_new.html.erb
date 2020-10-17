@@ -5,5 +5,5 @@
     <%= f.input :end_date, start_year: Date.today.year - 110, end_year: Date.today.year%>
     <%= f.input :amount %>
     <%= f.input :money_unit %>
-    <%= f.submit %>
+    <%= f.submit input_html: { input_html: { data: { action: "click->toggle-display#toggleShow" } } }%>
 <% end %>

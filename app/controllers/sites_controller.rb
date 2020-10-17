@@ -3,10 +3,11 @@ class SitesController < ApplicationController
 
   def create
     @site = Site.new(site_params)
+    @worker = Worker.find(params[:worker_id])
     if @site.save
-      redirect_to site_path(@site)
+      redirect_to worker_path(@worker)
     else
-      render :new
+      render '_new'
     end
   end
 
@@ -24,6 +25,7 @@ class SitesController < ApplicationController
 
   def new
     @site = Site.new
+    @worker = Worker.find(params[:worker_id])
   end
 
   def show
@@ -42,6 +44,6 @@ class SitesController < ApplicationController
   end
 
   def site_params
-    params.require(:site).permit(:first_name, :last_name, :birth_date, :hire_date, :matricule)
+    params.require(:site).permit(:name, :site_type, :start_date, :end_date, :amount, :money_unit, :birth_date)
   end
 end
