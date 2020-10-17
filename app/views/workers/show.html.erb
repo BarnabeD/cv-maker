@@ -14,8 +14,13 @@
 <p>experience dans le metier : <%= distance_of_time_in_words(Time.now, @last_graduate_date) %> </p>
 <br>
 <br>
-<%= link_to "ajouter un chantier", "", id: "new_site", class: "button accept", remote: true %>
 
+<div data-controller="toggle-display">
+  <div class="hidden" data-target="toggle-display.form" id="new-site">
+    <%= render 'sites/new' %>
+  </div>
+  <div class="btn btn-primary" data-action="click->toggle-display#toggleShow">Ajouter un chantier</div>
+</div>
 <br>
 <br>
 <%= link_to "retour", workers_path %>
