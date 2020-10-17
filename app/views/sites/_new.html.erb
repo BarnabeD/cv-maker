@@ -1,0 +1,9 @@
+<%= simple_form_for [ @worker, @site ] do |f| %>
+    <%= f.input :name, pompt: :translate %>
+    <%= f.input :site_type %>
+    <%= f.input :start_date, start_year: Date.today.year - 110, end_year: Date.today.year %>
+    <%= f.input :end_date, start_year: Date.today.year - 110, end_year: Date.today.year%>
+    <%= f.input :amount %>
+    <%= f.input :money_unit %>
+    <%= f.submit %>
+<% end %>

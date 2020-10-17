@@ -1,0 +1,30 @@
+fr:
+  datetime:
+    distance_in_words:
+      about_x_months:
+        one: un mois
+        other: \%{count} mois
+      about_x_years:
+        one: un an
+        other: \%{count} ans
+      almost_x_years:
+        one: près d'un an
+        other: près de %{count} ans
+      over_x_years:
+        one: plus d'un an
+        other: plus de %{count} ans
+      x_seconds:
+        one: 1 seconde
+        other: "%{count} secondes"
+      x_minutes:
+        one: 1 minute
+        other: "%{count} minutes"
+      x_days:
+        one: 1 jour
+        other: "%{count} jours"
+      x_months:
+        one: 1 mois
+        other: "%{count} mois"
+      x_years:
+        one: 1 an
+        other: "%{count} ans"

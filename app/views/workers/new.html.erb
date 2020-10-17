@@ -1,9 +1,11 @@
 <%= simple_form_for(@worker) do |f| %>
-    <%= f.input :first_name, pompt: :translate %>
+    <%= f.input :first_name %>
     <%= f.input :last_name %>
-    <%= f.input :birth_date %>
-    <%= f.input :hire_date %>
+    <%= f.input :birth_date, start_year: Date.today.year - 110, end_year: Date.today.year %>
+    <%= f.input :hire_date, start_year: Date.today.year - 110, end_year: Date.today.year%>
     <%= f.input :matricule %>
+    <%= f.submit %>
 <% end %>
+
 <br>
 <%= link_to 'retour', workers_path %>
