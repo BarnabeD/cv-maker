@@ -27,7 +27,14 @@ class WorkersController < ApplicationController
   end
 
   def show
-    set_worker
+    @worker = set_worker
+    @age = set_duration(@worker.birth_date)[:years]
+    @hiring_time = set_duration(@worker.hire_date)[:years]
+
+    # experience since first graduate cans be with the last graduate with '.last' instead of '.first'
+    @last_graduate_date = @worker.graduates.order(:graduation_date).first.graduation_date
+    # @experience = set_duration(@last_graduate.graduation_date)[:years]
+    @site = Site.new
   end
 
   def update
@@ -39,6 +46,11 @@ class WorkersController < ApplicationController
 
   def set_worker
     @worker = Worker.find(params[:id])
+  end
+
+  def set_duration(date)
+    duration_in_second = (Date.today - date).to_i
+    duration = ActiveSupport::Duration.build(duration_in_second * 24 * 3600).parts
   end
 
   def worker_params
