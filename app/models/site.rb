@@ -4,4 +4,7 @@ class Site < ApplicationRecord
   has_many :workers, through: :positions
   has_many :companies, through: :positions
   accepts_nested_attributes_for :positions, :client, :companies
+
+  validates :name, :site_type, :start_date, :end_date, :amount, :money_unit, presence: true
+
 end
