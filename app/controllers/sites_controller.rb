@@ -14,7 +14,6 @@ class SitesController < ApplicationController
     if @site.save && position.save
       redirect_to worker_path(@worker)
     else
-      raise
       render '_new'
     end
   end
@@ -54,7 +53,7 @@ class SitesController < ApplicationController
   end
 
   def strong_params
-    params.require(:site).permit(:name, :site_type, :start_date, :end_date, :amount, :money_unit, :birth_date, position: [ :position_name ], clients: [ :name ], compagnies: [ :name, :city ])
+    params.require(:site).permit(:name, :site_type, :start_date, :end_date, :amount, :money_unit, :birth_date, position: [ :position_name ], clients: [ :name], compagnies: [ :name, :city ])
   end
 
   def site_params
