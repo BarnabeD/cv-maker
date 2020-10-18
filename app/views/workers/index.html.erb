@@ -1,7 +1,7 @@
 <h1>Worker Index</h1>
 <ul>
   <% @workers.each do |worker| %>
-    <li><%= worker.first_name %> </li>
+    <li><%= link_to worker.first_name, worker_path(worker) %></li>
   <% end %>
 </ul>
 <%= link_to 'Nouveau Collaborateur', new_worker_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>

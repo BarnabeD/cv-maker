@@ -1,9 +1,19 @@
 <%= simple_form_for [ @worker, @site ] do |f| %>
-    <%= f.input :name, pompt: :translate %>
-    <%= f.input :site_type %>
-    <%= f.input :start_date, start_year: Date.today.year - 110, end_year: Date.today.year %>
-    <%= f.input :end_date, start_year: Date.today.year - 110, end_year: Date.today.year%>
-    <%= f.input :amount %>
-    <%= f.input :money_unit %>
-    <%= f.submit %>
+  <%= f.simple_fields_for :position do |p| %>
+    <%= p.input :position_name %>
+  <% end %>
+  <%= f.simple_fields_for :compagnies do |c| %>
+    <%= c.input :name %>
+    <%= c.input :city %>
+  <% end %>
+  <%= f.simple_fields_for :clients do |c| %>
+    <%= c.input :name, label: "Client" %>
+  <% end %>
+  <%= f.input :name, pompt: :translate %>
+  <%= f.input :site_type %>
+  <%= f.input :start_date, start_year: Date.today.year - 110, end_year: Date.today.year %>
+  <%= f.input :end_date, start_year: Date.today.year - 110, end_year: Date.today.year%>
+  <%= f.input :amount %>
+  <%= f.input :money_unit %>
+  <%= f.submit input_html: { input_html: { data: { action: "click->toggle-display#toggleShow" } } }%>
 <% end %>

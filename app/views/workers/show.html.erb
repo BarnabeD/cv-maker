@@ -16,12 +16,22 @@
 <br>
 
 <div data-controller="toggle-display">
-  <div class="hidden" data-target="toggle-display.form" id="new-site">
-    <%= render 'sites/new' %>
+  <div class="hidden" data-target="toggle-display.form">
+    <%= render 'sites/new', worker: @worker, site: @site %>
   </div>
-  <div class="btn btn-primary" data-action="click->toggle-display#toggleShow">Ajouter un chantier</div>
+  <div class="btn btn-primary" data-action="click->toggle-display#toggleShow" data-target="toggle-display.button">Ajouter un chantier</div>
 </div>
 <br>
 <br>
 <%= link_to "retour", workers_path %>
 <br>
+
+
+
+<H1>TODO</H1>
+<H3>reprendes le formulaire. C'est un nested simple form qu'il faut faire.
+C'est un render "position/new" qu'il faut afficher, on nest le site.build et le cliend.build</H3>
+<p>nettoyer le controlleur de Site</p>
+<br>
+<p>corrifer le show du worker pour afficher ne pas planter pour les données manquantes</p>
+<%= link_to "https://github.com/heartcombo/simple_form/wiki/Nested-Models", "https://github.com/heartcombo/simple_form/wiki/Nested-Models" %>
