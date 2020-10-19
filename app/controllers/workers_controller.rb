@@ -36,6 +36,7 @@ class WorkersController < ApplicationController
     # @experience = set_duration(@last_graduate.graduation_date)[:years]
     @site = Site.new
     @sites = Site.all
+    @positions = Position.where(worker: @worker)
   end
 
   def update

@@ -14,15 +14,16 @@
 <p>experience dans le metier : <%= distance_of_time_in_words(Time.now, @last_graduate_date) %> </p>
 <br>
 <br>
-<h2>exprience</h2>
-<ul>
-  <% @sites.each do |site| %>
-    <li><b>Non du client : </b> <%= site.client.name %></li>
-    <li><b>Non du chantier : </b> <%= site.name %></li>
-    <li><b>Montant du chantier : </b> <%= site.amount %><%= site.money_unit %></li>
-    <li><b>Role (debug): </b>  <%= @worker.positions.where(site_id: site).blank? ? "Zero" : @worker.positions.where(site_id: site).first[:position_name] %></li>
-    <li><b>Role (bug?): </b>  <%= @worker.positions.where(site_id: site).first[:position_name] %></li>
 
+
+<h2>exprience </h2>
+<ul>
+  <% @positions.each do |position| %>
+    <li><b>Non du client : </b> <%= position.site.client.name %></li>
+    <li><b>Non du chantier : </b> <%= position.site.name %></li>
+    <li><b>Montant du chantier : </b> <%= position.site.amount %><%= position.site.money_unit %></li>
+    <li><b>Role: </b>  <%= position.position_name %></li>
+    <li><b>Société: </b> <%= position.company.name %> </li>
     <br>
   <% end %>
 </ul>
