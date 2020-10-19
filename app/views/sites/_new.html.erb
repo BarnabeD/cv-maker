@@ -1,17 +1,15 @@
 <%= simple_form_for [ @worker, @site ] do |f| %>
+  <%= f.simple_fields_for :company do |p| %>
+    <%= p.input :company_id, label: 'Societe', collection: Company.all  %>
+  <% end %>
   <%= f.simple_fields_for :position do |p| %>
     <%= p.input :position_name %>
   <% end %>
-  <h4>Société</h4>
-  <%= f.simple_fields_for :compagnies do |c| %>
-    <%= c.input :name %>
-    <%= c.input :city %>
-  <% end %>
-  <h4>CLient</h4>
+  <!-- <h4>CLient</h4> -->
   <%= f.simple_fields_for :clients do |c| %>
     <%= c.input :name, label: "Client" %>
   <% end %>
-  <h4>Chantier</h4>
+  <!-- <h4>Chantier</h4> -->
   <%= f.input :name, pompt: :translate %>
   <%= f.input :site_type %>
   <%= f.input :start_date, start_year: Date.today.year - 110, end_year: Date.today.year %>
