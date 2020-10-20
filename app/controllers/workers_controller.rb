@@ -32,7 +32,11 @@ class WorkersController < ApplicationController
     @hiring_time = set_duration(@worker.hire_date)[:years]
 
     # experience since first graduate cans be with the last graduate with '.last' instead of '.first'
-    @last_graduate_date = @worker.graduates.order(:graduation_date).first.graduation_date
+    if @worker.graduates.count > 0
+      @last_graduate_date = @worker.graduates.order(:graduation_date).first.graduation_date
+    else
+      @last_graduate_date = nil
+    end
     # @experience = set_duration(@last_graduate.graduation_date)[:years]
     @site = Site.new
     @sites = Site.all
