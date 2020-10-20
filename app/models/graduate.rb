@@ -1,3 +1,3 @@
 class Graduate < ApplicationRecord
-  belongs_to :worker
+  belongs_to :worker, optional: true
 end
