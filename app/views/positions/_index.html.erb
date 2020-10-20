@@ -1,0 +1,11 @@
+<h2>exprience </h2>
+<ul>
+  <% @positions.each do |position| %>
+    <li><b>Non du client : </b> <%= position.site.client.name %></li>
+    <li><b>Non du chantier : </b> <%= position.site.name %></li>
+    <li><b>Montant du chantier : </b> <%= position.site.amount %><%= position.site.money_unit %></li>
+    <li><b>Role: </b>  <%= position.position_name %></li>
+    <li><b>Société: </b> <%= position.company.name %> </li>
+    <br>
+  <% end %>
+</ul>
