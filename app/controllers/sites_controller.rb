@@ -30,14 +30,14 @@ class SitesController < ApplicationController
     @sites = Site.all
   end
 
-  def new
-    @site = Site.new
-    @worker = Worker.find(params[:worker_id])
-    @companies = Company.all
-    @site.company.build
-    # @site.position.build
-    # @site.client.build
-  end
+  # def new
+  #   @site = Site.new
+  #   @worker = Worker.find(params[:worker_id])
+  #   @companies = Company.all
+  #   @site.company.build
+  #   # @site.position.build
+  #   # @site.client.build
+  # end
 
   def show
     set_site
