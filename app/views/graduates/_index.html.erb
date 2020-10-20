@@ -1,0 +1,17 @@
+<% if @worker.graduates.count == 0 %>
+
+<% else %>
+  <h2><%= t '.graduate', count: @worker.graduates.count %> </h2>
+  <ul>
+    <% @graduates.each do |graduate| %>
+      <li><b>Non du diplôme : </b> <%= graduate.name %> <b>spécialité : </b> <%= graduate.speciality %></li>
+      <li><b>Ecole : </b><%= graduate.school_name %> - (<%= graduate.school_department %>)</li>
+      <li><b>Date : </b><%= graduate.graduation_date.year %></li>
+      <br>
+    <% end %>
+  </ul>
+<% end %>
+
+
+
+
