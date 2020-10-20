@@ -6,7 +6,7 @@ class SitesController < ApplicationController
     client = Client.new(strong_params[:clients])
     @worker = Worker.find(params[:worker_id])
     position = Position.new(strong_params[:position])
-    position.company = Company.new(strong_params[:compagnies])
+    position.company = Company.find(strong_params[:company][:company_id])
     position.site = @site
     @site.client = client
     position.worker = @worker
@@ -14,7 +14,6 @@ class SitesController < ApplicationController
     if @site.save && position.save
       redirect_to worker_path(@worker)
     else
-      raise
       render '_new'
     end
   end
@@ -34,6 +33,8 @@ class SitesController < ApplicationController
   def new
     @site = Site.new
     @worker = Worker.find(params[:worker_id])
+    @companies = Company.all
+    @site.company.build
     # @site.position.build
     # @site.client.build
   end
@@ -54,10 +55,10 @@ class SitesController < ApplicationController
   end
 
   def strong_params
-    params.require(:site).permit(:name, :site_type, :start_date, :end_date, :amount, :money_unit, :birth_date, position: [ :position_name ], clients: [ :name ], compagnies: [ :name, :city ])
+    params.require(:site).permit(:name, :site_type, :start_date, :end_date, :amount, :money_unit, :birth_date, company: [ :company_id ], position: [ :position_name ], clients: [ :name ])
   end
 
   def site_params
-    strong_params.except(:position, :clients, :compagnies)
+    strong_params.except(:position, :clients, :company)
   end
 end
