@@ -1,0 +1,35 @@
+<h1><%= @worker.first_name%> <%= @worker.last_name%></h1>
+<br>
+<p>Né le <%= l(@worker.birth_date, format: '%d %B %Y') %></p>
+<p>age : <%= @age %> ans</p>
+<br>
+<p>today :</p>
+<p>Généré le <%= l(Date.today, format: '%d %B %Y') %></p>
+<br>
+<p>experience chez Terideal : <%= distance_of_time_in_words(Time.now, @worker.hire_date) %></p>
+<p>experience dans le metier :
+<% if @graduation_date.nil? %>
+  <%= @age - 18 %> ans
+<% else %>
+  <%= distance_of_time_in_words(Time.now, @last_graduate_date) %>
+<% end %></p>
+<br>
+<br>
+<%= render 'positions/index' %>
+<div data-controller="toggle-display">
+  <div class="hidden" data-target="toggle-display.form">
+    <%= render 'sites/new', worker: @worker, site: @site %>
+  </div>
+  <div class="btn btn-primary" data-action="click->toggle-display#toggleShow" data-target="toggle-display.button">Ajouter un chantier</div>
+</div>
+<br>
+<br>
+<%= link_to "retour", workers_path %>
+<br>
+
+
+
+<H1>TODO</H1>
+
+<br>
+<p>corrifer le show du worker pour afficher ne pas planter pour les données manquantes</p>
