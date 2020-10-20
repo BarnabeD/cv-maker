@@ -3,10 +3,10 @@ fr:
     distance_in_words:
       about_x_months:
         one: un mois
-        other: \%{count} mois
+        other: "%{count} mois"
       about_x_years:
         one: un an
-        other: \%{count} ans
+        other: "%{count} ans"
       almost_x_years:
         one: près d'un an
         other: près de %{count} ans
