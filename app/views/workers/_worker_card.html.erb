@@ -1,0 +1,26 @@
+<div class="row">
+  <% @workers.each do |worker| %>
+    <%= link_to worker_path(worker), class: "text-muted text-decoration-none justify-content-between" do %>
+      <div class="card rounded-lg shadow col-sm-10 col-md-6 col-lg5- col-xl-4">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&" class="card-img-top img-fluid" alt="...">
+        <div class="card-body card-header">
+          <h5 class="card-title text-center"><%= worker.last_name.upcase %><br><%= worker.first_name %></h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <% if worker.positions.blank? %>
+           <li class="list-group-item"><%= t '.no_data' %> <%= t '.add_new_experience' %>
+          <% else %>
+          <li class="list-group-item">Role : <%= worker.positions.last.position_name %></li>
+          <li class="list-group-item">Société : <%= worker.positions.last.company.name %></li>
+          <li class="list-group-item">Nombre d'expérinces : <%= worker.positions.blank? ? t('.no_data') : worker.positions.last.company.name %></li>
+          <% end %>
+        </ul>
+        <div class="card-body text-center">
+
+          <%= link_to 'Voir son CV', worker_path(worker), class: "btn btn-outline-success" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
