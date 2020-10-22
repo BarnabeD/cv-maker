@@ -1,5 +1,6 @@
 fr:
   final_client: Terideal
+  cancel: Annuler
   activerecord:
     models:
       graduate: Diplôme

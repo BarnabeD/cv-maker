@@ -1,7 +1,8 @@
 <div class="row">
   <% @workers.each do |worker| %>
+    <div class="col-sm-10 col-md-6 col-lg5- col-xl-4">
     <%= link_to worker_path(worker), class: "text-muted text-decoration-none justify-content-between" do %>
-      <div class="card rounded-lg shadow col-sm-10 col-md-6 col-lg5- col-xl-4">
+      <div class="card my-3 rounded-lg shadow">
         <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&" class="card-img-top img-fluid" alt="...">
         <div class="card-body card-header">
           <h5 class="card-title text-center"><%= worker.last_name.upcase %><br><%= worker.first_name %></h5>
@@ -21,6 +22,7 @@
         </div>
       </div>
     <% end %>
+  </div>
   <% end %>
 </div>
 
