@@ -1,4 +1,14 @@
 fr:
+  final_client: Terideal
+  cancel: Annuler
+  activerecord:
+    models:
+      graduate: Diplôme
+      client: Maître d'ouvrage
+      position: Poste
+      site: Chantier
+      training: Formations
+      worker: Salarié
   datetime:
     distance_in_words:
       about_x_months:
@@ -28,3 +38,16 @@ fr:
       x_years:
         one: 1 an
         other: "%{count} ans"
+  graduates:
+    index:
+      graduate:
+        zero: "aucun diplôme"
+        one: "un diplôme"
+        other: "%{count} diplômes"
+      hello: Bonjour
+  workers:
+    index:
+      worker_card:
+        no_data: pas d'info
+        no_exerienence: pas d'exérience
+        add_new_experience: ajouter une expérience

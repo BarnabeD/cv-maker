@@ -1,4 +1,7 @@
-<h2>TODO : Le Footer</h2>
-<% if user_signed_in? %>
-  <%= link_to "Se déconnecter", destroy_user_session_path, data: { confirm: "Confirmer la déconnection ?"}, method: :delete %>
-<% end %>
+<footer class="footer mt-auto py-3">
+    <h2>TODO : Le Footer</h2>
+  <% if user_signed_in? %>
+    <%= link_to "Se déconnecter", destroy_user_session_path, data: { confirm: "Confirmer la déconnection ?"}, method: :delete, class: "btn btn-outline-danger round-lg shadow" %>
+  <% end %>
+</footer>
+

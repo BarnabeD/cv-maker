@@ -18,8 +18,13 @@ $danger:     $red;
 $warning:    $orange;
 
 // Buttons & inputs' radius
-$border-radius:    2px;
-$border-radius-lg: 2px;
-$border-radius-sm: 2px;
+$border-radius:    4px;
+$border-radius-lg: 8px;
+$border-radius-sm: 4px;
 
 // Override other variables below!
+$grid-gutter-width: 10px !default;
+
+$container-tablet: (720px + $grid-gutter-width);
+$container-desktop: (940px + $grid-gutter-width);
+$container-large-desktop: (1140px + $grid-gutter-width);
