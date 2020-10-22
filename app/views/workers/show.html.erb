@@ -21,11 +21,12 @@
   <div class="hidden" data-target="toggle-display.form">
     <%= render 'sites/new', worker: @worker, site: @site %>
   </div>
-  <div class="btn btn-primary" data-action="click->toggle-display#toggleShow" data-target="toggle-display.button">Ajouter un chantier</div>
+  <button class="btn btn-primary" data-action="click->toggle-display#toggleShow" data-target="toggle-display.newButton">Ajouter un chantier</button>
 </div>
 <br>
 <br>
 <%= link_to "retour", workers_path, class: "btn btn-outline-secondary shadow" %>
+
 <br>
 
 
