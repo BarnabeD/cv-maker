@@ -3,6 +3,7 @@ class WorkersController < ApplicationController
 
   def create
     @worker = Worker.new(worker_params)
+    @position = Position.new(params)
     if @worker.save
       redirect_to worker_path(@worker)
     else
@@ -10,13 +11,13 @@ class WorkersController < ApplicationController
     end
   end
 
-  def destroy
-    @worker.destroy
-    redirect_to workers_path
-  end
+  # def destroy
+  #   @worker.destroy
+  #   redirect_to workers_path
+  # end
 
-  def edit
-  end
+  # def edit
+  # end
 
   def index
     @workers = Worker.all
@@ -27,9 +28,11 @@ class WorkersController < ApplicationController
   end
 
   def show
-    @worker = set_worker
-    @age = set_duration(@worker.birth_date)[:years]
-    @hiring_time = set_duration(@worker.hire_date)[:years]
+    @position = Position.new
+    @position.build_company
+    @position.build_site
+    @age = calcul_duration_between_date_and_now(@worker.birth_date)[:years]
+    @hiring_time = calcul_duration_between_date_and_now(@worker.hire_date)[:years]
 
     # experience since first graduate cans be with the last graduate with '.last' instead of '.first'
     if @worker.graduates.count > 0
@@ -37,17 +40,17 @@ class WorkersController < ApplicationController
     else
       @last_graduate_date = nil
     end
-    # @experience = set_duration(@last_graduate.graduation_date)[:years]
-    @site = Site.new
-    @sites = Site.all
+    # @experience = calcul_duration_between_date_and_now(@last_graduate.graduation_date)[:years]
+    # @site = Site.new
+    # @sites = Site.all
     @worker_positions = Position.where(worker: @worker)
     @worker_graduates = Graduate.where(worker: @worker)
   end
 
-  def update
-    @worker.update(worker_params)
-    redirect_to worker_path(@worker)
-  end
+  # def update
+  #   @worker.update(worker_params)
+  #   redirect_to worker_path(@worker)
+  # end
 
   private
 
@@ -55,12 +58,12 @@ class WorkersController < ApplicationController
     @worker = Worker.find(params[:id])
   end
 
-  def set_duration(date)
+  def calcul_duration_between_date_and_now(date)
     duration_in_second = (Date.today - date).to_i
-    duration = ActiveSupport::Duration.build(duration_in_second * 24 * 3600).parts
+    ActiveSupport::Duration.build(duration_in_second * 24 * 3600).parts
   end
 
   def worker_params
-    params.require(:worker).permit(:first_name, :last_name, :birth_date, :hire_date, :matricule)
+    params.require(:worker).permit(:first_name, :last_name, :birth_date, :hire_date, :matricule, position: [])
   end
 end

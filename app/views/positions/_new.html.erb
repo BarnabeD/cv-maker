@@ -1,0 +1,21 @@
+<%= simple_form_for [ @worker, @position ] do |f| %>
+  <%= f.input :position_name, label: "Position Name" %>
+  <%= f.simple_fields_for :company do |company| %>
+    <%= company.input :id, label: 'Societe', collection: Company.all  %>   <!-- , default: Company.first -->  <!-- a ajouter pour selectioner Terideal first -->
+  <% end %>
+  <%= f.simple_fields_for :site do |s| %>
+    <%= s.input :name, label: "site Name" %>
+    <%= s.input :site_type %>
+    <%= s.input :start_date, as: :date, start_year: Date.today.year - 110, end_year: Date.today.year %>
+    <%= s.input :end_date, as: :date, start_year: Date.today.year - 110, end_year: Date.today.year%>
+    <%= s.input :amount %>
+    <%= s.input :money_unit %>
+  <% end %>
+  <!-- <h4>CLient</h4> -->
+  <%= f.simple_fields_for :clients do |c| %>
+    <%= c.input :name, label: "Client" %>
+  <% end %>
+  <!-- buttons : submit + cancel -->
+  <%= f.submit input_html: { data: { action: "click->toggle-display#toggleShow" }}, class: "btn btn-success shadow" %>
+  <%= link_to t('.cancel'), worker_path(@worker), class: "btn btn-outline-warning shadow", data: {action: "click->toggle-display#toggleShow", target: "toggle-display.cancelButton"} %>
+<% end %>

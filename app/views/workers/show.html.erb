@@ -19,9 +19,9 @@
 <%= render 'positions/index' %>
 <div data-controller="toggle-display">
   <div class="hidden" data-target="toggle-display.form">
-    <%= render 'sites/new', worker: @worker, site: @site %>
+    <%= render 'positions/new', worker: @worker, position: @position %>
   </div>
-  <button class="btn btn-primary" data-action="click->toggle-display#toggleShow" data-target="toggle-display.newButton">Ajouter un chantier</button>
+  <button class="btn btn-primary shadow" data-action="click->toggle-display#toggleShow" data-target="toggle-display.newButton">Ajouter un chantier</button>
 </div>
 <br>
 <br>
