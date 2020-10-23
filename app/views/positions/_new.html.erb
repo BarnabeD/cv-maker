@@ -16,6 +16,6 @@
     <%= c.input :name, label: "Client" %>
   <% end %>
   <!-- buttons : submit + cancel -->
-  <%= f.submit input_html: { data: { action: "click->toggle-display#toggleShow" }}, class: "btn btn-success shadow" %>
-  <%= link_to t('.cancel'), worker_path(@worker), class: "btn btn-outline-warning shadow", data: {action: "click->toggle-display#toggleShow", target: "toggle-display.cancelButton"} %>
+  <%= f.submit input_html: { data: { action: "click->toggle-display#togglePositionShow" }}, class: "btn btn-success shadow" %>
+  <%= link_to t('.cancel'), worker_path(@worker), class: "btn btn-outline-warning shadow", data: {action: "click->toggle-display#togglePositionShow", target: "toggle-display.cancelPositionButton"}, remote: true %>
 <% end %>
