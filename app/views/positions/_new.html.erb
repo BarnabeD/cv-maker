@@ -1,15 +1,15 @@
 <%= simple_form_for [ @worker, @position ] do |f| %>
   <%= f.input :position_name, label: "Position Name" %>
   <%= f.simple_fields_for :company do |company| %>
-    <%= company.input :id, label: 'Societe', collection: Company.all  %>   <!-- , default: Company.first -->  <!-- a ajouter pour selectioner Terideal first -->
+    <%= company.input :id, label: 'Societe', collection: Company.all, selected: Company.first %>
   <% end %>
   <%= f.simple_fields_for :site do |s| %>
     <%= s.input :name, label: "site Name" %>
-    <%= s.input :site_type %>
-    <%= s.input :start_date, as: :date, start_year: Date.today.year - 110, end_year: Date.today.year %>
-    <%= s.input :end_date, as: :date, start_year: Date.today.year - 110, end_year: Date.today.year%>
+    <%= s.input :site_type, collection: ['Marché unique', 'Marché à bon de commande', 'Accord cadre'], default: 1 %>
+    <%= s.input :start_date, as: :date, start_year: Date.today.year - 110, end_year: Date.today.year + 5 %>
+    <%= s.input :end_date, as: :date, start_year: Date.today.year - 110, end_year: Date.today.year + 20 %>
     <%= s.input :amount %>
-    <%= s.input :money_unit %>
+    <%= s.input :money_unit, collection: ['€', 'K€', 'M€', 'Mrd€']%>
   <% end %>
   <!-- <h4>CLient</h4> -->
   <%= f.simple_fields_for :clients do |c| %>
