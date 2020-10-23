@@ -5,4 +5,6 @@ class Position < ApplicationRecord
   has_one :client
 
   accepts_nested_attributes_for :company, :site
+  validates_associated :company
+  validates :position_name, presence: true
 end
