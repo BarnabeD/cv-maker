@@ -3,7 +3,7 @@ class WorkersController < ApplicationController
 
   def create
     @worker = Worker.new(worker_params)
-    @position = Position.new(params)
+    # @position = Position.new(params)
     if @worker.save
       redirect_to worker_path(@worker)
     else

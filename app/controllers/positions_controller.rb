@@ -26,7 +26,7 @@ class PositionsController < ApplicationController
   private
 
   def set_worker
-    @worker = Worker.find(strong_params.permit(:worker_id))
+    @worker = Worker.find(params[:worker_id])
   end
 
   def strong_params
