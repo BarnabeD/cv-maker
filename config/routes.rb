@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   end
 
   resources :collaborateurs, controller: 'workers', as: 'workers' do
-    resources :chantier, controller: 'sites', as: 'sites'
-    resources :diplomes, controller: 'graduates', as: 'graduates'
+    resources :positions, only: [:new, :create]
+    # resources :chantier, controller: 'sites', as: 'sites'
+    # resources :diplomes, controller: 'graduates', as: 'graduates'
   end
 end
