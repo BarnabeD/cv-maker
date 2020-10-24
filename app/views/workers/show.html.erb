@@ -19,7 +19,7 @@
   <div class="hidden" data-target="toggle-display.graduateForm">
     <%= render 'graduates/new', worker: @worker, graduate: @graduate %>
   </div>
-  <button class="btn btn-primary shadow" data-action="click->toggle-display#toggleGraduateShow" data-target="toggle-display.newGraduateButton">Ajouter un diplôme</button>
+  <button class="btn btn-primary shadow" data-action="click->toggle-display#toggleShow" data-model="graduate" data-target="toggle-display.newGraduateButton">Ajouter un diplôme</button>
 </div>
 <br>
 <%= render 'positions/index' %>
@@ -27,7 +27,7 @@
   <div class="hidden" data-target="toggle-display.positionForm">
     <%= render 'positions/new', worker: @worker, position: @position %>
   </div>
-  <button class="btn btn-primary shadow" data-action="click->toggle-display#togglePositionShow" data-target="toggle-display.newPositionButton">Ajouter un chantier</button>
+  <button class="btn btn-primary shadow" data-action="click->toggle-display#toggleShow" data-model="position" data-target="toggle-display.newPositionButton">Ajouter un chantier</button>
 </div>
 <br>
 <br>
