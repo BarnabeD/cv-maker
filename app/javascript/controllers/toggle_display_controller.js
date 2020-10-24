@@ -8,8 +8,6 @@ export default class extends Controller {
 
   toggleShow(event) {
     const model = event.target.dataset.model
-    console.log(event)
-    console.log(model)
     if (this.[model + 'FormTarget'].classList.contains('hidden')) {
       this.[model + 'FormTarget'].classList.replace( 'hidden', 'display' )
       this.['cancel' + capitalizeFirstLetter(model) + 'ButtonTarget'].classList.replace( 'hidden', 'display' )
