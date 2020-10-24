@@ -29,6 +29,8 @@ class WorkersController < ApplicationController
 
   def show
     @position = Position.new
+    @graduate = Graduate.new
+    @french_department = [1,2]
     @position.build_company
     @position.build_site
     @age = calcul_duration_between_date_and_now(@worker.birth_date)[:years]
