@@ -4,6 +4,6 @@
   <%= f.input :school_name %>
   <%= f.input :school_department, collection: @french_department %>
   <%= f.input :graduation_date, as: :date, start_year: Date.today.year - 110, end_year: Date.today.year %>
-  <%= link_to t('cancel'), worker_path(@worker), class: "btn btn-outline-warning shadow", data: {action: "click->toggle-display#toggleShow", model: "graduate", target: "toggle-display.cancelGraduateButton"} %>
+  <%= link_to t('cancel'), worker_path(@worker), class: "btn btn-outline-warning shadow", data: {action: "click->toggle-display#toggleShow", model: "graduate", target: "toggle-display.cancelGraduateButton"}, remote: :true %>
 <% end %>
 
