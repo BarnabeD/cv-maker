@@ -4,4 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :password_expirable,
          :secure_validatable, email_validation: false
+
+  def admin?
+    self.admin
+  end
 end
