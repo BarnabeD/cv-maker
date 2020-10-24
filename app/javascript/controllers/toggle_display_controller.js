@@ -12,6 +12,7 @@ export default class extends Controller {
       this.[model + 'FormTarget'].classList.replace( 'hidden', 'display' )
       this.['cancel' + capitalizeFirstLetter(model) + 'ButtonTarget'].classList.replace( 'hidden', 'display' )
       this.['new' + capitalizeFirstLetter(model) + 'ButtonTarget'].classList.toggle('hidden')
+      scroll({ top: this.[model + 'FormTarget'].offsetTop, behavior: "smooth" });
     } else if (this.[model + 'FormTarget'].classList.contains('display')) {
       this.[model + 'FormTarget'].classList.replace( 'display', 'hidden' )
       this.['cancel' + capitalizeFirstLetter(model) + 'ButtonTarget'].classList.toggle('hidden')
@@ -19,3 +20,9 @@ export default class extends Controller {
     }
   }
 }
+// const offsetTop = document.querySelector(href).offsetTop;
+
+//   scroll({
+//     top: offsetTop,
+//     behavior: "smooth"
+//   });
