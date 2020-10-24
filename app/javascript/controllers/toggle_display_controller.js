@@ -20,9 +20,3 @@ export default class extends Controller {
     }
   }
 }
-// const offsetTop = document.querySelector(href).offsetTop;
-
-//   scroll({
-//     top: offsetTop,
-//     behavior: "smooth"
-//   });
