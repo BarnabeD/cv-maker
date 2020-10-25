@@ -10,3 +10,8 @@
 .navbar-terideal .navbar-brand img {
   height: 60px;
 }
+
+.dropdown-item:hover {
+  background-color: $red;
+  color: white;
+}
