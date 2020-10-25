@@ -30,7 +30,7 @@ class WorkersController < ApplicationController
   def show
     @position = Position.new
     @graduate = Graduate.new
-    @french_department = [1,2]
+    @french_department = department_maker
     @position.build_company
     @position.build_site
     @age = calcul_duration_between_date_and_now(@worker.birth_date)[:years]
@@ -63,6 +63,12 @@ class WorkersController < ApplicationController
   def calcul_duration_between_date_and_now(date)
     duration_in_second = (Date.today - date).to_i
     ActiveSupport::Duration.build(duration_in_second * 24 * 3600).parts
+  end
+
+  def department_maker
+    department = ('1'..'95').to_a
+    department.delete_at(19)
+    department.insert(19, '2A','2B').push('971','972','973','974','976','Etranger')
   end
 
   def worker_params
