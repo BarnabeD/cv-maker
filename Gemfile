@@ -52,7 +52,7 @@ gem 'devise-security'
 gem "valid_email2"
 
 gem 'simple_form'
-gem 'autoprefixer-rails'
+gem 'autoprefixer-rails', '<9.8.6.1'
 gem 'font-awesome-sass', '~> 5.6.1'
 
 gem 'rails-i18n', '~> 6.0.0' # For 6.0.0 or higher
