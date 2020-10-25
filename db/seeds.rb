@@ -92,7 +92,7 @@ puts "Creating users"
 admin = User.new(email: "barnabe.dubus@gmail.com", password: "123456", password_confirmation: "123456", admin: true)
 admin.skip_confirmation!
 admin.save!
-user = User.new(email: "nonadmin@gmail.com", password: "123456", password_confirmation: "123456", admin: true)
+user = User.new(email: "nonadmin@gmail.com", password: "123456", password_confirmation: "123456", admin: false)
 user.skip_confirmation!
 user.save!
 puts "creating #{User.count} users : #{user.email}"
