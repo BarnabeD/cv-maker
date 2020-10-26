@@ -72,6 +72,6 @@ class WorkersController < ApplicationController
   end
 
   def worker_params
-    params.require(:worker).permit(:first_name, :last_name, :birth_date, :hire_date, :matricule, position: [])
+    params.require(:worker).permit(:first_name, :last_name, :birth_date, :hire_date, :photo, :matricule, position: [])
   end
 end
