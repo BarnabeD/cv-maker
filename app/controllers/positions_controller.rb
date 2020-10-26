@@ -30,7 +30,7 @@ class PositionsController < ApplicationController
   end
 
   def strong_params
-    params.require(:position).permit(:position_name, :worker, clients: [:name], company_attributes: [:id], site_attributes: [:name, :site_type, :start_date, :end_date, :amount, :money_unit])
+    params.require(:position).permit(:position_name, :worker, clients: [:name], company_attributes: [:id], site_attributes: [:name, :site_type, :start_date, :end_date, :amount, :money_unit, :photo])
   end
 
   def position_params

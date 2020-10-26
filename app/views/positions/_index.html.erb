@@ -2,7 +2,7 @@
 
 <% @worker_positions.each do |position| %>
   <div class="card mb-3">
-    <img src="https://www.francetvinfo.fr/image/75s7xqnkr-302b/1200/450/22385735.jpg" class="card-img-top" alt="...">
+    <%= site_photo(position.site, transformation: {height: '400', width: '1000', crop: "fill"}, class: "card-img-top") %>
     <div class="card-body">
       <h5 class="card-title"><%= position.site.name %></h5>
       <p class="card-text"><strong>Role : </strong> <%= position.position_name %></p>
