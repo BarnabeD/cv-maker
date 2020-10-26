@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   authenticated do
     root to: 'workers#index', as: :authenticated_root
+    resources :profil, only: [:show, :edit, :update], controller: 'pages', as: 'profil'
   end
-  get 'profil', to: 'users#profil', as: 'profil'
 
   resources :collaborateurs, controller: 'workers', as: 'workers' do
     resources :positions, only: [:new, :create]

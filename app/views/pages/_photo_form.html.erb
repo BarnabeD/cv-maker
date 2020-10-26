@@ -1,0 +1,4 @@
+<%= simple_form_for(@user, url: profil_path, method: 'patch' ) do |f| %>
+    <%= f.input :photo, as: :file, input_html: { multiple: false, accept: "image/*" }%>
+    <%= f.button :submit, class: "btn btn-success shadow" %>
+<% end %>
