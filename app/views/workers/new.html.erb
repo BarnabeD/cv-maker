@@ -3,6 +3,7 @@
     <%= f.input :last_name %>
     <%= f.input :birth_date, start_year: Date.today.year - 110, end_year: Date.today.year - 16, selected: Date.today.year - 16 %>
     <%= f.input :hire_date, start_year: Date.today.year - 110, end_year: Date.today.year%>
+    <%= f.input :photo, as: :file, input_html: { multiple: false, accept: "image/*" } %>
     <%= f.input :matricule %>
     <%= f.submit %>
 <% end %>

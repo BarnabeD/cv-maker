@@ -1,5 +1,6 @@
 <h1><%= @worker.first_name%> <%= @worker.last_name%></h1>
 <br>
+<%= worker_photo(@worker, transformation: {:width=>300, :height=>400, :gravity=>"face", :crop=>"thumb"}) %>
 <p>Né le <%= l(@worker.birth_date, format: '%d %B %Y') %></p>
 <p>age : <%= @age %> ans</p>
 <br>
