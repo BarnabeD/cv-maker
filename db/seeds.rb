@@ -71,7 +71,7 @@ ap training_security
 ap training_management
 
 
-site = Site.new(name: "Construction des halles de Chatellet", site_type:"unique", start_date: "2000-01-01", end_date: "2008-08-15", amount: 15.4, money_unit: "M€")
+site = Site.new(name: "Construction des halles de Chatellet", site_type:"Marché unique", start_date: "2000-01-01", end_date: "2008-08-15", amount: 15.4, money_unit: "M€")
 site.client = client
 # site.save!
 
@@ -91,10 +91,10 @@ ap position
 puts "Creating users"
 admin = User.new(email: "barnabe.dubus@gmail.com", password: "123456", password_confirmation: "123456", admin: true)
 admin.skip_confirmation!
-admin.save!
+admin.save!(validate: false)
 user = User.new(email: "nonadmin@gmail.com", password: "123456", password_confirmation: "123456", admin: false)
 user.skip_confirmation!
-user.save!
+user.save!(validate: false)
 puts "creating #{User.count} users : #{user.email}"
 ap user
 
