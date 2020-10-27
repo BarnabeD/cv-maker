@@ -6,15 +6,15 @@
         <h4 class="card-title">Photo de profil </h4>
       </li>
       <li class="list-group-item">
-        <div class="d-flex justify-content-between">
           <% unless current_user.photo.attached? %>
             <h5>ajouter une photo de profil :</h5>
+            <div class="d-flex justify-content-end">
             <%= render 'photo_form' %>
           <% else %>
             <h5>Votre photo de profil :</h5>
             <%= user_photo(@user, transformation: {height: '400', width: '400', gravity: "face", crop: "fill"}, class: "img-fluid img-thumbnail") %>
+            </div>
           <% end %>
-        </div>
       </li>
       <li class="list-group-item">
         <h4 class="card-title">Identifiant et mots de passe: </h4>
