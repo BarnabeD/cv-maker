@@ -1,4 +1,5 @@
-<%= simple_form_for(@user, url: profil_path, method: 'patch' ) do |f| %>
-    <%= f.input :photo, as: :file, input_html: { multiple: false, accept: "image/*" }%>
-    <%= f.button :submit, class: "btn btn-success shadow" %>
+<%= simple_form_for(@user, url: profil_path, method: 'patch', wrapper: :inline_form, wrapper_mappings: { file: :custom_file }, html: { class: "form-inline" }, data: {controller: "toggle-activate"}) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :photo, as: :file, required: true, input_html: { multiple: false, accept: "image/*", data: {action: "toggle-activate#toggle", }}, class: "btn btn-secondary shadow" %>
+  <%= f.button :submit, 'ajouter', disabled: true, data: { target: "toggle-activate.submitButton"}, class: "btn btn-success shadow hidden" %>
 <% end %>
