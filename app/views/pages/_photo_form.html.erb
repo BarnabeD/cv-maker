@@ -2,6 +2,6 @@
   <%= f.error_notification %>
   <%= f.input :photo, as: :file, required: true, input_html: { multiple: false, accept: "image/*", data: {action: "toggle-activate#toggle", }}, class: "align-bottom" %>
   <div class="align-self-end m-3">
-    <%= f.button :submit, 'ajouter', disabled: true, data: { target: "toggle-activate.submitButton"}, class: "btn btn-success shadow hidden align-bottom" %>
+    <%= f.button :submit, 'ajouter', disabled: true, data: { target: "toggle-activate.submitButton"}, class: "btn btn-success shadow hidden align-bottom", remote: true %>
   </div>
 <% end %>
