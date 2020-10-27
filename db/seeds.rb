@@ -71,7 +71,7 @@ ap training_security
 ap training_management
 
 
-site = Site.new(name: "Construction des halles de Chatellet", site_type:"unique", start_date: "2000-01-01", end_date: "2008-08-15", amount: 15.4, money_unit: "M€")
+site = Site.new(name: "Construction des halles de Chatellet", site_type:"Marché unique", start_date: "2000-01-01", end_date: "2008-08-15", amount: 15.4, money_unit: "M€")
 site.client = client
 # site.save!
 
