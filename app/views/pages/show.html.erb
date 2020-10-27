@@ -1,31 +1,39 @@
-<h1>Mon profil</h1>
-<div class="card my-4">
+<div class="card bg-light my-4">
+  <div class="card-header">
+    <h1>Mon profil</h1>
+  </div>
   <div class="card-body">
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">
+      <li class="list-group-item bg-light">
         <h4 class="card-title">Photo de profil </h4>
       </li>
-      <li class="list-group-item">
-        <div class="d-flex justify-content-between">
+      <li class="list-group-item bg-light">
           <% unless current_user.photo.attached? %>
             <h5>ajouter une photo de profil :</h5>
+            <div class="d-flex justify-content-end">
             <%= render 'photo_form' %>
+            </div>
           <% else %>
             <h5>Votre photo de profil :</h5>
+            <div class="d-flex justify-content-end">
             <%= user_photo(@user, transformation: {height: '400', width: '400', gravity: "face", crop: "fill"}, class: "img-fluid img-thumbnail") %>
+            </div>
+            <div class="d-flex justify-content-end mt-4" data-controller="toggle-display">
+              <div class="hidden" data-target="toggle-display.profilForm">
+                <%= render 'photo_form' %>
+                <button class="btn btn-outline-warning shadow" data-action="click->toggle-display#toggleShow" data-model="profil" data-target="toggle-display.cancelProfilButton"><%= t('cancel') %></button>
+              </div>
+              <button class="btn btn-primary shadow" data-action="click->toggle-display#toggleShow" data-model="profil" data-target="toggle-display.newProfilButton">Modifier la photo</button>
+            </div>
           <% end %>
+      </li>
+      <li class="list-group-item bg-light">
+        <h4 class="card-title">Identifiant et mots de passe: </h4>
+        <div class="d-flex justify-content-between">
+          <%= current_user.email %>
+          <%= link_to "editer", edit_user_registration_path, class: "btn btn-outline-warning shadow" %>
         </div>
       </li>
-      <li class="list-group-item">
-        <h4 class="card-title">Identifiant et mots de passe: </h4>
-      </li>
-      <li class="list-group-item d-flex justify-content-between">
-        <%= current_user.email %>
-        <%= link_to "editer", edit_user_registration_path, class: "btn btn-outline-warning shadow" %>
-      </li>
-  </div>
-  <div class="card-body justify-content-between">
-
   </div>
 </div>
 <%= link_to "retour", root_path, class: "btn btn-outline-secondary shadow" %>

@@ -4,7 +4,9 @@ import { capitalizeFirstLetter } from '../packs/capitalize.js';
 
 
 export default class extends Controller {
-  static targets = [ 'graduateForm', 'positionForm', 'newPositionButton', 'newGraduateButton','cancelPositionButton', 'cancelGraduateButton' ]
+
+
+  static targets = [ 'graduateForm', 'newGraduateButton', 'cancelGraduateButton', 'positionForm', 'newPositionButton', 'cancelPositionButton', 'profilForm', 'newProfilButton', 'cancelProfilButton']
 
   toggleShow(event) {
     const model = event.target.dataset.model
