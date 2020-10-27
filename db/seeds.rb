@@ -91,10 +91,10 @@ ap position
 puts "Creating users"
 admin = User.new(email: "barnabe.dubus@gmail.com", password: "123456", password_confirmation: "123456", admin: true)
 admin.skip_confirmation!
-admin.save!
+admin.save!(validate: false)
 user = User.new(email: "nonadmin@gmail.com", password: "123456", password_confirmation: "123456", admin: false)
 user.skip_confirmation!
-user.save!
+user.save!(validate: false)
 puts "creating #{User.count} users : #{user.email}"
 ap user
 

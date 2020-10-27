@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :password_expirable,
          :secure_validatable, email_validation: false
 
+  validates :pohto, presence: true
   def admin?
     self.admin
   end
