@@ -3,7 +3,7 @@
       <%= image_tag 'terideal_logo.png', {height: '100px', class: 'align-middle'} %>
       <h1 class="my-auto"><%= @worker.first_name%> <%= @worker.last_name%></h1>
       <% if @worker.positions.blank? %>
-        <h1><%= t '.no_data' %> <%= t '.add_new_experience' %></h1>
+        <h1 class="bg-warning"><%= t '.no_data' %> <%= t '.add_new_experience' %></h1>
       <% else %>
         <h1 class="my-auto"><%= @worker.positions.last.position_name %></h1>
       <% end %>
@@ -12,22 +12,32 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item bg-light">
           <h4 class="card-title">Information personnelles</h4>
-          <ul class="list-inline">
-            <li class="list-inline-item mr-4"><p>age : <%= @age %> ans, </p></li>
-            <li class="list-inline-item ml-4"><p>Né le <%= l(@worker.birth_date, format: '%d %B %Y') %></p></li>
-          </ul>
-        </li>
-        <li class="list-group-item bg-light">
-          <div class="d-flex justify-content-end">
-            <%= worker_photo(@worker, transformation: {:width=>150, :height=>150, :gravity=>"face", :crop=>"thumb"}, class: "img-fluid img-thumbnail rounded") %>
-          </div>
-            <div class="d-flex justify-content-end mt-4" data-controller="toggle-display">
-
-              <button class="btn btn-primary shadow" data-action="click->toggle-display#toggleShow" data-model="profil" data-target="toggle-display.newProfilButton">Modifier la photo</button>
+          <div class="d-flex justify-content-between">
+            <ul>
+              <li><p>age : <%= @age %> ans, </p></li>
+              <li><p>Né le <%= l(@worker.birth_date, format: '%d %B %Y') %></p></li>
+            </ul>
+            <ul>
+              <li><p><p>experience chez <%= t 'final_client' %> : <%= distance_of_time_in_words(Time.now, @worker.hire_date) %></p></li>
+              <li><p>Nexperience dans le metier :
+                <% if @graduation_date.nil? %>
+                  <%= @age - 18 %> ans
+                <% else %>
+                  <%= distance_of_time_in_words(Time.now, @last_graduate_date) %>
+                <% end %></p></li>
+            </ul>
+            <div class="d-flex justify-content-end">
+              <%= worker_photo(@worker, transformation: {:width=>150, :height=>150, :gravity=>"face", :crop=>"thumb"}, class: "w-75 img-fluid img-thumbnail rounded") %>
             </div>
+          </div>
         </li>
         <li class="list-group-item bg-light">
-          <h4 class="card-title">Identifiant et mots de passe: </h4>
+          <div class="d-flex mt-4">
+            <%= render 'graduates/index' %>
+          </div>
+        </li>
+        <li class="list-group-item bg-light">
+          <h4 class="card-title">Formations </h4>
           <div class="d-flex justify-content-between">
             <%= current_user.email %>
           </div>
@@ -40,23 +50,14 @@
 <br>
 <br>
 
-<h1><%= @worker.first_name%> <%= @worker.last_name%></h1>
-<br>
-<%= worker_photo(@worker, transformation: {:width=>300, :height=>400, :gravity=>"face", :crop=>"thumb"}) %>
-<p>Né le <%= l(@worker.birth_date, format: '%d %B %Y') %></p>
 <br>
 <p>today :</p>
 <p>Généré le <%= l(Date.today, format: '%d %B %Y') %></p>
 <br>
-<p>experience chez <%= t 'final_client' %> : <%= distance_of_time_in_words(Time.now, @worker.hire_date) %></p>
-<p>experience dans le metier :
-<% if @graduation_date.nil? %>
-  <%= @age - 18 %> ans
-<% else %>
-  <%= distance_of_time_in_words(Time.now, @last_graduate_date) %>
-<% end %></p>
+
+<p>
 <br>
-<%= render 'graduates/index' %>
+
 <div data-controller="toggle-display">
   <div class="hidden" data-target="toggle-display.graduateForm">
     <%= render 'graduates/new', worker: @worker, graduate: @graduate %>
