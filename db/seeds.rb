@@ -76,7 +76,7 @@ graduate.worker = worker
 graduate.save!
 puts "creating #{Graduate.count} graduate : #{graduate.name}"
 if Rails.env.production? || Rails.env.staging?
-  puts "#{graduade.name} - #{graduate.speciality}"
+  puts "#{graduate.name} - #{graduate.speciality}"
 end
 if Rails.env.development?
   ap graduate
