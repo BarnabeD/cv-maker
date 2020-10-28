@@ -44,8 +44,8 @@ puts "=> Done"
 puts "Creating 1 complete set..."
 client = Client.create!(name: "Ville de Paris")
 puts "creating #{Client.count} client : #{client.name}"
-if Rails.env.production?
-  puts client
+if Rails.env.production? || Rails.env.staging?
+  puts client.name
 end
 if Rails.env.development?
   ap client
@@ -54,8 +54,8 @@ end
 
 company = Company.create!(name: "Terideal - DTSS", city: "Wissous")
 puts "creating #{Company.count} company : #{company.name}"
-if Rails.env.production?
-  puts company
+if Rails.env.production? || Rails.env.staging?
+  puts company.name
 end
 if Rails.env.development?
   ap company
@@ -63,8 +63,9 @@ end
 
 worker = Worker.create!(first_name: "Jean-michel", last_name: "Jarre", birth_date: "1986-03-27", hire_date: "2012-02-21", matricule: 05352)
 puts "creating #{Worker.count} worker : #{worker.first_name} #{worker.last_name}"
-if Rails.env.production?
-  puts worker
+if Rails.env.production? || Rails.env.staging?
+  puts "#{worker.first_name} #{worker.last_name}"
+
 end
 if Rails.env.development?
   ap worker
@@ -74,8 +75,8 @@ graduate = Graduate.new(name: "Ingenieur", speciality: "Travaux publics", gradua
 graduate.worker = worker
 graduate.save!
 puts "creating #{Graduate.count} graduate : #{graduate.name}"
-if Rails.env.production?
-  puts graduate
+if Rails.env.production? || Rails.env.staging?
+  puts "#{graduade.name} - #{graduate.speciality}"
 end
 if Rails.env.development?
   ap graduate
@@ -88,9 +89,9 @@ training_management = Training.new(name: "Management", date: "2014-05-01", train
 training_management.worker = worker
 training_management.save!
 puts "creating #{Training.count} trainings : #{training_security.name} & #{training_management.name}"
-if Rails.env.production?
-  puts training_security
-  puts training_management
+if Rails.env.production? || Rails.env.staging?
+  puts "#{training_security.training_type} : #{training_security.name}"
+  puts "#{training_management.training_type} : #{training_management.name}"
 end
 if Rails.env.development?
   ap training_security
@@ -108,8 +109,8 @@ position.site = site
 position.company = company
 site.save!
 puts "creating #{Site.count} site : #{site.name}"
-if Rails.env.production?
-  puts site
+if Rails.env.production? || Rails.env.staging?
+  puts site.name
 end
 if Rails.env.development?
   ap site
@@ -117,8 +118,8 @@ end
 
 position.save!
 puts "creating #{Position.count} position : #{position.position_name}"
-if Rails.env.production?
-  puts position
+if Rails.env.production? || Rails.env.staging?
+  puts position.position_name
 end
 if Rails.env.development?
   ap position
@@ -132,10 +133,12 @@ user = User.new(email: "nonadmin@gmail.com", password: "123456", password_confir
 user.skip_confirmation!
 user.save!(validate: false)
 puts "creating #{User.count} users : #{user.email}"
-if Rails.env.production?
-  puts user
+if Rails.env.production? || Rails.env.staging?
+  puts admin.email
+  puts user.email
 end
 if Rails.env.development?
+  ap admin
   ap user
 end
 

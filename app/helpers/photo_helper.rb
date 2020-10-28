@@ -3,7 +3,7 @@ module PhotoHelper
     if user.photo.attached?
       cl_image_tag user.photo.key, opts
     else
-      image_tag 'worker_placeholder', opts
+      image_tag 'worker_placeholder.png', opts
     end
   end
 
@@ -11,7 +11,7 @@ module PhotoHelper
     if site.photo.attached?
       cl_image_tag site.photo.key, opts
     else
-      image_tag "#{['site_placeholder1', 'site_placeholder2'].sample}", opts
+      image_tag "#{['site_placeholder1.jpg', 'site_placeholder2.jpg'].sample}", opts
     end
   end
 
@@ -19,7 +19,7 @@ module PhotoHelper
     if user.photo.attached?
       cl_image_tag user.photo.key, opts
     else
-      image_tag 'user_placeholder', opts
+      image_tag 'user_placeholder.jpg', opts
     end
   end
 end
