@@ -54,3 +54,6 @@ fr:
         zero: "aucun chantier"
         one: "un chantier"
         other: "%{count} chantiers"
+  shared:
+    navbar:
+      admin_dashboard: "Centre d'administration"
