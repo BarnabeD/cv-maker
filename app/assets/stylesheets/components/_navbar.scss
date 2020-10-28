@@ -1,13 +1,13 @@
-.navbar-terideal {
+.navbar {
   justify-content: space-between;
   background: $red;
 }
 
-.navbar-terideal .navbar-collapse {
+.navbar .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-terideal .navbar-brand img {
+.navbar .navbar-brand img {
   height: 60px;
 }
 

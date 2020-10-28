@@ -7,7 +7,7 @@
 <p>today :</p>
 <p>Généré le <%= l(Date.today, format: '%d %B %Y') %></p>
 <br>
-<p>experience chez Terideal : <%= distance_of_time_in_words(Time.now, @worker.hire_date) %></p>
+<p>experience chez <%= t 'final_client' %> : <%= distance_of_time_in_words(Time.now, @worker.hire_date) %></p>
 <p>experience dans le metier :
 <% if @graduation_date.nil? %>
   <%= @age - 18 %> ans
