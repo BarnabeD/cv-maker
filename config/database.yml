@@ -83,3 +83,9 @@ production:
   database: cv_maker_production
   username: cv_maker
   password: <%= ENV['CV_MAKER_DATABASE_PASSWORD'] %>
+
+staging:
+  <<: *default
+  database: cv_maker_staging
+  username: cv_maker
+  password: <%= ENV['CV_MAKER_DATABASE_PASSWORD'] %>
