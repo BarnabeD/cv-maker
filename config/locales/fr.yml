@@ -45,14 +45,12 @@ fr:
         one: "un diplôme"
         other: "%{count} diplômes"
       hello: Bonjour
-  views:
-    workers:
-      index:
-        # worker_card:
-          no_data: pas d'info
-          no_exerienence: pas d'exérience
-          add_new_experience: ajouter une expérience
-          site:
-            zero: "aucun chantier"
-            one: "un chantier"
-            other: "%{count} chantiers"
+  workers:
+    worker_card:
+      no_data: pas d'info
+      no_exerienence: pas d'exérience
+      add_new_experience: ajouter une expérience
+      site:
+        zero: "aucun chantier"
+        one: "un chantier"
+        other: "%{count} chantiers"
