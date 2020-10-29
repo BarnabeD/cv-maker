@@ -12,13 +12,13 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item bg-light">
           <h4 class="card-title">Information personnelles</h4>
-          <div class="d-flex justify-content-between">
-            <ul>
+          <div class="row">
+            <ul class="col-12 col-md-6 col-lg-4">
               <li><p>age : <%= @age %> ans, </p></li>
               <li><p>Né le <%= l(@worker.birth_date, format: '%d %B %Y') %></p></li>
             </ul>
-            <ul>
-              <li><p><p>experience chez <%= t 'final_client' %> : <%= distance_of_time_in_words(Time.now, @worker.hire_date) %></p></li>
+            <ul class="col-12 col-md-6 col-lg-4">
+              <li><p>experience chez <%= t 'final_client' %> : <%= distance_of_time_in_words(Time.now, @worker.hire_date) %></p></li>
               <li><p>Nexperience dans le metier :
                 <% if @graduation_date.nil? %>
                   <%= @age - 18 %> ans
@@ -26,20 +26,20 @@
                   <%= distance_of_time_in_words(Time.now, @last_graduate_date) %>
                 <% end %></p></li>
             </ul>
-            <div class="d-flex justify-content-end">
-              <%= worker_photo(@worker, transformation: {:width=>150, :height=>150, :gravity=>"face", :crop=>"thumb"}, class: "w-75 img-fluid img-thumbnail rounded") %>
+            <div class="col-12 col-md-4 ml-md-auto mr-md-auto col-lg-4 d-flex justify-content-end">
+              <%= worker_photo(@worker, transformation: {:width=>150, :height=>150, :gravity=>"face", :crop=>"thumb"}, class: "img-fluid img-thumbnail rounded") %>
             </div>
           </div>
         </li>
         <li class="list-group-item bg-light">
-          <div class="d-flex mt-4">
+          <div class="mt-4">
             <%= render 'graduates/index' %>
           </div>
         </li>
         <li class="list-group-item bg-light">
           <h4 class="card-title">Formations </h4>
           <div class="d-flex justify-content-between">
-            <%= current_user.email %>
+            <h1>TODO graduate render index</h1>
           </div>
         </li>
     </div>
