@@ -47,6 +47,7 @@ class WorkersController < ApplicationController
     # @sites = Site.all
     @worker_positions = Position.where(worker: @worker)
     @worker_graduates = Graduate.where(worker: @worker)
+    @worker_trainings = Training.where(worker: @worker)
   end
 
   # def update

@@ -3,7 +3,7 @@
       <%= image_tag 'terideal_logo.png', {height: '100px', class: 'align-middle'} %>
       <h1 class="my-auto"><%= @worker.first_name%> <%= @worker.last_name%></h1>
       <% if @worker.positions.blank? %>
-        <h1 class="bg-warning"><%= t '.no_data' %> <%= t '.add_new_experience' %></h1>
+        <h1 class="bg-warning"><%= t 'no_data' %> <%= t 'add_new_experience' %></h1>
       <% else %>
         <h1 class="my-auto"><%= @worker.positions.last.position_name %></h1>
       <% end %>
@@ -37,9 +37,8 @@
           </div>
         </li>
         <li class="list-group-item bg-light">
-          <h4 class="card-title">Formations </h4>
-          <div class="d-flex justify-content-between">
-            <h1>TODO graduate render index</h1>
+          <div class="mt-4">
+            <%= render 'trainings/index' %>
           </div>
         </li>
     </div>
