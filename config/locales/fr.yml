@@ -1,13 +1,18 @@
 fr:
   final_client: Terideal
   cancel: Annuler
+  no_data: pas d'info
+  no_exerienence: pas d'exérience
+  add_new_experience: ajouter une expérience
+  add_new_graduate: ajouter un dîplome
+  add_new_training: ajouter une formation
   activerecord:
     models:
       graduate: Diplôme
       client: Maître d'ouvrage
       position: Poste
       site: Chantier
-      training: Formations
+      training: Formation
       worker: Salarié
   datetime:
     distance_in_words:
@@ -47,13 +52,16 @@ fr:
       hello: Bonjour
   workers:
     worker_card:
-      no_data: pas d'info
-      no_exerienence: pas d'exérience
-      add_new_experience: ajouter une expérience
       site:
         zero: "aucun chantier"
         one: "un chantier"
         other: "%{count} chantiers"
+  trainings:
+    index:
+      training:
+        zero: "aucune formation"
+        one: "une formation"
+        other: "%{count} formations"
   shared:
     navbar:
       admin_dashboard: "Centre d'administration"

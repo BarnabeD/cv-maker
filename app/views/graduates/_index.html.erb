@@ -1,15 +1,18 @@
 <% if @worker_graduates.count != 0 %>
-  <h2><%= t '.graduate', count: @worker.graduates.count %> </h2>
-  <ul>
+  <h4 class="card-title"><%= t '.graduate', count: @worker.graduates.count %> </h4>
+  <div class="row">
     <% @worker_graduates.each do |graduate| %>
-      <li><b>Non du diplôme : </b> <%= graduate.name %> <b>spécialité : </b> <%= graduate.speciality %></li>
-      <li><b>Ecole : </b><%= graduate.school_name %> - (<%= graduate.school_department %>)</li>
-      <li><b>Date : </b><%= graduate.graduation_date.year %></li>
-      <br>
+      <ul class="col-10 sol-sm-6 col-lg-6 mx-auto align-bottom mb-3">
+        <li><b>Non du diplôme : </b> <%= graduate.name %> </li>
+        <li><b>Spécialité : </b> <%= graduate.speciality %></li>
+        <li><b>Ecole : </b><%= graduate.school_name %> - (<%= graduate.school_department %>)</li>
+        <li><b>Date : </b><%= graduate.graduation_date.year %></li>
+      </ul>
     <% end %>
-  </ul>
+  </div>
+<% else %>
+  <h1 class="bg-warning"><%= t 'no_data' %> <%= t 'add_new_graduate' %></h1>
 <% end %>
-
 
 
 

@@ -1,21 +1,62 @@
-<h1><%= @worker.first_name%> <%= @worker.last_name%></h1>
+  <div class="card bg-light col-12 m-auto mb-5 p-0">
+    <div class="card-header d-flex justify-content-between inline-block">
+      <%= image_tag 'terideal_logo.png', {height: '100px', class: 'align-middle'} %>
+      <h1 class="my-auto"><%= @worker.first_name%> <%= @worker.last_name%></h1>
+      <% if @worker.positions.blank? %>
+        <h1 class="bg-warning"><%= t 'no_data' %> <%= t 'add_new_experience' %></h1>
+      <% else %>
+        <h1 class="my-auto"><%= @worker.positions.last.position_name %></h1>
+      <% end %>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item bg-light">
+          <h4 class="card-title">Information personnelles</h4>
+          <div class="row">
+            <ul class="col-12 col-md-6 col-lg-4">
+              <li><p>age : <%= @age %> ans, </p></li>
+              <li><p>Né le <%= l(@worker.birth_date, format: '%d %B %Y') %></p></li>
+            </ul>
+            <ul class="col-12 col-md-6 col-lg-4">
+              <li><p>experience chez <%= t 'final_client' %> : <%= distance_of_time_in_words(Time.now, @worker.hire_date) %></p></li>
+              <li><p>Nexperience dans le metier :
+                <% if @graduation_date.nil? %>
+                  <%= @age - 18 %> ans
+                <% else %>
+                  <%= distance_of_time_in_words(Time.now, @last_graduate_date) %>
+                <% end %></p></li>
+            </ul>
+            <div class="col-12 col-md-4 ml-md-auto mr-md-auto col-lg-4 d-flex justify-content-end">
+              <%= worker_photo(@worker, transformation: {:width=>150, :height=>150, :gravity=>"face", :crop=>"thumb"}, class: "img-fluid img-thumbnail rounded") %>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item bg-light">
+          <div class="mt-4">
+            <%= render 'graduates/index' %>
+          </div>
+        </li>
+        <li class="list-group-item bg-light">
+          <div class="mt-4">
+            <%= render 'trainings/index' %>
+          </div>
+        </li>
+    </div>
+</div>
+
 <br>
-<%= worker_photo(@worker, transformation: {:width=>300, :height=>400, :gravity=>"face", :crop=>"thumb"}) %>
-<p>Né le <%= l(@worker.birth_date, format: '%d %B %Y') %></p>
-<p>age : <%= @age %> ans</p>
+<br>
+<br>
+<br>
+
 <br>
 <p>today :</p>
 <p>Généré le <%= l(Date.today, format: '%d %B %Y') %></p>
 <br>
-<p>experience chez <%= t 'final_client' %> : <%= distance_of_time_in_words(Time.now, @worker.hire_date) %></p>
-<p>experience dans le metier :
-<% if @graduation_date.nil? %>
-  <%= @age - 18 %> ans
-<% else %>
-  <%= distance_of_time_in_words(Time.now, @last_graduate_date) %>
-<% end %></p>
+
+<p>
 <br>
-<%= render 'graduates/index' %>
+
 <div data-controller="toggle-display">
   <div class="hidden" data-target="toggle-display.graduateForm">
     <%= render 'graduates/new', worker: @worker, graduate: @graduate %>
@@ -33,12 +74,3 @@
 <br>
 <br>
 <%= link_to "retour", workers_path, class: "btn btn-outline-secondary shadow" %>
-
-<br>
-
-
-
-<H1>TODO</H1>
-
-<br>
-<p>corrifer le show du worker pour afficher ne pas planter pour les données manquantes</p>

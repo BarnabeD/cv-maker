@@ -1,0 +1,17 @@
+<% if @worker_trainings.count != 0 %>
+  <h4 class="card-title"><%= t '.training', count: @worker.graduates.count %> </h4>
+  <div class="row">
+    <% @worker_trainings.each do |training| %>
+      <ul class="col-10 sol-sm-6 col-lg-6 mx-auto align-bottom mb-3">
+        <li><b>Intitulée : </b> <%= training.name %> </li>
+        <li><b>Type de formation : </b> <%= training.training_type %></li>
+        <li><b>Date : </b><%= training.date.year %></li>
+      </ul>
+    <% end %>
+  </div>
+<% else %>
+  <h1 class="bg-warning"><%= t 'no_data' %> <%= t 'add_new_training' %></h1>
+<% end %>
+
+
+
