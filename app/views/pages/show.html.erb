@@ -29,8 +29,10 @@
       </li>
       <li class="list-group-item bg-light">
         <h4 class="card-title">Identifiant et mots de passe: </h4>
-        <div class="d-flex justify-content-between">
-          <%= current_user.email %>
+        <div class="d-flex flex-wrap justify-content-between">
+          <div class="text-truncate">
+            <%= current_user.email %>
+          </div>
           <%= link_to "editer", edit_user_registration_path, class: "btn btn-outline-warning shadow" %>
         </div>
       </li>

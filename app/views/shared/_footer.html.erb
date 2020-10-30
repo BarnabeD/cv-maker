@@ -1,11 +1,11 @@
-<footer class="footer mt-auto py-3 row footer w-200 mt-4">
-  <div class="col-md-3 text-right p-4">
+<footer class="footer mt-auto py-3 footer d-flex flex-wrap w-200 mt-4 p-4">
+  <div class="m-1">
     <%= image_tag 'terideal_logo_white.svg', alt: 'client Logo', class: "w-50" %>
   </div>
-  <div class="col-md-6 text-center p-4">
+  <div class="m-1 text-center">
     <h2 class="text-light"><%= t('final_client') %> CV-maker</h2>
   </div>
-  <div class="col-md-3 text-right p-4 ">
+  <div class="m-1">
     <% if user_signed_in? %>
       <%= link_to "Se déconnecter", destroy_user_session_path, data: { confirm: "Confirmer la déconnection ?"}, method: :delete, class: "btn btn-danger round-lg shadow" %>
     <% end %>
