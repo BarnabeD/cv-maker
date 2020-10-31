@@ -4,17 +4,21 @@ class PagesController < ApplicationController
   def home
   end
 
-  def show
+  def profil_show
     set_user
   end
 
-  def update
+  def profil_update
     set_user
     if @user.update(strong_params)
       redirect_to profil_path(@user)
     else
       redirect_to profil_path(@user)
     end
+  end
+
+  def admin
+    @workers = Worker.all
   end
 
   private
