@@ -1,0 +1,25 @@
+<h2 class="mb-4">worker list</h2>
+<table class="table table-hover table-striped">
+  <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prenom</th>
+        <th scope="col">Date emmbauche</th>
+        <th scope="col">Date naissance</th>
+        <th scope="col">Matricule</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @workers.each do |worker| %>
+    <tr>
+      <th scope="row"><%= worker.id %></th>
+      <td><%= worker.last_name %></td>
+      <td><%= worker.first_name %></td>
+      <td><%= worker.hire_date %></td>
+      <td><%= worker.birth_date %></td>
+      <td><%= worker.matricule %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
