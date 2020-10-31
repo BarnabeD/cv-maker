@@ -3,7 +3,6 @@ class WorkersController < ApplicationController
 
   def create
     @worker = Worker.new(worker_params)
-    # @position = Position.new(params)
     if @worker.save
       redirect_to worker_path(@worker)
     else
@@ -32,10 +31,6 @@ class WorkersController < ApplicationController
     @graduate = Graduate.new
     @position.build_company
     @position.build_site
-  end
-
-  def toogle_worker
-    # redirect_to admin_path
   end
 
   private

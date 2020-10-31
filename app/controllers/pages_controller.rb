@@ -18,7 +18,9 @@ class PagesController < ApplicationController
   end
 
   def admin
-    @workers = Worker.all
+    @workers = Worker.all.order(:id)
+    @sites = Site.all.order(:id)
+    @users = User.all.order(:id)
   end
 
   private

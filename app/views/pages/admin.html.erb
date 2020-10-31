@@ -1,49 +1,8 @@
-<h2 class="mb-4">worker list</h2>
-<div class="table-responsive">
-  <table class="table table-hover table-striped">
-    <thead>
-        <tr>
-          <th scope="col">id</th>
-          <th scope="col">Nom</th>
-          <th scope="col">Prenom</th>
-          <th scope="col">Age</th>
-          <th scope="col">Ancieneté<br><%= t 'final_client' %></th>
-          <th scope="col">Ancieneté<br>totale</th>
-          <th scope="col">Date<br>emmbauche</th>
-          <th scope="col">Date<br>naissance</th>
-          <th scope="col">Matricule</th>
-          <th scope="col">Controle</th>
-          <th scope="col">Confiance</th>
-        </tr>
-    </thead>
-    <tbody>
-      <% @workers.each do |worker| %>
-      <tr class=<%= '#table-warning' if worker %>>
-        <th scope="row"><%= worker.id %></th>
-        <td><%= worker.last_name %></td>
-        <td><%= worker.first_name %></td>
-        <td><%= worker.age_in_year %></td>
-        <td><%= worker.duration_since_last_graduate_in_years %></td>
-        <td><%= worker.hiring_time_in_year %></td>
-        <td><%= l(worker.hire_date, format: '%d-%m-%Y') %></td>
-        <td><%= l(worker.birth_date, format: '%d-%m-%Y') %></td>
-        <td><%= worker.matricule %></td>
-        <td>
-          <span class="ml-2"><%= link_to icon('far','edit'), edit_worker_path(worker), class: "text-info" %></span>
-          <span class="ml-2">
-            <%= link_to worker_path(worker), method: :delete, class: "text-danger", data: { confirm: "Voulez-vous supprimer #{worker.first_name} #{worker.last_name}?" } do %>
-              <%= icon('far','trash-alt') %>
-            <% end %>
-          </span>
-        </td>
-        <td>
-          <span class="ml-2">
-            <%= link_to worker, controller: "workers", action: "toggle_confidence", method: :patch, class: "text-danger", remote: true do %>
-              <%= icon('far','flag') %>
-            <% end %>
-          </span>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<h2 class="mt-5">Liste des salariés</h2>
+<%= render 'pages/admin_partials/workers_list', workers: @workers %>
+<br>
+<h2 class="mt-5">Liste des chantiers</h2>
+<%= render 'pages/admin_partials/sites_list', sites: @sites %>
+<br>
+<h2 class="mt-5">Liste des utilisateurs</h2>
+<%= render 'pages/admin_partials/users_list', users: @users %>

@@ -1,0 +1,52 @@
+<div class="table-responsive">
+  <table class="table table-hover table-striped">
+    <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Type</th>
+          <th scope="col">date de <br>Démarrage</th>
+          <th scope="col">date de <br>Fin</th>
+          <th scope="col">Montant</th>
+          <th scope="col">Client</th>
+          <th scope="col">Controle</th>
+          <th scope="col">Confiance</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% class_to_add = ['success', 'warning', 'danger'] %>
+      <% @sites.each do |site| %>
+      <% if site.is_confident? %>
+        <% class_to_add = 'success' %>
+      <% elsif site.is_not_sure? %>
+        <% class_to_add = 'warning' %>
+      <% elsif site.is_not_nonfident? %>
+        <% class_to_add = 'danger' %>
+      <% end %>
+      <tr class="table-<%= class_to_add %>">
+        <th scope="row"><%= site.id %></th>
+        <td><%= site.name %></td>
+        <td><%= site.site_type %></td>
+        <td><%= l(site.start_date, format: '%d-%m-%Y') %></td>
+        <td><%= l(site.end_date, format: '%d-%m-%Y') %></td>
+        <td><%= site.amount %> <%= site.money_unit %></td>
+        <td><%= site.client.name %></td>
+        <td>
+          <span class="ml-2"><%= link_to icon('far','edit'), edit_site_path(site), class: "text-info" %></span>
+          <span class="ml-2">
+            <%= link_to site_path(site), method: :delete, class: "text-danger", data: { confirm: "Voulez-vous supprimer #{site.name} ?" } do %>
+              <%= icon('far','trash-alt') %>
+            <% end %>
+          </span>
+        </td>
+        <td>
+          <span class="ml-2">
+            <%= link_to site, controller: "sites", action: "toggle_confidence", method: :patch, class: "text-#{class_to_add}", remote: true do %>
+              <%= icon('far','flag') %>
+            <% end %>
+          </span>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
