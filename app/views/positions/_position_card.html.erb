@@ -1,4 +1,4 @@
-<% @worker_positions.each do |position| %>
+<% @worker.positions.each do |position| %>
   <div class="card mb-3 rounded-lg" >
     <%= site_photo(position.site, transformation: {height: '400', width: '1000', crop: "fill"}, class: "rounded-top-lg img-fluid") %>
     <div class="card-body">

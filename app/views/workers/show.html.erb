@@ -14,17 +14,12 @@
           <h4 class="card-title">Information personnelles</h4>
           <div class="row">
             <ul class="col-12 col-md-6 col-lg-4">
-              <li><p>age : <%= @age %> ans, </p></li>
+              <li><p>age : <%= @worker.age_in_year %> ans, </p></li>
               <li><p>Né le <%= l(@worker.birth_date, format: '%d %B %Y') %></p></li>
             </ul>
             <ul class="col-12 col-md-6 col-lg-4">
-              <li><p>experience chez <%= t 'final_client' %> : <%= distance_of_time_in_words(Time.now, @worker.hire_date) %></p></li>
-              <li><p>Nexperience dans le metier :
-                <% if @graduation_date.nil? %>
-                  <%= @age - 18 %> ans
-                <% else %>
-                  <%= distance_of_time_in_words(Time.now, @last_graduate_date) %>
-                <% end %></p></li>
+              <li><p>experience chez <%= t 'final_client' %> : <%= @worker.hiring_time_in_year %></p></li>
+              <li><p>experience dans le metier : <%= @worker.duration_since_last_graduate_in_years %> ans</p></li>
             </ul>
             <div class="col-12 col-md-4 ml-md-auto mr-md-auto col-lg-4 d-flex justify-content-end">
               <%= worker_photo(@worker, transformation: {:width=>150, :height=>150, :gravity=>"face", :crop=>"thumb"}, class: "img-fluid img-thumbnail rounded") %>
