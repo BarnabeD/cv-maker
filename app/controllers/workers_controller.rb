@@ -11,13 +11,13 @@ class WorkersController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @worker.destroy
-  #   redirect_to workers_path
-  # end
+  def destroy
+    @worker.destroy
+    redirect_to admin_path
+  end
 
-  # def edit
-  # end
+  def edit
+  end
 
   def index
     @workers = Worker.all
@@ -32,6 +32,10 @@ class WorkersController < ApplicationController
     @graduate = Graduate.new
     @position.build_company
     @position.build_site
+  end
+
+  def toogle_worker
+    # redirect_to admin_path
   end
 
   private
