@@ -8,8 +8,8 @@
           <th scope="col">Chantier</th>
           <th scope="col">Client</th>
           <th scope="col">Société</th>
-          <th scope="col">Controle</th>
           <th scope="col">Confiance</th>
+          <th scope="col">Contrôle</th>
         </tr>
     </thead>
     <tbody>
@@ -29,6 +29,13 @@
         <td><%= position.site.client.name %></td>
         <td><%= position.company.name %></td>
         <td>
+          <span class="ml-2">
+            <%= link_to position, controller: "positions", action: "toggle_position_confidence", method: :patch, class: "text-#{class_to_add}", remote: true do %>
+              <%= icon('far','flag') %>
+            <% end %>
+          </span>
+        </td>
+        <td>
           <span class="ml-2"><%= link_to icon('far','edit'), edit_position_path(position), class: "text-info" %></span>
           <span class="ml-2">
             <%= link_to position_path(position), method: :delete, class: "text-danger", data: { confirm: "Voulez-vous supprimer la mission : \n#{position.position_name} \ndu CV de  #{position.worker.first_name} #{position.worker.last_name} \nsur le chantier : #{position.site.name} ?" } do %>
@@ -36,12 +43,6 @@
             <% end %>
           </span>
         </td>
-        <td>
-          <span class="ml-2">
-            <%= link_to position, controller: "positions", action: "toggle_position_confidence", method: :patch, class: "text-#{class_to_add}", remote: true do %>
-              <%= icon('far','flag') %>
-            <% end %>
-          </span>
       </tr>
       <% end %>
     </tbody>

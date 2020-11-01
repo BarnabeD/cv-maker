@@ -9,8 +9,8 @@
           <th scope="col">date de <br>Fin</th>
           <th scope="col">Montant</th>
           <th scope="col">Client</th>
-          <th scope="col">Controle</th>
           <th scope="col">Confiance</th>
+          <th scope="col">Contrôle</th>
         </tr>
     </thead>
     <tbody>
@@ -32,6 +32,13 @@
         <td><%= site.amount %> <%= site.money_unit %></td>
         <td><%= site.client.name %></td>
         <td>
+          <span class="ml-2">
+            <%= link_to toggle_site_confidence_path(site), method: :patch, class: "text-#{class_to_add}", remote: true do %>
+              <%= icon('far','flag') %>
+            <% end %>
+          </span>
+        </td>
+        <td>
           <span class="ml-2"><%= link_to icon('far','edit'), edit_site_path(site), class: "text-info" %></span>
           <span class="ml-2">
             <%= link_to site_path(site), method: :delete, class: "text-danger", data: { confirm: "Voulez-vous supprimer #{site.name} ?" } do %>
@@ -39,12 +46,7 @@
             <% end %>
           </span>
         </td>
-        <td>
-          <span class="ml-2">
-            <%= link_to toggle_site_confidence_path(site), method: :patch, class: "text-#{class_to_add}", remote: true do %>
-              <%= icon('far','flag') %>
-            <% end %>
-          </span>
+
       </tr>
       <% end %>
     </tbody>
