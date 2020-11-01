@@ -13,7 +13,7 @@
       <li class="nav-item dropdown">
         <%= user_photo(current_user, transformation: {height: '100', width: '100', gravity: "face", radius: "max", crop: "fill"}, class: "avatar-bordered img-fluid dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <% if current_user.admin? %>
+          <% if current_user.is_admin? %>
             <%= link_to t('.admin_dashboard'), admin_path, class: "dropdown-item" %>
           <% end %>
           <%= link_to "mon profil", profil_path(current_user), class: "dropdown-item" %>
@@ -23,6 +23,6 @@
     </ul>
   </div>
   <% else %>
-  <%= link_to "Conexion", new_user_session_path, class: "btn btn-dark" %>
+  <%= link_to "Connexion", new_user_session_path, class: "btn btn-dark" %>
   <% end %>
 </div>

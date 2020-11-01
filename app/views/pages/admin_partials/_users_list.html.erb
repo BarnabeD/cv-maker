@@ -3,7 +3,8 @@
     <thead>
         <tr>
           <th scope="col">id</th>
-          <th scope="col">mail</th>
+          <th scope="col" class="col-10">email</th>
+          <th scope="col">Rôle</th>
           <th scope="col">Controle</th>
         </tr>
     </thead>
@@ -12,10 +13,11 @@
       <tr>
         <th scope="row"><%= user.id %></th>
         <td><%= user.email %></td>
+        <td><%= user.is_admin? ? 'admin' : 'user'%></td>
         <td>
           <span class="ml-2"><%= link_to icon('far','edit'), edit_user_registration_path, class: "text-info" %></span>
           <span class="ml-2">
-            <%= link_to cancel_user_registration_path, class: "text-danger", data: { confirm: "Voulez-vous supprimer #{user.email} ?" } do %>
+            <%= link_to users_destroy_path(user), method: :delete, class: "text-danger", data: { confirm: "Voulez-vous supprimer #{user.email} ?" } do %>
               <%= icon('far','trash-alt') %>
             <% end %>
           </span>

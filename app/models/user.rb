@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :password_expirable,
          :secure_validatable, email_validation: false
 
-  def admin?
+  def is_admin?
     self.admin
   end
 end

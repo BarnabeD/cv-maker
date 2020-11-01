@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
     patch '/chantiers/:id', to: 'sites#toggle_confidence'
 
+    delete 'admin/users/:id', to: 'users#destroy', as: 'users_destroy'
+
     resources :chantiers, controller: 'sites', as: 'sites'
 
     resources :collaborateurs, controller: 'workers', as: 'workers' do
