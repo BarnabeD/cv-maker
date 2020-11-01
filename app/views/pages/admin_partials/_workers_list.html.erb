@@ -27,8 +27,13 @@
         <td><%= l(worker.birth_date, format: '%d-%m-%Y') %></td>
         <td><%= worker.matricule %></td>
         <td>
-          <span class="ml-2"><%= link_to icon('far','edit'), edit_worker_path(worker), class: "text-info" %></span>
-          <span class="ml-2">
+          <span class="m-auto">
+            <%= link_to icon('far','eye'), worker_path(worker), class: "text-succes" %>
+          </span>
+          <span class="m-auto">
+            <%= link_to icon('far','edit'), edit_worker_path(worker), class: "text-info" %>
+          </span>
+          <span class="m-auto">
             <%= link_to worker_path(worker), method: :delete, class: "text-danger", data: { confirm: "Voulez-vous supprimer #{worker.first_name} #{worker.last_name}?" } do %>
               <%= icon('far','trash-alt') %>
             <% end %>
