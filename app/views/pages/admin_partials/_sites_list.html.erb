@@ -41,7 +41,7 @@
         </td>
         <td>
           <span class="ml-2">
-            <%= link_to site, controller: "sites", action: "toggle_confidence", method: :patch, class: "text-#{class_to_add}", remote: true do %>
+            <%= link_to toggle_site_confidence_path(site), method: :patch, class: "text-#{class_to_add}", remote: true do %>
               <%= icon('far','flag') %>
             <% end %>
           </span>

@@ -8,6 +8,7 @@ class SitesController < ApplicationController
   end
 
   def edit
+    set_site
   end
 
   # def index
@@ -20,8 +21,11 @@ class SitesController < ApplicationController
 
   def update
     set_site
-    @site.update(site_params)
-    redirect_to admin_path
+    if @site.update(strong_params)
+      redirect_to admin_path
+    else
+      raise
+    end
   end
 
   def toggle_confidence
@@ -47,6 +51,10 @@ class SitesController < ApplicationController
   # def strong_params
   #   params.require(:site).permit(:name, :site_type, :start_date, :end_date, :amount, :money_unit, :birth_date, company: [ :company_id ], position: [ :position_name ], clients: [ :name ])
   # end
+
+  def strong_params
+    params.require(:site).permit(:name, :site_type, :start_date, :end_date, :amount, :money_unit)
+  end
 
   # def site_params
   #   strong_params.except(:position, :clients, :company)

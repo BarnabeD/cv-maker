@@ -8,13 +8,19 @@ Rails.application.routes.draw do
 
   authenticated do
     root to: 'workers#index', as: :authenticated_root
+
+    # admin
     get '/admin', to: 'pages#admin'
+    patch 'admin/chantiers/:id', to: 'sites#toggle_confidence', as: 'toggle_site_confidence'
+    patch 'admin/position/:id', to: 'position#toggle_confidence', as: 'toggle_posititon_confidence'
+    delete 'admin/users/:id', to: 'users#destroy', as: 'users_destroy'
+
+    # Profil
     patch '/profil/:id', to: 'pages#profil_update', as: 'profil'
     get '/profil/:id', to: 'pages#profil_show'
 
-    patch '/chantiers/:id', to: 'sites#toggle_confidence'
 
-    delete 'admin/users/:id', to: 'users#destroy', as: 'users_destroy'
+    # Non admin
     resources :positions, only: [:edit, :update, :destroy ]
     resources :chantiers, controller: 'sites', as: 'sites'
 
@@ -25,6 +31,7 @@ Rails.application.routes.draw do
     # resources :chantier, controller: 'sites', as: 'sites'
     # resources :diplomes, controller: 'graduates', as: 'graduates'
     end
+
   end
 
 end
