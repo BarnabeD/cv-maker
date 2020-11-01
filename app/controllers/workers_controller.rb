@@ -18,6 +18,11 @@ class WorkersController < ApplicationController
   def edit
   end
 
+  def update
+    @worker.update(worker_params)
+    redirect_to admin_path
+  end
+
   def index
     @workers = Worker.all
   end
