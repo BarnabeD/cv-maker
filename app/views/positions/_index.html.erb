@@ -1,3 +1,4 @@
 <h2>exprience </h2>
-
-<%= render 'positions/position_card', position: @position %>
+<% @worker.positions.each do |position| %>
+  <%= render 'positions/position_card', position: position %>
+<% end %>

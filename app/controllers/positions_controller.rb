@@ -1,4 +1,5 @@
 class PositionsController < ApplicationController
+  before_action :set_position, only: [:edit, :update, :destroy]
 
   def create
     @worker = set_worker
@@ -22,8 +23,30 @@ class PositionsController < ApplicationController
     @position.build_site
   end
 
+  def edit
+    @worker = @position.worker
+  end
+
+  def update
+    @position.update(position_params)
+    redirect_to admin_path
+  end
+
+  def destroy
+    @position.destroy
+    redirect_to admin_path
+  end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+  private
+
+  def set_position
+    @position = Position.find(params[:id])
+  end
 
   def set_worker
     @worker = Worker.find(params[:worker_id])

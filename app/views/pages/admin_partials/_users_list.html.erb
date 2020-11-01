@@ -1,0 +1,32 @@
+<div class="table-responsive">
+  <table class="table table-hover table-striped">
+    <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col" class="col-10">email</th>
+          <th scope="col">Rôle</th>
+          <th scope="col">Contrôle</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <th scope="row"><%= user.id %></th>
+        <td><%= user.email %></td>
+        <td><%= user.is_admin? ? 'admin' : 'user'%></td>
+        <td>
+          <span class="ml-2"><%= link_to icon('far','edit'), edit_user_registration_path, class: "text-info" %></span>
+          <span class="ml-2">
+            <%= link_to users_destroy_path(user), method: :delete, class: "text-danger", data: { confirm: "Voulez-vous supprimer #{user.email} ?" } do %>
+              <%= icon('far','trash-alt') %>
+            <% end %>
+          </span>
+        </td>
+        <td>
+          <span class="ml-2">
+          </span>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

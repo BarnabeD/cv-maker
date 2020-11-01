@@ -9,4 +9,16 @@ class Site < ApplicationRecord
   validates :site_type, inclusion: { in: ['Marché unique', 'Marché à bon de commande', 'Accord cadre']}
   validates :money_unit, inclusion: { in: ['€', 'K€', 'M€', 'Mrd€']}
 
+  def is_confident?
+    self.confidence == 'confident' ? true : false
+  end
+
+  def is_not_sure?
+    self.confidence == 'not sure' ? true : false
+  end
+
+  def is_not_nonfident?
+    self.confidence == 'false' ? true : false
+  end
+
 end

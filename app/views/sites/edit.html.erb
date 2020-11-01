@@ -1,0 +1,20 @@
+<h1>modifier le chantier de <%= @site.client.name %> - <%= @site.name %></h1>
+<div class="card mb-5 p-3">
+  <%= simple_form_for @site do |f| %>
+    <%= f.input :name, label: "site Name" %>
+    <%= f.input :site_type, collection: ['Marché unique', 'Marché à bon de commande', 'Accord cadre'], default: 1 %>
+    <%= f.input :start_date, as: :date, start_year: Date.today.year - 110, end_year: Date.today.year + 5 %>
+    <%= f.input :end_date, as: :date, start_year: Date.today.year - 110, end_year: Date.today.year + 20 %>
+    <%= f.input :amount %>
+    <%= f.input :money_unit, collection: ['€', 'K€', 'M€', 'Mrd€'], default: 1%>
+    <%= f.input :photo, as: :file, input_html: { multiple: false, accept: "image/*" } %>
+  <!-- <h4>CLient</h4> -->
+  <!-- buttons : submit + cancel -->
+  <%= f.submit class: "btn btn-success shadow" %>
+<% end %>
+</div>
+
+<h2>Rapel du chantier : </h2>
+<div class="col-6">
+TODO render d'une carte de site
+</div>
