@@ -1,0 +1,13 @@
+<h1>modifier le rôle de <%= @position.worker.first_name %> <%= @position.worker.last_name %></h1>
+<div class="card mb-5 p-3">
+  <%= simple_form_for @position do |f| %>
+    <%= f.input :position_name, label: "Position Name" %>
+    <!-- buttons : submit + cancel -->
+    <%= f.submit class: "btn btn-success shadow" %>
+    <%= link_to t('cancel'), admin_path, class: "btn btn-outline-warning shadow" %>
+  <% end %>
+</div>
+
+<%= render 'position_card', position: @position %>
+
+

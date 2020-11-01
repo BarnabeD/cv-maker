@@ -1,0 +1,49 @@
+<div class="table-responsive">
+  <table class="table table-hover table-striped">
+    <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Nom salarié</th>
+          <th scope="col">Rôle</th>
+          <th scope="col">Chantier</th>
+          <th scope="col">Client</th>
+          <th scope="col">Société</th>
+          <th scope="col">Controle</th>
+          <th scope="col">Confiance</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @positions.each do |position| %>
+      <% if position.site.is_confident? %>
+        <% class_to_add = 'success' %>
+      <% elsif position.site.is_not_sure? %>
+        <% class_to_add = 'warning' %>
+      <% elsif position.site.is_not_nonfident? %>
+        <% class_to_add = 'danger' %>
+      <% end %>
+      <tr class="table-<%= class_to_add %>">
+        <th scope="row"><%= position.id %></th>
+        <td><%= position.worker.last_name %> <%= position.worker.first_name %></td>
+        <td><%= position.position_name %></td>
+        <td><%= position.site.name %></td>
+        <td><%= position.site.client.name %></td>
+        <td><%= position.company.name %></td>
+        <td>
+          <span class="ml-2"><%= link_to icon('far','edit'), edit_position_path(position), class: "text-info" %></span>
+          <span class="ml-2">
+            <%= link_to position_path(position), method: :delete, class: "text-danger", data: { confirm: "Voulez-vous supprimer la mission : \n#{position.position_name} \ndu CV de  #{position.worker.first_name} #{position.worker.last_name} \nsur le chantier : #{position.site.name} ?" } do %>
+              <%= icon('far','trash-alt') %>
+            <% end %>
+          </span>
+        </td>
+        <td>
+          <span class="ml-2">
+            <%= link_to position, controller: "positions", action: "toggle_confidence", method: :patch, class: "text-#{class_to_add}", remote: true do %>
+              <%= icon('far','flag') %>
+            <% end %>
+          </span>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

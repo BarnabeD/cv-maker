@@ -21,6 +21,7 @@ class PagesController < ApplicationController
     @workers = Worker.all.order(:id)
     @sites = Site.all.order(:id)
     @users = User.all.order(:id)
+    @positions = Position.all.order(:id)
   end
 
   private
