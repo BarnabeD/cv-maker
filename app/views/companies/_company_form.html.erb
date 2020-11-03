@@ -1,0 +1,7 @@
+<%= simple_form_for(@company) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :city %>
+    <%= f.button :submit, class: 'btn btn-success shadow' %>
+    <%= link_to 'retour' , admin_path, class: 'btn btn-warning shadow' %>
+<% end %>
+  

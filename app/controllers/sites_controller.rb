@@ -11,6 +11,10 @@ class SitesController < ApplicationController
     set_site
   end
 
+  def new
+    @site = Site.new
+  end
+
   # def index
   #   @sites = Site.all
   # end
@@ -24,7 +28,7 @@ class SitesController < ApplicationController
     if @site.update(strong_params)
       redirect_to admin_path
     else
-      raise
+      render 'edit'
     end
   end
 

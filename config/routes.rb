@@ -13,7 +13,12 @@ Rails.application.routes.draw do
     get '/admin', to: 'pages#admin'
     patch 'admin/chantiers/:id', to: 'sites#toggle_confidence', as: 'toggle_site_confidence'
     patch 'admin/position/:id', to: 'position#toggle_confidence', as: 'toggle_posititon_confidence'
-    delete 'admin/users/:id', to: 'users#destroy', as: 'users_destroy'
+
+    post 'admin/users', to: 'users#create', as: 'users'
+    get 'admin/user/new', to: 'users#new', as: 'new_user'
+    get 'admin/user/:id', to: 'users#edit', as: 'edit_user'
+    patch 'admin/user/:id', to: 'users#update'
+    delete 'admin/user/:id', to: 'users#destroy', as: 'users_destroy'
 
     # Profil
     patch '/profil/:id', to: 'pages#profil_update', as: 'profil'
@@ -23,6 +28,7 @@ Rails.application.routes.draw do
     # Non admin
     resources :positions, only: [:edit, :update, :destroy ]
     resources :chantiers, controller: 'sites', as: 'sites'
+    resources :companies, exept: [:show, :index]
 
     resources :collaborateurs, controller: 'workers', as: 'workers' do
       resources :positions, only: [:new, :create]
