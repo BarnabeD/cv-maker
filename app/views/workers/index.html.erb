@@ -1,5 +1,5 @@
-<h1>Liste des collaborateurs <%= t 'final_client' %></h1>
-
+<h1 class="px-2">Liste des collaborateurs <%= t 'final_client' %></h1>
+<%= link_to new_worker_path, class: "btn btn-primary shadow rounded m-2" do %>
+	<%= icon('fas','plus') %> Nouveau Collaborateur 
+ <% end %>
  <%= render 'worker_card', workers: @workers %>
-
-<%= link_to 'Nouveau Collaborateur', new_worker_path, class: "btn btn-primary shadow rounded" %>
