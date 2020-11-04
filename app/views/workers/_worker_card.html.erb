@@ -2,31 +2,30 @@
   <% @workers.each do |worker| %>
     <div class="col-sm-10 col-md-6 col-lg5- col-xl-4 py-1">
       <div class="card bg-light rounded-lg shadow">
-            <%= link_to worker_path(worker), class: "text-muted text-decoration-none justify-content-between" do %>
+        <%= link_to worker_path(worker), class: "text-muted text-decoration-none justify-content-between" do %>
+          <div class="card-body text-center">
+            <%= worker_photo(worker, transformation: {height: '400', width: '400', gravity: "face", crop: "fill"}, class: "card-img-top img-fluid p-3") %>
+            <ul class="list-group list-group-flush">
+              <!-- <div class="card-header"> -->
+                <li class="list-group-item bg-light">
+                  <h4 class="card-title font-weight-bold"><%= worker.first_name %> <%= worker.last_name.upcase %></h4>
+                </li>
+             <!--  </div> -->
+    <!--           <ul class="list-group list-group-flush">
+     -->            <% if worker.positions.blank? %>
+                 <li class="list-group-item bg-warning"><%= t 'no_data' %> <%= t 'add_new_experience' %>
+                <% else %>
+                <li class="list-group-item bg-light">Role : <%= worker.positions.last.position_name %></li>
+                <li class="list-group-item bg-light">Société : <%= worker.positions.last.company.name %></li>
+                <li class="list-group-item bg-light"><%= worker.positions.blank? ? t('.no_data') : t('.site', count: worker.positions.count) %></li>
+                <% end %>
+              </ul>
               <div class="card-body text-center">
-                <%= worker_photo(worker, transformation: {height: '400', width: '400', gravity: "face", crop: "fill"}, class: "card-img-top img-fluid p-3") %>
-                <ul class="list-group list-group-flush">
-                  <!-- <div class="card-header"> -->
-                    <li class="list-group-item bg-light">
-                      <h4 class="card-title font-weight-bold"><%= worker.first_name %> <%= worker.last_name.upcase %></h4>
-                    </li>
-                 <!--  </div> -->
-        <!--           <ul class="list-group list-group-flush">
-         -->            <% if worker.positions.blank? %>
-                     <li class="list-group-item bg-warning"><%= t 'no_data' %> <%= t 'add_new_experience' %>
-                    <% else %>
-                    <li class="list-group-item bg-light">Role : <%= worker.positions.last.position_name %></li>
-                    <li class="list-group-item bg-light">Société : <%= worker.positions.last.company.name %></li>
-                    <li class="list-group-item bg-light"><%= worker.positions.blank? ? t('.no_data') : t('.site', count: worker.positions.count) %></li>
-                    <% end %>
-                  </ul>
-                  <div class="card-body text-center">
-                    <%= link_to 'Voir son CV', worker_path(worker), class: "btn btn-outline-success" %>
-                  </div>
-                </div>
-            <% end %>
+                <%= link_to 'Voir son CV', worker_path(worker), class: "btn btn-outline-success" %>
+              </div>
+            </div>
+        <% end %>
       </div>
-    
   </div>
   <% end %>
 </div>
