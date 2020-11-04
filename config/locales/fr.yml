@@ -1,4 +1,8 @@
 fr:
+  worker:
+    zero: "aucun salarié"
+    one: "un salarié"
+    other: "%{count} salariés"
   final_client: Terideal
   cancel: Annuler
   no_data: pas d'info

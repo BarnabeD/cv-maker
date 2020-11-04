@@ -18,7 +18,11 @@ class PagesController < ApplicationController
   end
 
   def admin
-    @workers = Worker.all.order(:id)
+    if params[:worker_query].present?
+      @workers = Worker.search_by_fullname(params[:worker_query])
+    else
+      @workers = Worker.all.order(:id)
+    end
     @sites = Site.all.order(:id)
     @users = User.all.order(:id)
     @positions = Position.all.order(:id)

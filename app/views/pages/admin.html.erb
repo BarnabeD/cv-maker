@@ -1,5 +1,12 @@
 <div class="my-5 py-1">
   <h2 class="mt-5">Liste des salariés</h2>
+  <div class="my-2 d-flex">
+    <%= form_tag admin_path, method: :get, class: "form-inline" do %>
+      <%= text_field_tag :worker_query, params[:worker_query], class: "form-control mr-3", placeholder: "Chercher un salarié" %>
+      <%= submit_tag "chercher", class: "btn btn-primary" %>
+    <% end %>
+    <h4 class="ml-auto"><%= t('worker', count: @workers.count) %></h4>
+  </div>
   <%= link_to new_worker_path, class: "btn btn-primary shadow" do %>
   <%= icon('fas','plus') %> ajouter
   <% end %>

@@ -24,6 +24,14 @@ class Worker < ApplicationRecord
     end
   end
 
+  # PG-search:
+  include PgSearch::Model
+    pg_search_scope :search_by_fullname,
+      against: [ :first_name, :last_name ],
+      using: {
+        tsearch: { prefix: true } 
+      }
+
   private
 
   def calcul_duration_between_date_and_now(date)
