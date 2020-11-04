@@ -11,7 +11,9 @@ module PhotoHelper
     if site.photo.attached?
       cl_image_tag site.photo.key, opts
     else
-      image_tag "#{['site_placeholder1.jpg', 'site_placeholder2.jpg'].sample}", opts
+      # image_tag "#{['site_placeholder1.jpg', 'site_placeholder2.jpg'].sample}", opts
+      # image_tag 'https://source.unsplash.com/collection/1066077', opts
+      image_tag "fake/#{(1..26).to_a.sample}.jpg", opts
     end
   end
 
