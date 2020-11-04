@@ -1,3 +1,5 @@
+require 'faker'
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -39,90 +41,143 @@ User.destroy_all
 puts "=> Done"
 
 
+site_positions = [
+            'Ouvrier',
+            'Ouvrier spécialisé',
+            'Opérateur',
+            'Assistant chef de chantier',
+            'Aide chef de chantier',
+            'Chef de chantier',
+            'Assistant conducteur de travaux',
+            'Aide conducteur de travaux',
+            'Conducteur de travaux',
+            'Ingénieur travaux',
+            'Conducteur de travaux principale',
+            'Directeur de travaux',
+            'Chef de secteur',
+            'Directeur de territoire',
+            'Directeur commercial',
+            'Directeur'
+          ]
+
+puts "Creating complete sets..."
+
+clients = []
+30.times do 
+  clients << Client.create!(name: "Ville de #{Faker::Address.city}")
+  if Rails.env.production? || Rails.env.staging?
+    puts Client.last.name
+  end
+  if Rails.env.development?
+    ap Client.last
+  end
+end
+puts ">> #{Client.count} Clients created !"
 
 
-puts "Creating 1 complete set..."
-client = Client.create!(name: "Ville de Paris")
-puts "creating #{Client.count} client : #{client.name}"
-if Rails.env.production? || Rails.env.staging?
-  puts client.name
+companies = []
+terideal = ['Terideal - DTSS', 'Terideal - DROS', 'Terideal - DREN', 'Terideal - DRST', 'Terideal - DE', 'Terideal - DRCE']
+terideal.each do |company|
+  companies << Company.create!(name: terideal.sample, city: "Wissous")
+  if Rails.env.production? || Rails.env.staging?
+    puts companies.last.name
+  end
+  if Rails.env.development?
+    ap companies.last
+  end
 end
-if Rails.env.development?
-  ap client
+puts ">> #{Company.count} Company created !"
+
+workers = []
+100.times do
+  workers << Worker.create!(first_name: Faker::Name.first_name , last_name: Faker::Name.last_name , birth_date: Faker::Date.birthday(min_age: 16, max_age: 65), hire_date: Faker::Date.between(from: 25.years.ago, to: Date.today), matricule: Faker::Number.unique.number(digits: 5))
+  if Rails.env.production? || Rails.env.staging?
+    puts "#{workers.last.first_name} #{workers.last.last_name}"
+  end
+  if Rails.env.development?
+    ap workers.last
+  end
+end
+puts ">> #{Worker.count} Workers created !"
+
+graduates = []
+200.times do
+  graduates << Graduate.new(name: Faker::Job.education_level, speciality: Faker::IndustrySegments.sub_sector, graduation_date: Faker::Date.birthday(min_age: 1, max_age: 40), school_name: Faker::University.name, school_department: Graduate.french_departments.sample)
 end
 
-
-company = Company.create!(name: "Terideal - DTSS", city: "Wissous")
-puts "creating #{Company.count} company : #{company.name}"
-if Rails.env.production? || Rails.env.staging?
-  puts company.name
+graduates.each do |graduate|
+  graduate.worker = workers.sample
+  graduate.save!
+  if Rails.env.production? || Rails.env.staging?
+    puts "#{graduate.name} - #{graduate.speciality}"
+  end
+  if Rails.env.development?
+    ap graduate
+  end
 end
-if Rails.env.development?
-  ap company
-end
-
-worker = Worker.create!(first_name: "Jean-michel", last_name: "Jarre", birth_date: "1986-03-27", hire_date: "2012-02-21", matricule: 05352)
-puts "creating #{Worker.count} worker : #{worker.first_name} #{worker.last_name}"
-if Rails.env.production? || Rails.env.staging?
-  puts "#{worker.first_name} #{worker.last_name}"
-
-end
-if Rails.env.development?
-  ap worker
-end
-
-graduate = Graduate.new(name: "Ingenieur", speciality: "Travaux publics", graduation_date: "2007-12-01", school_name: "Gaudier Brezska", school_department: 45)
-graduate.worker = worker
-graduate.save!
-puts "creating #{Graduate.count} graduate : #{graduate.name}"
-if Rails.env.production? || Rails.env.staging?
-  puts "#{graduate.name} - #{graduate.speciality}"
-end
-if Rails.env.development?
-  ap graduate
-end
-
-training_security = Training.new(name: "AIPR", date: "2019-07-14", training_type: "Securité")
-training_security.worker = worker
-training_security.save!
-training_management = Training.new(name: "Management", date: "2014-05-01", training_type: "Professionelle")
-training_management.worker = worker
-training_management.save!
-puts "creating #{Training.count} trainings : #{training_security.name} & #{training_management.name}"
-if Rails.env.production? || Rails.env.staging?
-  puts "#{training_security.training_type} : #{training_security.name}"
-  puts "#{training_management.training_type} : #{training_management.name}"
-end
-if Rails.env.development?
-  ap training_security
-  ap training_management
-end
+puts ">> #{Graduate.count} Graduates created!"
 
 
-site = Site.new(name: "Construction des halles de Chatellet", site_type:"Marché unique", start_date: "2000-01-01", end_date: "2008-08-15", amount: 15.4, money_unit: "M€")
-site.client = client
-# site.save!
-
-position = Position.new(position_name: "Chef de chantier")
-position.worker = worker
-position.site = site
-position.company = company
-site.save!
-puts "creating #{Site.count} site : #{site.name}"
-if Rails.env.production? || Rails.env.staging?
-  puts site.name
-end
-if Rails.env.development?
-  ap site
+trainings = []
+training_types = ['Sécurité', 'Professionnelle']
+500.times do
+  trainings << Training.new(name: Faker::IndustrySegments.sub_sector, date: Faker::Date.birthday(min_age: 16, max_age: 65), training_type: training_types.sample)
 end
 
-position.save!
-puts "creating #{Position.count} position : #{position.position_name}"
-if Rails.env.production? || Rails.env.staging?
-  puts position.position_name
+trainings.each do |training|
+  training.worker = workers.sample
+  training.save!
+  if Rails.env.production? || Rails.env.staging?
+    puts "#{training.training_type} : #{training.name}"
+  end
+  if Rails.env.development?
+    ap training
+  end
 end
-if Rails.env.development?
-  ap position
+puts ">> #{Training.count} Trainings created !"
+
+site_suffixes = ['Aménagement de', 'Renaturation de', 'Restauration de', 'Réhabilitation de', 'Création de', 'Modification de']
+site_type = ['Marché unique', 'Marché à bon de commande', 'Accord cadre']
+money_unit = ['€', 'K€', 'M€', 'Mrd€']
+confidents = ['Confident', 'not sure', 'false']
+sites = []
+positions = []
+
+800.times do
+  sites << Site.new(name: "#{site_suffixes.sample} #{Faker::Lorem.sentence(word_count: 3)} à #{Faker::Address.city}", site_type: site_type.sample, start_date: Faker::Date.between(from: 5.years.ago, to: Date.today), end_date: Faker::Date.between(from: 4.years.ago, to: Date.today), amount: 15.4, money_unit: money_unit.sample, confidence: confidents.sample)
+  positions << Position.new(position_name: site_positions.sample)
+end
+
+sites.each do |site|
+  site.client = clients.sample
+end
+
+positions.each do |position|
+  position.worker = workers.sample
+  position.site = sites.sample
+  position.company = companies.sample
+end
+
+sites.each do |site|
+  site.save!
+  puts ">> #{Site.count} Sites created !"
+  if Rails.env.production? || Rails.env.staging?
+    puts site.name
+  end
+  if Rails.env.development?
+    ap site
+  end
+end
+
+positions.each do |position|
+  position.save!
+  puts ">> #{Position.count} Positions created !"
+  if Rails.env.production? || Rails.env.staging?
+    puts position.position_name
+  end
+  if Rails.env.development?
+    ap position
+  end
 end
 
 puts "Creating users"
