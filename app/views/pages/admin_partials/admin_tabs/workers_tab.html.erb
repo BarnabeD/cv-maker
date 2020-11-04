@@ -1,0 +1,23 @@
+<div class="my-5 py-1">
+  <div class="card p-2 mt-5 mb-2">
+    <div class="card-body">
+      <h2 class="card-title">Liste des salariés</h2>
+      <div class="my-3 d-flex">
+        <%= form_tag admin_path, method: :get, class: "form-inline mr-auto" do %>
+          <%= text_field_tag :worker_query, params[:worker_query], class: "form-control mr-3", placeholder: "Chercher un salarié" %>
+          <%= button_tag type: :submit, class: "btn btn-primary mx-1" do %>
+            <%= icon('fas','search') %> Chercher
+          <% end %>
+          <%= button_tag type: :reset, class: "btn btn-secondary mx-1" do %>
+            <%= icon('fa','times') %> annuler
+          <% end %>
+        <% end %>
+        <h4 class="ml-1"><%= t('worker', count: @workers.count) %></h4>
+      </div>
+    </div>
+  </div>
+  <%= link_to new_worker_path, class: "btn btn-primary shadow my-2" do %>
+  <%= icon('fas','plus') %> ajouter
+  <% end %>
+  <%= render 'pages/admin_partials/workers_list', workers: @workers %>
+</div>

@@ -1,43 +1,48 @@
-<div class="my-5 py-1">
-  <h2 class="mt-5">Liste des salariés</h2>
-  <div class="my-2 d-flex">
-    <%= form_tag admin_path, method: :get, class: "form-inline" do %>
-      <%= text_field_tag :worker_query, params[:worker_query], class: "form-control mr-3", placeholder: "Chercher un salarié" %>
-      <%= submit_tag "chercher", class: "btn btn-primary" %>
-    <% end %>
-    <h4 class="ml-auto"><%= t('worker', count: @workers.count) %></h4>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="workers-tab" data-toggle="tab" href="#workers" role="tab" aria-controls="workers" aria-selected="true">Salariés</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="sites-tab" data-toggle="tab" href="#sites" role="tab" aria-controls="sites" aria-selected="false">Chantiers</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="positions-tab" data-toggle="tab" href="#positions" role="tab" aria-controls="positions" aria-selected="false">Rôles</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="users-tab" data-toggle="tab" href="#users" role="tab" aria-controls="users" aria-selected="false">Utilisateurs</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="companies-tab" data-toggle="tab" href="#companies" role="tab" aria-controls="companies" aria-selected="false">Entreprises</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="workers" role="tabpanel" aria-labelledby="workers-tab">
+    <%= render 'pages/admin_partials/admin_tabs/workers_tab' %>
   </div>
-  <%= link_to new_worker_path, class: "btn btn-primary shadow" do %>
-  <%= icon('fas','plus') %> ajouter
-  <% end %>
-  <%= render 'pages/admin_partials/workers_list', workers: @workers %>
+  <div class="tab-pane fade" id="sites" role="tabpanel" aria-labelledby="sites-tab">
+    <%= render 'pages/admin_partials/admin_tabs/sites_tab' %>
+  </div>
+  <div class="tab-pane fade" id="positions" role="tabpanel" aria-labelledby="positions-tab">
+    <%= render 'pages/admin_partials/admin_tabs/positions_tab' %>
+  </div>
+  <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
+    <%= render 'pages/admin_partials/admin_tabs/users_tab' %>
+  </div>
+  <div class="tab-pane fade" id="companies" role="tabpanel" aria-labelledby="companies-tab">
+    <%= render 'pages/admin_partials/admin_tabs/companies_tab' %>
+  </div>
 </div>
 
-<div class="my-5 py-1">
-  <h2 class="mt-5">Liste des chantiers</h2>
-  <%= link_to new_site_path, class: "btn btn-primary shadow" do %>
-  <%= icon('fas','plus') %> ajouter
-  <% end %>
-  <%= render 'pages/admin_partials/sites_list', sites: @sites %>
-</div>
 
-<div class="my-5 py-1">
-  <h2 class="mt-5">Liste des Rôle</h2>
-  <%= render 'pages/admin_partials/positions_list', positions: @positions %>
-</div>
 
-<div class="my-5 py-1">
-  <h2 class="mt-5">Liste des utilisateurs</h2>
-  <%= link_to new_user_path, class: "btn btn-primary shadow" do %>
-  <%= icon('fas','plus') %> ajouter
-  <% end %>
-  <%= render 'pages/admin_partials/users_list', users: @users %>
-</div>
 
-<div class="my-5 py-1">
-  <h2 class="mt-5">Liste des entreprises</h2>
-  <%= link_to new_company_path, class: "btn btn-primary shadow" do %>
-  <%= icon('fas','plus') %> ajouter
-  <% end %>
-  <%= render 'pages/admin_partials/companies_list', users: @companies %>
-</div>
+
+
+
+
+
+
+
+
+
+

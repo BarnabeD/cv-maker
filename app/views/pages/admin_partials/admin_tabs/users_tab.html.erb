@@ -1,0 +1,7 @@
+<div class="my-5 py-1">
+  <h2 class="mt-5">Liste des utilisateurs</h2>
+  <%= link_to new_user_path, class: "btn btn-primary shadow" do %>
+  <%= icon('fas','plus') %> ajouter
+  <% end %>
+  <%= render 'pages/admin_partials/users_list', users: @users %>
+</div>

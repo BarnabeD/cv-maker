@@ -23,6 +23,7 @@ class PagesController < ApplicationController
     else
       @workers = Worker.all.order(:id)
     end
+    
     @sites = Site.all.order(:id)
     @users = User.all.order(:id)
     @positions = Position.all.order(:id)
