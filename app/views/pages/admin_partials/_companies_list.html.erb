@@ -1,0 +1,35 @@
+<div class="table-responsive">
+  <table class="table table-hover table-striped">
+    <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Nom</th>
+          <th scope="col" class="col-8">Ville</th>
+          <th scope="col">Contrôle</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @companies.each do |company| %>
+      <tr>
+        <th scope="row"><%= company.id %></th>
+        <td><%= company.name %></td>
+        <td><%= company.city %></td>
+        <td>
+          <span class="m-auto">
+            <%= link_to icon('far','eye'), company_path(company), class: "text-succes" %>
+          </span>
+          <span class="m-auto">
+            <%= link_to icon('far','edit'), edit_company_path(company), class: "text-info" %>
+          </span>
+          <span class="m-auto">
+            <%= link_to company_path(company), method: :delete, class: "text-danger", data: { confirm: "Voulez-vous supprimer #{company.name} ?" } do %>
+              <%= icon('far','trash-alt') %>
+            <% end %>
+          </span>
+        </td>
+
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
