@@ -1,5 +1,5 @@
 <% if @worker.trainings.count != 0 %>
-  <h4 class="card-title"><%= t '.training', count: @worker.graduates.count %> </h4>
+  <h4 class="card-title"><%= t '.training', count: @worker.trainings.count %> </h4>
   <div class="row">
     <% @worker.trainings.each do |training| %>
       <ul class="col-10 sol-sm-6 col-lg-6 mx-auto align-bottom mb-3">

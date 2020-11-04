@@ -1,4 +1,5 @@
-<h2>exprience </h2>
+<h2>Exprience professionnelle</h2>
+  <button class="btn btn-primary shadow my-3" data-action="click->toggle-display#toggleShow" data-model="position" data-target="toggle-display.newPositionButton"><%= icon('fas','plus') %> Ajouter un chantier</button>
 <% @worker.positions.each do |position| %>
   <%= render 'positions/position_card', position: position %>
 <% end %>
