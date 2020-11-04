@@ -1,17 +1,17 @@
 <div class="my-5 py-1">
   <h2 class="mt-5">Liste des salariés</h2>
-  <%= render 'pages/admin_partials/workers_list', workers: @workers %>
   <%= link_to new_worker_path, class: "btn btn-primary shadow" do %>
   <%= icon('fas','plus') %> ajouter
   <% end %>
+  <%= render 'pages/admin_partials/workers_list', workers: @workers %>
 </div>
 
 <div class="my-5 py-1">
   <h2 class="mt-5">Liste des chantiers</h2>
-  <%= render 'pages/admin_partials/sites_list', sites: @sites %>
   <%= link_to new_site_path, class: "btn btn-primary shadow" do %>
   <%= icon('fas','plus') %> ajouter
   <% end %>
+  <%= render 'pages/admin_partials/sites_list', sites: @sites %>
 </div>
 
 <div class="my-5 py-1">
@@ -21,16 +21,16 @@
 
 <div class="my-5 py-1">
   <h2 class="mt-5">Liste des utilisateurs</h2>
-  <%= render 'pages/admin_partials/users_list', users: @users %>
   <%= link_to new_user_path, class: "btn btn-primary shadow" do %>
   <%= icon('fas','plus') %> ajouter
   <% end %>
+  <%= render 'pages/admin_partials/users_list', users: @users %>
 </div>
 
 <div class="my-5 py-1">
   <h2 class="mt-5">Liste des entreprises</h2>
-  <%= render 'pages/admin_partials/companies_list', users: @companies %>
   <%= link_to new_company_path, class: "btn btn-primary shadow" do %>
   <%= icon('fas','plus') %> ajouter
   <% end %>
+  <%= render 'pages/admin_partials/companies_list', users: @companies %>
 </div>
