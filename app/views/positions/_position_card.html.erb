@@ -1,5 +1,7 @@
-<div class="card mb-3 rounded-lg" >
-  <%= site_photo(position.site, transformation: {height: '400', width: '1000', crop: "fill"}, class: "rounded-top-lg img-fluid") %>
+<div class="card mb-3 rounded-lg">
+	<div style="max-height: 400px; overflow: hidden">
+		<%= site_photo(position.site, transformation: {height: '400', width: '1000', crop: "fill"}, class: "rounded-top-lg img-fluid") %>
+	</div>
   <div class="card-body">
     <h5 class="card-title"><%= position.site.name %></h5>
     <p class="card-text"><strong>Role : </strong> <%= position.position_name %></p>
