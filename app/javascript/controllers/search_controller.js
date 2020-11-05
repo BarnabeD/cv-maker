@@ -1,10 +1,10 @@
 import { Controller } from 'stimulus'
 
 export default class extends Controller {
- static targets = ["query", "button", "worker", "site", "position", "company", "user", "workerCounter", "siteCounter", "positionCounter", "companyCounter", "userCounter"] 
+ static targets = ["button", "workerQuery", "siteQuery", "positionQuery", "companyQuery", "userQuery", "worker", "site", "position", "company", "user", "workerCounter", "siteCounter", "positionCounter", "companyCounter", "userCounter"] 
 
  reset(event) {
-    const model = event.target.dataset.model
+    let model = event.target.dataset.model
 
     if (this.[model + 'Targets']) {
         this.[model + 'Targets'].forEach((target) => {
@@ -20,16 +20,19 @@ export default class extends Controller {
 
  submit(event) {
  	event.preventDefault()
-    const model = this.buttonTarget.dataset.model
-    const value = this.queryTarget.value;
-    const queryName = this.queryTarget.name
-    fetch(`admin?${queryName}=${value}`, {
+    console.log(event.currentTarget.dataset.model)
+    let model = this.buttonTarget.dataset.model
+    console.log(model)
+    let value = this.[model + 'QueryTarget'].value;
+    console.log(value)
+    // const queryName = this.queryTarget.name
+    fetch(`admin?query_${model}=${value}`, {
           headers: { accept: 'application/json'}
         }).then((response) => response.json())
         .then(data => { 
      const idToDisplay = []
-     data.[model + 's'].forEach((jsonWorker) => {
-         idToDisplay.push(jsonWorker.id.toString())
+     data.[model + 's'].forEach((result) => {
+         idToDisplay.push(result.id.toString())
         })
      if (idToDisplay.length > 1) {
         this.[model + 'CounterTarget'].innerText = `${idToDisplay.length} résultats`
