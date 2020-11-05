@@ -11,8 +11,11 @@ class Site < ApplicationRecord
 
   # PG-search:
   include PgSearch::Model
-    pg_search_scope :search_by_site_name,
+    pg_search_scope :search_by_site_name_andclient_name,
       against: :name,
+      associated_against: {
+        client: [:name]
+      },
       using: {
         tsearch: { prefix: true } 
       }

@@ -18,14 +18,14 @@ class PagesController < ApplicationController
   end
 
   def admin
-    hash = {worker: 'search_by_fullname_and_matricule', user: 'search_by_email', position: 'search_by_site_name_worker_full_mane_position_name', site: 'search_by_site_name', company: 'search_by_company_name_and_city' }
-    # hash = {worker: 'search_by_fullname'}
+    hash = { worker: 'search_by_fullname_and_matricule',
+             user: 'search_by_email',
+             position: 'search_by_site_name_worker_full_mane_position_name',
+             site: 'search_by_site_name_andclient_name',
+             company: 'search_by_company_name_and_city' }
+
     hash.each { |k, v| params_query_checker(k.to_s, v) }
     
-    # @sites = Site.all.order(:id)
-    # @users = User.all.order(:id)
-    # @positions = Position.all.order(:id)
-    # @companies = Company.all.order(:id)
     generate_search_form_variable
   end
 
