@@ -9,6 +9,14 @@ class Site < ApplicationRecord
   validates :site_type, inclusion: { in: ['Marché unique', 'Marché à bon de commande', 'Accord cadre']}
   validates :money_unit, inclusion: { in: ['€', 'K€', 'M€', 'Mrd€']}
 
+  # PG-search:
+  include PgSearch::Model
+    pg_search_scope :search_by_site_name,
+      against: :name,
+      using: {
+        tsearch: { prefix: true } 
+      }
+
   def is_confident?
     self.confidence == 'confident' ? true : false
   end
