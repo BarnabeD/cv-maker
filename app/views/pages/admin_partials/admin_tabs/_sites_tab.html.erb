@@ -3,7 +3,11 @@
     <div class="card-body">
       <h2 class="card-title">Liste des chantiers</h2>
       <div class="my-3 d-flex">
-        <%= render partial: 'pages/admin_partials/admin_tabs/search_field', locals: {placeholder_model_name: @placeholder_site, query_model_name: @query_site} %>
+        <%= render partial: 'pages/admin_partials/admin_tabs/search_field', locals: {
+                                                                                      placeholder_model_name: @placeholder_site,
+                                                                                      query_model_name: @query_site,
+                                                                                      model_target: @site_target
+                                                                                    } %>
         <h4 class="ml-1"><%= t('site', count: @sites.count) %></h4>
       </div>
     </div>

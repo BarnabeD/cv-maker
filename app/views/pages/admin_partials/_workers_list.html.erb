@@ -16,7 +16,7 @@
     </thead>
     <tbody>
       <% @workers.each do |worker| %>
-      <tr>
+      <tr data-target="search.worker" data-id=<%= worker.id %>>
         <th scope="row"><%= worker.id %></th>
         <td><%= worker.last_name %></td>
         <td><%= worker.first_name %></td>

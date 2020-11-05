@@ -25,8 +25,12 @@ class PagesController < ApplicationController
              company: 'search_by_company_name_and_city' }
 
     hash.each { |k, v| params_query_checker(k.to_s, v) }
-    
     generate_search_form_variable
+
+    respond_to do |format|
+          format.html
+          format.json { render json: { workers: @workers, users: @users, positions: @positons, sites: @sites, companies: @companies } }
+    end
   end
 
   private
@@ -40,6 +44,7 @@ class PagesController < ApplicationController
     else
       instance_variable_set("@#{models}", class_model.all.order(:id))
     end
+    instance_variable_set("@#{model}_target", model)
   end
 
   def generate_search_form_variable

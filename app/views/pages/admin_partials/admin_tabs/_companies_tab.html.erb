@@ -3,7 +3,11 @@
     <div class="card-body">
       <h2 class="card-title">Liste des sociétées</h2>
       <div class="my-3 d-flex">
-        <%= render partial: 'pages/admin_partials/admin_tabs/search_field', locals: {placeholder_model_name: @placeholder_company, query_model_name: @query_company} %>
+        <%= render partial: 'pages/admin_partials/admin_tabs/search_field', locals: {
+                                                                                      placeholder_model_name: @placeholder_company,
+                                                                                      query_model_name: @query_company,
+                                                                                      model_target: @company_target
+                                                                                    } %>
         <h4 class="ml-1"><%= t('company', count: @companies.count) %></h4>
       </div>
     </div>
