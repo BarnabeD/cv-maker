@@ -1,0 +1,31 @@
+<div class="card mb-3 rounded-lg">
+	<div style="max-height: 400px; overflow: hidden">
+		<%= site_photo(@site, transformation: {height: '400', width: '1000', crop: "fill"}, class: "rounded-top-lg img-fluid") %>
+	</div>
+  <div class="card-body">
+    <h5 class="card-title"><%= @site.name %></h5>    
+    <% if @site.positions.count > 0 %>
+      <p class="card-text"><strong>Salairé sur ce site : </strong></p>
+      <ul>
+      <% @site.positions.each do |position| %>
+        <li><strong>Nom: </strong> <%= position.worker.first_name %> <%= position.worker.last_name %></li>
+        <li><strong>société : </strong><%= position.company.name %></li>
+      <% end %>
+      </ul>
+      <% else %>
+      <div class="bg-warning"> Pas de salarié sur ce site</div>
+    <% end %>
+    <p class="card-text"><strong>Montant : </strong><%= @site.amount %><%= @site.money_unit %></p>
+    <p class="card-text"><strong>Date de démarage : </strong><%= l(@site.start_date, format: '%d %B %Y') %></p>
+    <p class="card-text"><strong>Date de fin : </strong><%= l(@site.end_date, format: '%d %B %Y') %></p>
+    <p class="card-text"><strong>Durée : </strong><%= @site.human_duration %></p>
+
+
+
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
