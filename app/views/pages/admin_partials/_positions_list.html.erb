@@ -21,7 +21,7 @@
       <% elsif position.site.is_not_nonfident? %>
         <% class_to_add = 'danger' %>
       <% end %>
-      <tr class="table-<%= class_to_add %>">
+      <tr class="table-<%= class_to_add %>" data-target="search.position" data-id=<%= position.id %>>
         <th scope="row"><%= position.id %></th>
         <td><%= position.worker.last_name %> <%= position.worker.first_name %></td>
         <td><%= position.position_name %></td>

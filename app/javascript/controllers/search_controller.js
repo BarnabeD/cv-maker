@@ -20,20 +20,24 @@ export default class extends Controller {
 
  submit(event) {
  	event.preventDefault()
-    console.log(event.currentTarget.dataset.model)
     let model = this.buttonTarget.dataset.model
-    console.log(model)
     let value = this.[model + 'QueryTarget'].value;
-    console.log(value)
-    // const queryName = this.queryTarget.name
     fetch(`admin?query_${model}=${value}`, {
           headers: { accept: 'application/json'}
         }).then((response) => response.json())
         .then(data => { 
      const idToDisplay = []
-     data.[model + 's'].forEach((result) => {
-         idToDisplay.push(result.id.toString())
-        })
+     if (model == 'company'){
+          data.companies.forEach((result) => {
+              idToDisplay.push(result.id.toString())
+             })
+      } else {
+        console.log(model)
+        console.log(data)
+        data.[model + 's'].forEach((result) => {
+            idToDisplay.push(result.id.toString())
+           })
+      }
      if (idToDisplay.length > 1) {
         this.[model + 'CounterTarget'].innerText = `${idToDisplay.length} résultats`
      } else if (idToDisplay.length == 1) {

@@ -15,20 +15,20 @@
     <a class="nav-link" id="companies-tab" data-toggle="tab" href="#companies" role="tab" aria-controls="companies" aria-selected="false">Entreprises</a>
   </li>
 </ul>
-<div class="tab-content" id="myTabContent"  data-controller="search">
-  <div class="tab-pane fade show active" id="workers" role="tabpanel" aria-labelledby="workers-tab">
+<div class="tab-content" id="myTabContent" >
+  <div class="tab-pane fade show active" id="workers" role="tabpanel" aria-labelledby="workers-tab" data-controller="search">
     <%= render 'pages/admin_partials/admin_tabs/workers_tab' %>
   </div>
-  <div class="tab-pane fade" id="sites" role="tabpanel" aria-labelledby="sites-tab">
+  <div class="tab-pane fade" id="sites" role="tabpanel" aria-labelledby="sites-tab" data-controller="search">
     <%= render 'pages/admin_partials/admin_tabs/sites_tab' %>
   </div>
-  <div class="tab-pane fade" id="positions" role="tabpanel" aria-labelledby="positions-tab">
+  <div class="tab-pane fade" id="positions" role="tabpanel" aria-labelledby="positions-tab" data-controller="search">
     <%= render 'pages/admin_partials/admin_tabs/positions_tab' %>
   </div>
-  <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
+  <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab" data-controller="search">
     <%= render 'pages/admin_partials/admin_tabs/users_tab' %>
   </div>
-  <div class="tab-pane fade" id="companies" role="tabpanel" aria-labelledby="companies-tab">
+  <div class="tab-pane fade" id="companies" role="tabpanel" aria-labelledby="companies-tab" data-controller="search">
     <%= render 'pages/admin_partials/admin_tabs/companies_tab' %>
   </div>
 </div>

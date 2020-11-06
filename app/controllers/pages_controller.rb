@@ -29,7 +29,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
           format.html
-          format.json { render json: { workers: @workers, users: @users, positions: @positons, sites: @sites, companies: @companies } }
+          format.json { render json: { workers: @workers, users: @users, positions: @positions, sites: @sites, companies: @companies } }
     end
   end
 
