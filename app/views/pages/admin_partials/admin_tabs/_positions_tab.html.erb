@@ -1,0 +1,16 @@
+<div class="py-1">
+  <div class="card p-2 mt-5 mb-2">
+    <div class="card-body">
+      <h2 class="card-title">Liste des postes</h2>
+      <div class="my-3 d-flex">
+        <%= render partial: 'pages/admin_partials/admin_tabs/search_field', locals: {
+                                                                                      placeholder_model_name: @placeholder_position,
+                                                                                      query_model_name: @query_position,
+                                                                                      model_target: @position_target
+                                                                                    } %>
+        <h4 class="ml-1" data-target="search.positionCounter"><%= t('position', count: @positions.count) %></h4>
+      </div>
+    </div>
+  </div>
+  <%= render 'pages/admin_partials/positions_list', positions: @positions %>
+</div>

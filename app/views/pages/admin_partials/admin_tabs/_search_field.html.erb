@@ -1,0 +1,10 @@
+
+  <%= form_tag admin_path, method: :get, class: "form-inline mr-auto", data: {action: "submit->search#submit", model: local_assigns[:model_target] } do %>
+    <%= text_field_tag query_model_name, params[query_model_name], class: "form-control mr-3", placeholder: t(placeholder_model_name), data: {target: "search.#{local_assigns[:model_target]}Query"} %>
+    <%= button_tag type: :submit, class: "btn btn-primary mx-1", data: {target: "search.button", model: local_assigns[:model_target] } do %>
+      <%= icon('fas','search') %> Chercher 
+    <% end %>
+    <%= button_tag type: :reset, data: { action: "click->search#reset", model: local_assigns[:model_target]}, class: "btn btn-secondary mx-1" do %>
+      <%= icon('fa','times') %> annuler
+    <% end %>
+  <% end %>
