@@ -144,7 +144,10 @@ positions.each { |position| position.save! }
 puts ">> #{Position.count} Positions created !"
 
 puts 'Creating users'
-admin = User.new(email: 'barnabe.dubus@gmail.com', password: '123456', password_confirmation: '123456', admin: true)
+me_admin = User.new(email: 'barnabe.dubus@gmail.com', password: '123456', password_confirmation: '123456', admin: true)
+me_admin.skip_confirmation!
+me_admin.save!(validate: false)
+admin = User.new(email: 'admin@terideal.fr', password: '123456', password_confirmation: '123456', admin: true)
 admin.skip_confirmation!
 admin.save!(validate: false)
 user = User.new(email: 'nonadmin@gmail.com', password: '123456', password_confirmation: '123456', admin: false)
@@ -152,10 +155,12 @@ user.skip_confirmation!
 user.save!(validate: false)
 puts "creating #{User.count} users : #{user.email}"
 if Rails.env.production? || Rails.env.staging?
+  puts me_admin.email
   puts admin.email
   puts user.email
 end
 if Rails.env.development?
+  ap me_admin
   ap admin
   ap user
 end
