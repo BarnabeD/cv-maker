@@ -147,6 +147,7 @@ GEM
     public_suffix (4.0.6)
     puma (4.3.5)
       nio4r (~> 2.0)
+    query_diet (0.7.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
       rack
@@ -268,6 +269,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   pg_search
   puma (~> 4.1)
+  query_diet
   rails (~> 6.0.3, >= 6.0.3.2)
   rails-i18n (~> 6.0.0)
   sass-rails (>= 6)
