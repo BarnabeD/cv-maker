@@ -24,7 +24,7 @@ class WorkersController < ApplicationController
   end
 
   def index
-    @workers = Worker.all
+    @workers = Worker.all.includes(positions: :company, photo_attachment: :blob)
   end
 
   def new
