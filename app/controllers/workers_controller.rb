@@ -41,7 +41,7 @@ class WorkersController < ApplicationController
   private
 
   def set_worker
-    @worker = Worker.find(params[:id])
+    @worker = Worker.includes(:graduates, :trainings, {positions: [:company, {site: [:client, photo_attachment: :blob] } ]}).find(params[:id])
   end
 
   def worker_params
