@@ -41,6 +41,7 @@ class Worker < ApplicationRecord
 
   def last_graduation_date
     return false if self.graduates.blank?
+    # Graduate.includes(:worker).where(worker: self).first.graduation_date
     self.graduates.order(:graduation_date).first.graduation_date
   end
 end
