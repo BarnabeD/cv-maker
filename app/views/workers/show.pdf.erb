@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PDF</title>
+  <%= wicked_pdf_stylesheet_link_tag "application" -%>
+</head>
+<body>
+    <div class="card mb-3">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+            <%= worker_photo(@worker, transformation: {:width=>150, :height=>150, :gravity=>"face", :crop=>"thumb"}, class: "img-fluid img-thumbnail rounded") %>
+          <img src="..." class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mr-1">
+        <div class="card-body">
+            <h5 class="card-title"><%= @worker.first_name %> <%= @worker.last_name %></h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

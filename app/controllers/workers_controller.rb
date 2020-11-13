@@ -36,6 +36,17 @@ class WorkersController < ApplicationController
     @graduate = Graduate.new
     @position.build_company
     @position.build_site
+    respond_to do |format|
+       format.html
+       format.pdf do
+         render pdf: "CV-#{@worker.last_name}-#{@worker.first_name}",
+         # disposition: 'attachement',
+         show_as_html: true,
+         page_size: 'A4'
+         # template: "workers/show.html.erb",
+         # layout: 'pdf.html'
+       end
+    end
   end
 
   private
