@@ -63,3 +63,6 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'pg_search'
 
 gem 'query_diet', group: :development
+
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
