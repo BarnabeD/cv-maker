@@ -36,13 +36,14 @@ class PagesController < ApplicationController
   private
 
   def params_query_checker(model, search_method)
+    included_module_for = {'workers' => :graduates, 'sites' => :client, 'positions' => [:worker, :company, {site: :client}] }
     query = "query_#{model}"
     class_model = model.capitalize.constantize
     models = model.pluralize
     if params[query].present?
       instance_variable_set("@#{models}", class_model.public_send(search_method, params[query]))
     else
-      instance_variable_set("@#{models}", class_model.all.order(:id))
+      instance_variable_set("@#{models}", class_model.all.includes(included_module_for[models]).order(:id))
     end
     instance_variable_set("@#{model}_target", model)
   end
