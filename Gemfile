@@ -66,4 +66,4 @@ gem 'pg_search'
 gem 'query_diet', group: :development
 
 gem 'wicked_pdf'
-# gem 'wkhtmltopdf-heroku', '2.12.6.0', group: [:production, :staging]
+gem 'wkhtmltopdf-heroku', '2.12.6.0'
