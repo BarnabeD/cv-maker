@@ -41,7 +41,7 @@ class WorkersController < ApplicationController
        format.pdf do
          render pdf: "CV-#{@worker.last_name}-#{@worker.first_name}",
          # disposition: 'attachement',
-         show_as_html: true,
+         # show_as_html: true,
          page_size: 'A4'
          # template: "workers/show.html.erb",
          # layout: 'pdf.html'
