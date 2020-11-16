@@ -24,6 +24,10 @@ fr:
     zero: "aucun poste"
     one: "un poste"
     other: "%{count} poste"
+  graduate:
+    zero: "aucun diplôme"
+    one: "un diplôme"
+    other: "%{count} diplômes"
   final_client: Terideal
   cancel: Annuler
   no_data: pas d'info
@@ -68,13 +72,11 @@ fr:
       x_years:
         one: 1 an
         other: "%{count} ans"
-  graduates:
-    index:
-      graduate:
-        zero: "aucun diplôme"
-        one: "un diplôme"
-        other: "%{count} diplômes"
-      hello: Bonjour
+  # graduates:
+  #     graduate:
+  #       zero: "aucun diplôme"
+  #       one: "un diplôme"
+  #       other: "%{count} diplômes"
   workers:
     worker_card:
       site:
