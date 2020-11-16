@@ -40,8 +40,12 @@ class WorkersController < ApplicationController
        format.html
        format.pdf do
          render pdf: "CV-#{@worker.last_name}-#{@worker.first_name}",
+         encoding: "UTF-8",
+         lowquality: true,
+         margin: { top: 4, bottom: 4, left: 4, right: 4 },
+         image_quality: 30,
          # disposition: 'attachement',
-         show_as_html: true,
+         # show_as_html: true,
          page_size: 'A4'
          # template: "workers/show.html.erb",
          # layout: 'pdf.html'
