@@ -28,6 +28,10 @@ fr:
     zero: "aucun diplôme"
     one: "un diplôme"
     other: "%{count} diplômes"
+  training:
+    zero: "aucune formation"
+    one: "une formation"
+    other: "%{count} formations"
   final_client: Terideal
   cancel: Annuler
   no_data: pas d'info
@@ -83,12 +87,6 @@ fr:
         zero: "aucun chantier"
         one: "un chantier"
         other: "%{count} chantiers"
-  trainings:
-    index:
-      training:
-        zero: "aucune formation"
-        one: "une formation"
-        other: "%{count} formations"
   shared:
     navbar:
       admin_dashboard: "Centre d'administration"
