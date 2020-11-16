@@ -1,7 +1,9 @@
 module PhotoHelper
-  def worker_photo(user, opts = {})
-    if user.photo.attached?
-      cl_image_tag user.photo.key, opts
+  def worker_photo(worker, opts = {})
+    if worker.photo.attached?
+      cl_image_tag worker.photo.key, opts
+    elsif formats == [:pdf]
+      wicked_pdf_image_tag image_url('worker_placeholder.png'), opts
     else
       image_tag 'worker_placeholder.png', opts
     end
