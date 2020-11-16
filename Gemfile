@@ -40,7 +40,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'awesome_print'
   gem 'brakeman'
-  # gem 'wkhtmltopdf-binary'
+  gem 'wkhtmltopdf-binary'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -66,4 +66,4 @@ gem 'pg_search'
 gem 'query_diet', group: :development
 
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-heroku', '2.12.6.0'
+gem 'wkhtmltopdf-heroku', '2.12.6.0', group: :production
