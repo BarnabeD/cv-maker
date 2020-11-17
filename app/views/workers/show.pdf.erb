@@ -18,9 +18,9 @@
                 <% end %>
                   <div>
                       <ul class="list-group list-group-horizontal">
-                        <li class="list-group-item">age : <%= @worker.age_in_year %> ans</li>
-                        <li class="list-group-item">experience chez <%= t 'final_client' %> : <%= @worker.hiring_time_in_year %> ans</li>
-                        <li class="list-group-item">experience metier : <%= @worker.duration_since_last_graduate_in_years(@worker.graduates) %> ans</li>
+                        <li class="list-group-item flex-fill">age : <%= @worker.age_in_year %> ans</li>
+                        <li class="list-group-item flex-fill">experience chez <%= t 'final_client' %> : <%= @worker.hiring_time_in_year %> ans</li>
+                        <li class="list-group-item flex-fill">experience metier : <%= @worker.duration_since_last_graduate_in_years(@worker.graduates) %> ans</li>
                       </ul>
                   </div>
               </div>

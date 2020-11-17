@@ -44,6 +44,7 @@ class WorkersController < ApplicationController
          lowquality: true,
          margin: { top: 4, bottom: 4, left: 4, right: 4 },
          image_quality: 30,
+         disable_smart_shrinking: true,
          # disposition: 'attachement',
          # show_as_html: true,
          page_size: 'A4'
