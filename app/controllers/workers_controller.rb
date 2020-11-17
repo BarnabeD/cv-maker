@@ -40,16 +40,19 @@ class WorkersController < ApplicationController
        format.html
        format.pdf do
          render pdf: "CV-#{@worker.last_name}-#{@worker.first_name}",
+         viewport_size: '1024x768',
          encoding: "UTF-8",
+         show_as_html: params.key?('debug'),
          lowquality: true,
          margin: { top: 4, bottom: 4, left: 4, right: 4 },
          image_quality: 30,
-         disable_smart_shrinking: true,
+         # disable_smart_shrinking: true,
          # disposition: 'attachement',
          # show_as_html: true,
-         page_size: 'A4'
+         # page_size: 'A4',
          # template: "workers/show.html.erb",
          # layout: 'pdf.html'
+         encoding: "UTF-8"
        end
     end
   end

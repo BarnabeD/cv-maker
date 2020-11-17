@@ -6,91 +6,10 @@
 </head>
 <body class="bg-transparent">
     <div class="container">
-        <div class="card mr-2">
-          <div class="row no-gutter">
-            <div class="col-8">
-              <div class="card-body">
-                <h2 class="card-title"><%= @worker.first_name %> <%= @worker.last_name %></h2>
-                <% if @worker.positions.blank? %>
-                  <h3 class="bg-warning"><%= t 'no_data' %> <%= t 'add_new_experience' %></h3>
-                <% else %>
-                  <h3><%= @worker.positions.last.position_name %></h3>
-                <% end %>
-                  <div>
-                      <ul class="list-group list-group-horizontal">
-                        <li class="list-group-item flex-fill">age : <%= @worker.age_in_year %> ans</li>
-                        <li class="list-group-item flex-fill">experience chez <%= t 'final_client' %> : <%= @worker.hiring_time_in_year %> ans</li>
-                        <li class="list-group-item flex-fill">experience metier : <%= @worker.duration_since_last_graduate_in_years(@worker.graduates) %> ans</li>
-                      </ul>
-                  </div>
-              </div>
-              </div>
-
-            <div class="col-2">
-                <h6><%= wicked_pdf_image_tag image_url('terideal_logo.png'), {height: '80px', class: 'ml-auto text-right'} %></h6>
-            </div>
-            <div class="col-2 p-4">
-                <%= worker_photo(@worker, transformation: {:width=>200, :height=>200, :gravity=>"face", :crop=>"thumb"}, class: "img-fluid img-thumbnail rounded p-1") %>
-            </div>
-          </div>
-          <div class="row card-body">
-            <div class="col-6 pr-3">
-            <% if @worker.graduates.size != 0 %>
-              <h5 class="bg-secondary rounded mt-2 mb-0 p-2 text-light"><%= t 'graduate', count: @worker.graduates.size %> </h5>
-              <div class="row">
-                <% @worker.graduates.each do |graduate| %>
-                    <p class="px-1 mt-2 mb-0 col-6 border-bottom"><%= graduate.name %> <%= graduate.speciality %> (<%= l(graduate.graduation_date, format: '%Y') %>) - <%= graduate.school_name %> (Dpt. <%= graduate.school_department %>)</p>
-                <% end %>
-              </div>
-            <% else %>
-              <h1 class="bg-warning"><%= t 'no_data' %> <%= t 'add_new_graduate' %></h1>
-            <% end %>
-            </div>
-            <div class="col-6 pl-3">
-            <% if @worker.trainings.size != 0 %>
-              <h5 class="bg-secondary rounded mt-2 mb-0 p-2 text-light"><%= t 'training', count: @worker.trainings.size %> </h5>
-              <div class="row">
-                <% @worker.trainings.each do |training| %>
-                    <p class="px-1 mt-2 mb-0 col-6 border-bottom"><%= training.name %> (<%= l(training.date, format: '%Y') %>) - <%= training.training_type %></p>
-                <% end %>
-              </div>
-            <% else %>
-              <h1 class="bg-warning"><%= t 'no_data' %> <%= t 'add_new_graduate' %></h1>
-            <% end %>
-            </div>
-          </div>
-          <div class="card-body">
-            <h2>Expérience professionnelle :</h2>
-            <div class="row">
-                <% @worker.sites.each do |site| %>
-                <div class="col-6">
-                    <div class="card mb-2 rounded-lg">
-                        <div style="max-height: 350px; overflow: hidden">
-                            <%= site_photo(site, transformation: {height: '350', width: '1000', crop: "fill"}, class: "rounded-top-lg img-fluid") %>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title"><%= site.name %></h5>    
-                            <% if site.positions.size > 0 %>
-                              <p class="card-text"><strong>Salairé sur ce site : </strong></p>
-                              <ul>
-                              <% site.positions.each do |position| %>
-                                <li><strong>Nom: </strong> <%= position.worker.first_name %> <%= position.worker.last_name %></li>
-                                <li><strong>société : </strong><%= position.company.name %></li>
-                              <% end %>
-                              </ul>
-                              <% else %>
-                              <div class="bg-warning"> Pas de salarié sur ce site</div>
-                            <% end %>
-                            <p class="card-text"><strong>Montant : </strong><%= site.amount %><%= site.money_unit %></p>
-                            <p class="card-text"><strong>Date de démarage : </strong><%= l(site.start_date, format: '%d %B %Y') %></p>
-                            <p class="card-text"><strong>Date de fin : </strong><%= l(site.end_date, format: '%d %B %Y') %></p>
-                            <p class="card-text"><strong>Durée : </strong><%= site.human_duration %></p>
-                          </div>
-                    </div>
-                </div>
-                    
-                <% end %>
-            </div>
+        <div class="card">
+          <div class="d-flex flex-row">
+            <div class="bg-primary">col 6.1</div>
+            <div class="bg-warning">col 6.2</div>
           </div>
         </div>
     </div>
