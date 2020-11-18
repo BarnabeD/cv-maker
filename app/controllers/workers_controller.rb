@@ -36,6 +36,18 @@ class WorkersController < ApplicationController
     @graduate = Graduate.new
     @position.build_company
     @position.build_site
+    respond_to do |format|
+          format.html { render :show }
+
+          format.pdf do
+            pdf = Prawn::Document.new
+            pdf.text "Hellow World!"
+            send_data pdf.render,
+              filename: "export.pdf",
+              type: 'application/pdf',
+              disposition: 'inline'
+          end
+        end
   end
 
   private
