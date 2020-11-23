@@ -5,11 +5,11 @@ module PhotoHelper
     if user.photo.attached?
       # raise
       if controller_name == 'workers' && caller_locations.first.label == 'block in header'
-        
+
         cloudinary_url user.photo.key, opts
       else
         'helper else'
-        # cl_image_tag user.photo.key, opts
+        cl_image_tag user.photo.key, opts
       end
     else
       image_tag 'worker_placeholder.png', opts
