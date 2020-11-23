@@ -38,14 +38,13 @@ class WorkersController < ApplicationController
     @position.build_site
     respond_to do |format|
           format.html { render :show }
-
           format.pdf do
-            pdf = Prawn::Document.new
-            pdf.text "Hellow World!"
+            pdf = CurriculumWorkerClassic.new(@worker,view_context)
             send_data pdf.render,
-              filename: "export.pdf",
+              filename: "CV - #{@worker.last_name.upcase} #{@worker.first_name.capitalize}.pdf",
               type: 'application/pdf',
-              disposition: 'inline'
+              disposition: 'inline' #debug
+              # disposition: 'attachement' #normal comportment
           end
         end
   end
