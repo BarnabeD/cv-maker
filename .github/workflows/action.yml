@@ -21,5 +21,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: ruby/setup-ruby@v1
-    - run: bundle install
+    - name : run the bundle install
+      run: bundle install
     - run: bundle exec rake
