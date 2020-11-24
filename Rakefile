@@ -4,3 +4,10 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+desc "Look for style guide offenses in your code"
+task :rubocop do
+  sh "rubocop --format simple || true"
+end
+
+task default: [:rubocop]
