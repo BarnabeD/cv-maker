@@ -63,3 +63,5 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'pg_search'
 
 gem 'query_diet', group: :development
+
+gem 'rubocop-rails'
