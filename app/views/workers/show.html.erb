@@ -1,3 +1,6 @@
+<%= link_to 'Générer le PDF', worker_path(@worker, :format => :pdf), class: 'btn btn-primary shadow my-3' %>
+<%# link_to 'Générer le PDF', worker_pdf_path(@worker), class: 'btn btn-primary shadow my-3' %>
+
   <div class="card bg-light col-12 m-auto mb-5 p-0">
     <div class="card-header d-flex flex-wrap justify-content-between inline-block">
       <%= image_tag 'terideal_logo.png', {height: '100px', class: 'align-middle'} %>

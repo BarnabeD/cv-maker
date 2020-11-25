@@ -18,7 +18,7 @@ require "sprockets/railtie"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
+require 'grover'
 module CvMaker
   class Application < Rails::Application
     config.generators do |generate|
@@ -38,5 +38,7 @@ module CvMaker
     config.generators.system_tests = nil
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
     config.i18n.default_locale = :fr
+    config.middleware.use Grover::Middleware
+
   end
 end
