@@ -36,16 +36,16 @@ class WorkersController < ApplicationController
     @graduate = Graduate.new
     @position.build_company
     @position.build_site
-    export
-    # respond_to do |format|
-    #    format.html
-    #    format.pdf do
-    #     html = format.html.render_to_string
-    #     pdf = Grover.new(html).to_pdf
-    #     send_data pdf, type: 'application/pdf', filename: "test.pdf"
+    # export
+    respond_to do |format|
+       format.html
+       format.pdf do
+        html = format.html.render_to_string
+        pdf = Grover.new(html).to_pdf
+        send_data pdf, type: 'application/pdf', filename: "test.pdf"
 
-    #    end
-    #  end
+       end
+     end
   end
 
   def export
@@ -61,7 +61,7 @@ class WorkersController < ApplicationController
     # raise
     pdf = Grover.new(html_absolute, {
       # format: 'A4',
-      display_url: base_url
+      # display_url: base_url
     }).to_pdf
 
     send_data pdf, type: 'application/pdf', filename: "test.pdf"

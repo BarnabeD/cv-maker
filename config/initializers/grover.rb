@@ -9,10 +9,10 @@ Grover.configure do |config|
       width: 640,
       height: 480
     },
-    debug: {
-      headless: false,  # Default true. When set to false, the Chromium browser will be displayed
-      devtools: true    # Default false. When set to true, the browser devtools will be displayed.
-    },
+    # debug: {
+    #   headless: false,  # Default true. When set to false, the Chromium browser will be displayed
+    #   devtools: true    # Default false. When set to true, the browser devtools will be displayed.
+    # },
     prefer_css_page_size: true,
     emulate_media: 'screen',
     cache: false,
