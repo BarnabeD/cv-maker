@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     resources :companies, exept: [:show, :index]
 
     resources :collaborateurs, controller: 'workers', as: 'workers' do
+      get '/pdf', to: 'workers#pdf'
       resources :positions, only: [:new, :create]
       resources :graduates, only: [:new, :create]
 
