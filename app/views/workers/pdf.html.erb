@@ -20,7 +20,7 @@
               </div>
 
             <div class="col-2">
-                <h6><%= image_url('terideal_logo.png', {height: '80px', class: 'ml-auto text-right'}) %></h6>
+                <h6><%= image_tag 'terideal_logo.png', alt: "Client Logo", height: '80px', class: 'ml-auto text-right' %></h6>
             </div>
             <div class="col-2 p-4">
                 <%= worker_photo(@worker, transformation: {:width=>200, :height=>200, :gravity=>"face", :crop=>"thumb"}, class: "img-fluid img-thumbnail rounded p-1") %>
