@@ -3,8 +3,12 @@ Grover.configure do |config|
     format: 'A4',
     margin: {
       top: '5px',
-      bottom: '10cm'
+      bottom: '5px',
+      left: '5px',
+      right: '5px'
     },
+    # scale: 0.9,
+    # full_page: true,
     viewport: {
       width: 640,
       height: 480

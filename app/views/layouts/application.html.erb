@@ -15,12 +15,17 @@
 </head>
 
   <body class="d-flex flex-column">
-    <%= render 'shared/navbar' %>
-    <div class="container my-4">
-      <%= render 'shared/flashes' %>
-      <%= query_diet_widget if Rails.env.development? %>
+    <% if params[:controller] == "workers" && params[:action] == "pdf" %>
       <%= yield %>
-    </div>
-    <%= render 'shared/footer' %>
+    <% else %>
+      <%= render 'shared/navbar' %>
+      <div class="container my-4">
+        <%= render 'shared/flashes' %>
+        <%= query_diet_widget if Rails.env.development? %>
+        <%= yield %>
+      </div>
+      <%= render 'shared/footer' %>
+    <% end %>
+
   </body>
 </html>
