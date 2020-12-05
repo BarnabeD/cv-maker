@@ -22,7 +22,8 @@ Grover.configure do |config|
     cache: false,
     timeout: 0, # Timeout in ms. A value of `0` means 'no timeout'
     launch_args: ['--font-render-hinting=medium'],
-    wait_until: 'domcontentloaded'
+    # wait_until: 'domcontentloaded'
+    wait_until: 'networkidle0'
   }
   config.options[:executable_path] = "google-chrome" if Rails.env.production?
 end
