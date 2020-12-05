@@ -1,6 +1,5 @@
 Grover.configure do |config|
   config.options = {
-    executable_path: "google-chrome",
     format: 'A4',
     margin: {
       top: '5px',
@@ -25,4 +24,5 @@ Grover.configure do |config|
     launch_args: ['--font-render-hinting=medium'],
     wait_until: 'domcontentloaded'
   }
+  config.options[:executable_path] = "google-chrome" if Rails.env.production?
 end
