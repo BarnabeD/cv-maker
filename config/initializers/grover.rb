@@ -1,5 +1,6 @@
 Grover.configure do |config|
   config.options = {
+    executable_path: "google-chrome",
     format: 'A4',
     margin: {
       top: '5px',
