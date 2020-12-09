@@ -36,6 +36,49 @@ class WorkersController < ApplicationController
     @graduate = Graduate.new
     @position.build_company
     @position.build_site
+    # export
+    # respond_to do |format|
+    #    format.html
+    #    format.pdf do
+    #   #   html = WorkersController.render(
+    #   # template: 'workers/showpdf',
+    #   # layout: 'pdf',
+    #   # assigns: { worker: @worker })
+    #     html = format.html.render_to_string
+    #     pdf = Grover.new(html).to_pdf
+    #     send_data pdf, type: 'application/pdf', filename: "test.pdf"
+
+    #    end
+    #  end
+  end
+
+  def pdf
+    # set_worker
+    @worker = Worker.find(export_params)
+    # html = render 'workers/pdf'
+    # pdf = Grover.new(html).to_pdf
+    # # send_data pdf, type: 'application/pdf', filename: "test.pdf"
+    # render layout: 'pdf'
+  end
+
+  def export
+    # @worker = Worker.find(export_params)
+    html_relative = WorkersController.render(
+      template: 'workers/showpdf',
+      layout: 'pdf',
+      assigns: { worker: @worker }
+    )
+    base_url = "http://localhost:3000/"
+    # html_absolute = Grover::HTMLPreprocessor.process html_relative, base_url, "http"
+    html_absolute = 'http://localhost:3000/collaborateurs/1481'
+    # raise
+    pdf = Grover.new(html_absolute, {
+      # format: 'A4',
+      # display_url: base_url
+    }).to_pdf
+
+    send_data pdf, type: 'application/pdf', filename: "test.pdf"
+
   end
 
   private
@@ -46,5 +89,9 @@ class WorkersController < ApplicationController
 
   def worker_params
     params.require(:worker).permit(:first_name, :last_name, :birth_date, :hire_date, :photo, :matricule, position: [])
+  end
+
+  def export_params
+    params.require(:worker_id)
   end
 end
