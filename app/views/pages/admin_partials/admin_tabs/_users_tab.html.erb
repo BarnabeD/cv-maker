@@ -1,0 +1,19 @@
+<div class="py-1">
+  <div class="card p-2 mt-5 mb-2">
+    <div class="card-body">
+      <h2 class="card-title">Liste des utilisateurs</h2>
+      <div class="my-3 d-flex">
+        <%= render partial: 'pages/admin_partials/admin_tabs/search_field', locals: {
+                                                                                      placeholder_model_name: @placeholder_user,
+                                                                                      query_model_name: @query_user,
+                                                                                      model_target: @user_target
+                                                                                    } %>
+        <h4 class="ml-1" data-target="search.userCounter"><%= t('user', count: @users.size) %></h4>
+      </div>
+    </div>
+  </div>
+  <%= link_to new_user_path, class: "btn btn-primary shadow" do %>
+  <%= icon('fas','plus') %> ajouter
+  <% end %>
+  <%= render 'pages/admin_partials/users_list', users: @users %>
+</div>

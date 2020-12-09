@@ -1,3 +1,6 @@
+<%# link_to 'Générer le PDF', worker_path(@worker, :format => :pdf), class: 'btn btn-primary shadow my-3' %>
+<%= link_to 'Générer le PDF', worker_pdf_path(@worker, :format => :pdf), class: 'btn btn-primary shadow my-3' %>
+
   <div class="card bg-light col-12 m-auto mb-5 p-0">
     <div class="card-header d-flex flex-wrap justify-content-between inline-block">
       <%= image_tag 'terideal_logo.png', {height: '100px', class: 'align-middle'} %>
@@ -19,7 +22,7 @@
             </ul>
             <ul class="col-12 col-md-6 col-lg-4">
               <li><p>experience chez <%= t 'final_client' %> : <%= @worker.hiring_time_in_year %></p></li>
-              <li><p>experience dans le metier : <%= @worker.duration_since_last_graduate_in_years %> ans</p></li>
+              <li><p>experience dans le metier : <%= @worker.duration_since_last_graduate_in_years(@worker.graduates) %> ans</p></li>
             </ul>
             <div class="col-12 col-md-4 ml-md-auto mr-md-auto col-lg-4 d-flex justify-content-end">
               <%= worker_photo(@worker, transformation: {:width=>150, :height=>150, :gravity=>"face", :crop=>"thumb"}, class: "img-fluid img-thumbnail rounded") %>

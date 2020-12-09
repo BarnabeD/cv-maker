@@ -1,0 +1,19 @@
+<div class="py-1">
+  <div class="card p-2 mt-5 mb-2">
+    <div class="card-body">
+      <h2 class="card-title">Liste des salariés</h2>
+      <div class="my-3 d-flex">
+        <%= render partial: 'pages/admin_partials/admin_tabs/search_field', locals: { 
+                                                                                      placeholder_model_name: @placeholder_worker, 
+                                                                                      query_model_name: @query_worker, 
+                                                                                      model_target: @worker_target
+                                                                                    }  %>
+        <h4 class="ml-1" data-target="search.workerCounter"><%= t('worker', count: @workers.size) %></h4>
+      </div>
+    </div>
+  </div>
+  <%= link_to new_worker_path, class: "btn btn-primary shadow my-2" do %>
+  <%= icon('fas','plus') %> ajouter
+  <% end %>
+  <%= render 'pages/admin_partials/workers_list', workers: @workers %>
+</div>

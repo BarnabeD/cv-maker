@@ -18,14 +18,51 @@ class PagesController < ApplicationController
   end
 
   def admin
-    @workers = Worker.all.order(:id)
-    @sites = Site.all.order(:id)
-    @users = User.all.order(:id)
-    @positions = Position.all.order(:id)
-    @companies = Company.all.order(:id)
+    hash = { worker: 'search_by_fullname_and_matricule',
+             user: 'search_by_email',
+             position: 'search_by_site_name_worker_full_mane_position_name',
+             site: 'search_by_site_name_andclient_name',
+             company: 'search_by_company_name_and_city' }
+
+    hash.each { |k, v| params_query_checker(k.to_s, v) }
+    generate_search_form_variable
+
+    respond_to do |format|
+          format.html
+          format.json { render json: { workers: @workers, users: @users, positions: @positions, sites: @sites, companies: @companies } }
+    end
   end
 
   private
+
+  def params_query_checker(model, search_method)
+    included_module_for = {'workers' => :graduates, 'sites' => :client, 'positions' => [:worker, :company, {site: :client}] }
+    query = "query_#{model}"
+    class_model = model.capitalize.constantize
+    models = model.pluralize
+    if params[query].present?
+      instance_variable_set("@#{models}", class_model.public_send(search_method, params[query]))
+    else
+      instance_variable_set("@#{models}", class_model.all.includes(included_module_for[models]).order(:id))
+    end
+    instance_variable_set("@#{model}_target", model)
+  end
+
+  def generate_search_form_variable
+    models = [ 'worker', 'site', 'position', 'user', 'company' ]
+    hash = {'placeholder' => 'search_a_', 'query' => 'query_'}
+
+    array = []
+    models.each do |model|
+        newhash = Hash.new
+        newhash = hash.transform_keys { |key| key = key + '_' + model }
+        newhash = newhash.transform_values { |value| value = value + model }
+        array << newhash
+    end
+    array.each do |newhash|
+      newhash.each { |name, value| instance_variable_set("@#{name}", value) }
+    end
+  end
 
   def strong_params
     params.require(:user).permit(:photo)

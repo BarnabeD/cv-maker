@@ -1,14 +1,12 @@
 class SitesController < ApplicationController
-  # before_action :set_site, only: [:show, :edit, :update, :destroy]
+  before_action :set_site, only: [:show, :edit, :update, :destroy, :toggle_confidence]
 
   def destroy
-    set_site
     @site.destroy
     redirect_to admin_path
   end
 
   def edit
-    set_site
   end
 
   def new
@@ -19,12 +17,10 @@ class SitesController < ApplicationController
   #   @sites = Site.all
   # end
 
-  # def show
-  #   set_site
-  # end
+  def show
+  end
 
   def update
-    set_site
     if @site.update(strong_params)
       redirect_to admin_path
     else
@@ -33,7 +29,6 @@ class SitesController < ApplicationController
   end
 
   def toggle_confidence
-    set_site
     case @site.confidence
     when 'confident'
       @site.update(confidence: 'not sure')
@@ -43,7 +38,6 @@ class SitesController < ApplicationController
       @site.update(confidence: 'confident')
     end
     redirect_to admin_path
-
   end
 
   private

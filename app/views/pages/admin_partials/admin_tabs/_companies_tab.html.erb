@@ -1,0 +1,19 @@
+<div class="py-1">
+  <div class="card p-2 mt-5 mb-2">
+    <div class="card-body">
+      <h2 class="card-title">Liste des sociétées</h2>
+      <div class="my-3 d-flex">
+        <%= render partial: 'pages/admin_partials/admin_tabs/search_field', locals: {
+                                                                                      placeholder_model_name: @placeholder_company,
+                                                                                      query_model_name: @query_company,
+                                                                                      model_target: @company_target
+                                                                                    } %>
+        <h4 class="ml-1" data-target="search.companyCounter"><%= t('company', count: @companies.size) %></h4>
+      </div>
+    </div>
+  </div>
+  <%= link_to new_company_path, class: "btn btn-primary shadow" do %>
+  <%= icon('fas','plus') %> ajouter
+  <% end %>
+  <%= render 'pages/admin_partials/companies_list', users: @companies %>
+</div>

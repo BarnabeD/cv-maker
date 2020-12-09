@@ -23,7 +23,7 @@
       <% elsif site.is_not_nonfident? %>
         <% class_to_add = 'danger' %>
       <% end %>
-      <tr class="table-<%= class_to_add %>">
+      <tr class="table-<%= class_to_add %>" data-target="search.site" data-id=<%= site.id %>>
         <th scope="row"><%= site.id %></th>
         <td><%= site.name %></td>
         <td><%= site.site_type %></td>
