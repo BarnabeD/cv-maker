@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Company, type: :model do
-  context 'all field are ok' do
+  context 'all field are valid' do
     it 'is valid' do
       company = Company.create(name: 'my_company', city: 'Lyon')
       expect(company).to be_valid
