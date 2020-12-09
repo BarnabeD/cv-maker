@@ -52,4 +52,3 @@ module PhotoHelper
     end
   end
 end
-
