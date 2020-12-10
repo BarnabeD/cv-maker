@@ -28,6 +28,7 @@ RSpec.describe Company, type: :model do
 
   context 'company name is unique' do
     it 'is not valid' do
+      @bad_company.name = @company.name
       expect(@bad_company).to_not be_valid
     end
   end
