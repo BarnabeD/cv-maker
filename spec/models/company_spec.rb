@@ -1,31 +1,34 @@
 require 'rails_helper'
 
 RSpec.describe Company, type: :model do
+  before do
+    @company = FactoryBot.create(:company)
+    @bad_company = FactoryBot.build(:company)
+  end
+
   context 'all field are valid' do
     it 'is valid' do
-      company = Company.create(name: 'my_company', city: 'Lyon')
-      expect(company).to be_valid
+      expect(@company).to be_valid
     end
   end
 
   context 'name is not present' do
     it 'is not valid' do
-      company = Company.create(city: 'Lyon')
-      expect(company).to_not be_valid
-    end
-  end
-
-  context 'name is blank' do
-    it 'is not valid' do
-      company = Company.create(name: '', city: 'Lyon')
-      expect(company).to_not be_valid
+      @bad_company.name = ''
+      expect(@bad_company).to_not be_valid
     end
   end
 
   context 'city is not present' do
     it 'is not valid' do
-      company = Company.create(name: 'my_company')
-      expect(company).to_not be_valid
+      @bad_company.city = ''
+      expect(@bad_company).to_not be_valid
+    end
+  end
+
+  context 'company name is unique' do
+    it 'is not valid' do
+      expect(@bad_company).to_not be_valid
     end
   end
 end
