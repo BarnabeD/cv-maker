@@ -117,11 +117,11 @@ sites = []
 positions = []
 
 800.times do
-  sites << Site.new(name: "#{site_suffixes.sample} #{Faker::Lorem.sentence(word_count: 3)} à #{Faker::Address.city}", 
-                    site_type: site_type.sample, 
-                    start_date: Faker::Date.between(from: 5.years.ago, to: Date.today), 
-                    end_date: Faker::Date.between(from: 4.years.ago, to: Date.today), 
-                    amount: Faker::Number.between(from: 1, to: 100), 
+  sites << Site.new(name: "#{site_suffixes.sample} #{Faker::Lorem.sentence(word_count: 3)} à #{Faker::Address.city}",
+                    site_type: site_type.sample,
+                    start_date: Faker::Date.between(from: 5.years.ago, to: Date.today),
+                    end_date: Faker::Date.between(from: 4.years.ago, to: Date.today),
+                    amount: Faker::Number.between(from: 1, to: 100),
                     money_unit: money_unit.sample)
   positions << Position.new(position_name: site_positions.sample)
 end
@@ -135,7 +135,7 @@ positions.each do |position|
 end
 
 sites.sample(50).each { |s| s.confidence = 'not sure' }
-sites.sample(20).each { |s| s.confidence = 'false' }
+sites.sample(20).each { |s| s.confidence = 'not confident' }
 
 sites.each { |site| site.save! }
 puts ">> #{Site.count} Sites created !"

@@ -20,7 +20,7 @@
         <% class_to_add = 'success' %>
       <% elsif site.is_not_sure? %>
         <% class_to_add = 'warning' %>
-      <% elsif site.is_not_nonfident? %>
+      <% elsif site.is_not_confident? %>
         <% class_to_add = 'danger' %>
       <% end %>
       <tr class="table-<%= class_to_add %>" data-target="search.site" data-id=<%= site.id %>>

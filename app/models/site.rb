@@ -1,13 +1,14 @@
 class Site < ApplicationRecord
   belongs_to :client
   has_many :positions
-  has_many :workers, through: :positions, dependent: :destroy
-  has_one_attached :photo
+  has_many :workers, through: :positions
+  has_one_attached :photo, dependent: :destroy
   # accepts_nested_attributes_for :positions, :client
 
   validates :name, :site_type, :start_date, :end_date, :amount, :money_unit, presence: true
   validates :site_type, inclusion: { in: ['Marché unique', 'Marché à bon de commande', 'Accord cadre']}
   validates :money_unit, inclusion: { in: ['€', 'K€', 'M€', 'Mrd€']}
+  validate :start_date_cannot_be_in_the_future, :start_date_cannot_be_iafter_end_date
 
   # PG-search:
   include PgSearch::Model
@@ -17,7 +18,7 @@ class Site < ApplicationRecord
         client: [:name]
       },
       using: {
-        tsearch: { prefix: true } 
+        tsearch: { prefix: true }
       }
 
   def is_confident?
@@ -28,8 +29,8 @@ class Site < ApplicationRecord
     self.confidence == 'not sure' ? true : false
   end
 
-  def is_not_nonfident?
-    self.confidence == 'false' ? true : false
+  def is_not_confident?
+    self.confidence == 'not confident' ? true : false
   end
 
   def human_duration
@@ -47,6 +48,18 @@ class Site < ApplicationRecord
   end
 
   private
+
+  def start_date_cannot_be_in_the_future
+    if start_date.present? && start_date > Date.today
+      errors.add(:start_date, "can't be in the future")
+    end
+  end
+
+  def start_date_cannot_be_iafter_end_date
+    if start_date.present? && end_date.present? && start_date > end_date
+      errors.add(:start_date, "can't be in the future")
+    end
+  end
 
   def calcul_duration_between_two_dates(start_date, end_date)
     duration_in_second = (end_date - start_date).to_i

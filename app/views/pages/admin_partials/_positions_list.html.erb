@@ -18,7 +18,7 @@
         <% class_to_add = 'success' %>
       <% elsif position.site.is_not_sure? %>
         <% class_to_add = 'warning' %>
-      <% elsif position.site.is_not_nonfident? %>
+      <% elsif position.site.is_not_confident? %>
         <% class_to_add = 'danger' %>
       <% end %>
       <tr class="table-<%= class_to_add %>" data-target="search.position" data-id=<%= position.id %>>

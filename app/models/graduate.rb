@@ -4,8 +4,8 @@ class Graduate < ApplicationRecord
   belongs_to :worker
   validates :name, :speciality, :graduation_date, :school_name, :school_department, presence: true
   validates :name, uniqueness: true
-  validate :graduation_date, :graduation_date_cannot_be_in_the_future
-  validate :school_department, :department_must_be_included_in_list
+  validate :graduation_date_cannot_be_in_the_future
+  validate :department_must_be_included_in_list
 
   def self.french_departments
     self.new.department_list

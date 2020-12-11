@@ -7,8 +7,7 @@ class Worker < ApplicationRecord
 
   validates :first_name, :last_name, :birth_date, :hire_date, :matricule, presence: true
   validates :matricule, uniqueness: true
-  validate :birth_date, :worker_cannot_be_minor
-  validate :hire_date, :hire_date_cannot_be_in_the_future
+  validate :worker_cannot_be_minor, :hire_date_cannot_be_in_the_future
 
   def age_in_year
     calcul_duration_between_date_and_now(self.birth_date)[:years]
