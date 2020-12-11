@@ -10,11 +10,11 @@ class Worker < ApplicationRecord
   validate :worker_cannot_be_minor, :hire_date_cannot_be_in_the_future
 
   def age_in_year
-    calcul_duration_between_date_and_now(self.birth_date)[:years]
+    calcul_duration_between_date_and_now(birth_date)[:years]
   end
 
   def hiring_time_in_year
-    calcul_duration_between_date_and_now(self.hire_date)[:years]
+    calcul_duration_between_date_and_now(hire_date)[:years]
   end
 
   def duration_since_last_graduate_in_years(graduates)
@@ -27,11 +27,11 @@ class Worker < ApplicationRecord
 
   # PG-search:
   include PgSearch::Model
-    pg_search_scope :search_by_fullname_and_matricule,
-      against: [ :first_name, :last_name, :matricule ],
-      using: {
-        tsearch: { prefix: true }
-      }
+  pg_search_scope :search_by_fullname_and_matricule,
+                  against: [:first_name, :last_name, :matricule],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 
   private
 

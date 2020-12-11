@@ -27,7 +27,7 @@ FactoryBot.define do
 
     trait :two_years_and_three_month_duration do
       start_date { 6.years.ago }
-      end_date { 4.years.ago + 3.months + 1.days }
+      end_date { 4.years.ago + 3.months + 1.day }
     end
   end
 end

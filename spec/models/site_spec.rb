@@ -60,7 +60,7 @@ RSpec.describe Site, type: :model do
 
   context 'start_date is after end_date' do
     it 'is not valid' do
-      subject.start_date = Date.today - 1.months
+      subject.start_date = Date.today - 1.month
       subject.end_date = Date.today - 2.months
       expect(subject).to_not be_valid
     end

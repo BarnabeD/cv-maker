@@ -8,7 +8,7 @@ FactoryBot.define do
     worker
 
     trait :five_years_old do
-      graduation_date { Date.today - 5.years}
+      graduation_date { Date.today - 5.years }
     end
   end
 end

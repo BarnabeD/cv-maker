@@ -10,11 +10,8 @@ class PagesController < ApplicationController
 
   def profil_update
     set_user
-    if @user.update(strong_params)
-      redirect_to profil_path(@user)
-    else
-      redirect_to profil_path(@user)
-    end
+    @user.update(strong_params) if strong_params
+    redirect_to profil_path(@user)
   end
 
   def admin
@@ -28,15 +25,15 @@ class PagesController < ApplicationController
     generate_search_form_variable
 
     respond_to do |format|
-          format.html
-          format.json { render json: { workers: @workers, users: @users, positions: @positions, sites: @sites, companies: @companies } }
+      format.html
+      format.json { render json: { workers: @workers, users: @users, positions: @positions, sites: @sites, companies: @companies } }
     end
   end
 
   private
 
   def params_query_checker(model, search_method)
-    included_module_for = {'workers' => :graduates, 'sites' => :client, 'positions' => [:worker, :company, {site: :client}] }
+    included_module_for = { 'workers' => :graduates, 'sites' => :client, 'positions' => [:worker, :company, { site: :client }] }
     query = "query_#{model}"
     class_model = model.capitalize.constantize
     models = model.pluralize
@@ -49,15 +46,15 @@ class PagesController < ApplicationController
   end
 
   def generate_search_form_variable
-    models = [ 'worker', 'site', 'position', 'user', 'company' ]
-    hash = {'placeholder' => 'search_a_', 'query' => 'query_'}
+    models = ['worker', 'site', 'position', 'user', 'company']
+    hash = { 'placeholder' => 'search_a_', 'query' => 'query_' }
 
     array = []
     models.each do |model|
-        newhash = Hash.new
-        newhash = hash.transform_keys { |key| key = key + '_' + model }
-        newhash = newhash.transform_values { |value| value = value + model }
-        array << newhash
+      newhash = Hash.new
+      newhash = hash.transform_keys { |key| key = key + '_' + model }
+      newhash = newhash.transform_values { |value| value = value + model }
+      array << newhash
     end
     array.each do |newhash|
       newhash.each { |name, value| instance_variable_set("@#{name}", value) }

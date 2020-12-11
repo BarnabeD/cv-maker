@@ -1,5 +1,4 @@
 class GraduatesController < ApplicationController
-
   def create
     @graduate = Graduate.new(graduate_params)
     @graduate.worker = set_worker
