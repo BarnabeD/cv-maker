@@ -1,5 +1,5 @@
 class Worker < ApplicationRecord
-  has_many :positions
+  has_many :positions, dependent: :destroy
   has_many :graduates
   has_many :trainings
   has_many :sites, through: :positions
@@ -7,6 +7,8 @@ class Worker < ApplicationRecord
 
   validates :first_name, :last_name, :birth_date, :hire_date, :matricule, presence: true
   validates :matricule, uniqueness: true
+  validate :birth_date, :worker_cannot_be_minor
+  validate :hire_date, :hire_date_cannot_be_in_the_future
 
   def age_in_year
     calcul_duration_between_date_and_now(self.birth_date)[:years]
@@ -29,7 +31,7 @@ class Worker < ApplicationRecord
     pg_search_scope :search_by_fullname_and_matricule,
       against: [ :first_name, :last_name, :matricule ],
       using: {
-        tsearch: { prefix: true } 
+        tsearch: { prefix: true }
       }
 
   private
@@ -43,6 +45,18 @@ class Worker < ApplicationRecord
     return false if graduates.blank?
     # Graduate.includes(:worker).where(worker: self).first.graduation_date
     # Worker.graduated.where(self).order(:graduation_date).first.graduation_date
-    graduates.first.graduation_date
+    graduates.last.graduation_date
+  end
+
+  def hire_date_cannot_be_in_the_future
+    if hire_date.present? && hire_date > Date.today
+      errors.add(:hire_date, "can't be in the future")
+    end
+  end
+
+  def worker_cannot_be_minor
+    if birth_date.present? && birth_date > (Date.today - 18.years)
+      errors.add(:birth_date, "can't be a minor worker")
+    end
   end
 end
