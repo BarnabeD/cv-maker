@@ -14,11 +14,11 @@
     </thead>
     <tbody>
       <% @positions.each do |position| %>
-      <% if position.site.is_confident? %>
+      <% if position.site.confident? %>
         <% class_to_add = 'success' %>
-      <% elsif position.site.is_not_sure? %>
+      <% elsif position.site.not_sure? %>
         <% class_to_add = 'warning' %>
-      <% elsif position.site.is_not_confident? %>
+      <% elsif position.site.not_confident? %>
         <% class_to_add = 'danger' %>
       <% end %>
       <tr class="table-<%= class_to_add %>" data-target="search.position" data-id=<%= position.id %>>

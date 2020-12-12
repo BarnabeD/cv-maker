@@ -1,4 +1,5 @@
-require: rubocop-rails
+require:
+  - rubocop-rails
 
 AllCops:
   NewCops: enable
@@ -10,7 +11,7 @@ AllCops:
     - 'script/**/*'
     - 'support/**/*'
     - 'tmp/**/*'
-    - 'test/**/*'
+    - 'spec/**/*'
 
 Style/ConditionalAssignment:
   Enabled: false
@@ -41,4 +42,6 @@ Layout/LineLength:
 Style/EmptyMethod:
   Enabled: false
 Bundler/OrderedGems:
+  Enabled: false
+Style/SymbolArray:
   Enabled: false

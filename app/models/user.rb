@@ -9,13 +9,13 @@ class User < ApplicationRecord
 
   # PG-search:
   include PgSearch::Model
-    pg_search_scope :search_by_email,
-      against: :email,
-      using: {
-        tsearch: { prefix: true } 
-      }
+  pg_search_scope :search_by_email,
+                  against: :email,
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 
-  def is_admin?
-    self.admin
+  def admin?
+    admin
   end
 end

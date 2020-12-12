@@ -73,18 +73,17 @@ class WorkersController < ApplicationController
     html_absolute = 'http://localhost:3000/collaborateurs/1481'
     # raise
     pdf = Grover.new(html_absolute, {
-      # format: 'A4',
-      # display_url: base_url
-    }).to_pdf
+                       # format: 'A4',
+                       # display_url: base_url
+                     }).to_pdf
 
     send_data pdf, type: 'application/pdf', filename: "test.pdf"
-
   end
 
   private
 
   def set_worker
-    @worker = Worker.includes(:graduates, :trainings, {positions: [:company, {site: [:client, photo_attachment: :blob] } ]}).find(params[:id])
+    @worker = Worker.includes(:graduates, :trainings, { positions: [:company, { site: [:client, { photo_attachment: :blob }] }] }).find(params[:id])
   end
 
   def worker_params

@@ -8,15 +8,15 @@ FactoryBot.define do
     money_unit { 'K€' }
     client
 
-    trait :is_confident do
+    trait :confident do
       confidence { 'confident' }
     end
 
-    trait :is_not_sure do
+    trait :not_sure do
       confidence { 'not sure' }
     end
 
-    trait :is_not_confident do
+    trait :not_confident do
       confidence { 'not confident' }
     end
 

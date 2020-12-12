@@ -36,25 +36,24 @@ class Worker < ApplicationRecord
   private
 
   def calcul_duration_between_date_and_now(date)
-    duration_in_second = (Date.today - date).to_i
+    duration_in_second = (Time.zone.today - date).to_i
     ActiveSupport::Duration.build(duration_in_second * 24 * 3600).parts
   end
 
   def last_graduation_date(graduates)
     return false if graduates.blank?
+
     # Graduate.includes(:worker).where(worker: self).first.graduation_date
     # Worker.graduated.where(self).order(:graduation_date).first.graduation_date
     graduates.last.graduation_date
   end
 
   def hire_date_cannot_be_in_the_future
-    if hire_date.present? && hire_date > Date.today
-      errors.add(:hire_date, "can't be in the future")
-    end
+    errors.add(:hire_date, "can't be in the future") if hire_date.present? && hire_date > Time.zone.today
   end
 
   def worker_cannot_be_minor
-    if birth_date.present? && birth_date > (Date.today - 18.years)
+    if birth_date.present? && birth_date > (Time.zone.today - 18.years)
       errors.add(:birth_date, "can't be a minor worker")
     end
   end

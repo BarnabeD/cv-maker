@@ -85,33 +85,33 @@ RSpec.describe Site, type: :model do
       expect(subject.confidence).to eq('confident')
     end
 
-    it '#is_confident? true when confident' do
-      expect(subject.is_confident?).to be true
+    it '#confident? true when confident' do
+      expect(subject.confident?).to be true
     end
 
-    it '#is_confident? false when not confident' do
-      site_confidence_is_not_confident = create(:site, :is_not_confident)
-      expect(site_confidence_is_not_confident.is_confident?).to be false
+    it '#confident? false when not confident' do
+      site_confidence_not_confident = create(:site, :not_confident)
+      expect(site_confidence_not_confident.confident?).to be false
     end
 
-    it '#is_not_sure? true when not sure' do
-      site_confidence_is_not_sure = create(:site, :is_not_sure)
-      expect(site_confidence_is_not_sure.is_not_sure?).to be true
+    it '#not_sure? true when not sure' do
+      site_confidence_not_sure = create(:site, :not_sure)
+      expect(site_confidence_not_sure.not_sure?).to be true
     end
 
-    it '#is_not_sure? false when not confident' do
-      site_confidence_is_not_confident = create(:site, :is_not_confident)
-      expect(site_confidence_is_not_confident.is_not_sure?).to be false
+    it '#not_sure? false when not confident' do
+      site_confidence_not_confident = create(:site, :not_confident)
+      expect(site_confidence_not_confident.not_sure?).to be false
     end
 
-    it '#is_not_confident? true when not confident' do
-      site_confidence_is_not_confident = create(:site, :is_not_confident)
-      expect(site_confidence_is_not_confident.is_not_confident?).to be true
+    it '#not_confident? true when not confident' do
+      site_confidence_not_confident = create(:site, :not_confident)
+      expect(site_confidence_not_confident.not_confident?).to be true
     end
 
-    it '#is_not_confident? false when confident' do
-      site_confidence_is_confident = create(:site, :is_confident)
-      expect(site_confidence_is_confident.is_not_confident?).to be false
+    it '#not_confident? false when confident' do
+      site_confidence_confident = create(:site, :confident)
+      expect(site_confidence_confident.not_confident?).to be false
     end
   end
 

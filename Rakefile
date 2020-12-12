@@ -8,6 +8,7 @@ Rails.application.load_tasks
 desc "Look for style guide offenses in your code"
 task :rubocop do
   sh "rubocop --format simple || true"
+  # sh "rubocop"
 end
 
 task default: [:rubocop]

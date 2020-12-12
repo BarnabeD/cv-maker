@@ -42,7 +42,6 @@ class PositionsController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
-  private
 
   def set_position
     @position = Position.find(params[:id])

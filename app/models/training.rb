@@ -12,8 +12,6 @@ class Training < ApplicationRecord
   private
 
   def date_cannot_be_in_the_future
-    if date.present? && date > Date.today
-      errors.add( :date, "can't be in the future")
-    end
+    errors.add(:date, "can't be in the future") if date.present? && date > Time.zone.today
   end
 end

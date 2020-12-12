@@ -9,14 +9,14 @@ class Position < ApplicationRecord
   validates :position_name, presence: true
 
   include PgSearch::Model
-    pg_search_scope :search_by_site_name_worker_full_mane_position_name,
-    against: :position_name,
-    associated_against: {
-        site: [:name],
-        worker: [:first_name, :last_name],
-        client: [:name]
-      },
-      using: {
-        tsearch: { prefix: true } 
-      }
+  pg_search_scope :search_by_site_name_worker_full_mane_position_name,
+                  against: :position_name,
+                  associated_against: {
+                    site: [:name],
+                    worker: [:first_name, :last_name],
+                    client: [:name]
+                  },
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 end

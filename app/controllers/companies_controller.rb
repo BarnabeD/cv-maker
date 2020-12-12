@@ -26,7 +26,8 @@ class CompaniesController < ApplicationController
     @company.update(company_params)
     redirect_to admin_path
   end
-private
+
+  private
 
   def set_company
     @company = Company.find(params[:id])

@@ -26,7 +26,16 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: { workers: @workers, users: @users, positions: @positions, sites: @sites, companies: @companies } }
+      format.json do
+        render json:
+        {
+          workers: @workers,
+          users: @users,
+          positions: @positions,
+          sites: @sites,
+          companies: @companies
+        }
+      end
     end
   end
 
@@ -51,11 +60,10 @@ class PagesController < ApplicationController
 
     array = []
     models.each do |model|
-      newhash = Hash.new
-      newhash = hash.transform_keys { |key| key = key + '_' + model }
-      newhash = newhash.transform_values { |value| value = value + model }
-      array << newhash
+      newhash = hash.transform_keys { |key| "#{key}_#{model}" }
+      array << newhash.transform_values { |value| value + model }
     end
+
     array.each do |newhash|
       newhash.each { |name, value| instance_variable_set("@#{name}", value) }
     end
