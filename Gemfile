@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
-gem 'dotenv-rails', groups: [:development, :test]
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 # Use postgresql as the database for Active Record
@@ -32,7 +31,8 @@ group :development, :test do
   gem 'simplecov', require: false
   gem 'rspec-rails', '~> 4.0.1'
   gem "factory_bot_rails"
-  # gem 'capybara'
+  gem 'dotenv-rails'
+  gem 'capybara'
   # gem 'selenium-webdriver'
 end
 
@@ -45,6 +45,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'awesome_print'
   gem 'brakeman'
+  gem 'letter_opener'
+  gem 'query_diet'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -52,7 +54,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'devise-i18n' # translation for devise
-gem 'letter_opener', group: :development
 
 gem 'devise-security'
 gem "valid_email2"
@@ -66,8 +67,6 @@ gem 'cloudinary', '~> 1.16.0'
 gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 
 gem 'pg_search'
-
-gem 'query_diet', group: :development
 
 gem 'rubocop-rails'
 
