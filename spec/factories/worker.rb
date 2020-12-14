@@ -5,6 +5,7 @@ FactoryBot.define do
     birth_date { Faker::Date.birthday(min_age: 18, max_age: 65) }
     hire_date { Faker::Date.between(from: 25.years.ago, to: Time.zone.today) }
     matricule { Faker::Number.unique.number(digits: 5) }
+    photo { FilesTestHelper.png }
 
     trait :is_twenty_five_years_old do
       birth_date { Date.today - 25.years }
@@ -25,6 +26,10 @@ FactoryBot.define do
       after :create do |worker|
         create_list :graduate, 1, :five_years_old, worker: worker
       end
+    end
+
+    trait :skip_validate do
+      to_create {|instance| instance.save(validate: false) }
     end
   end
 end

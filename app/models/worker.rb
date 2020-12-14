@@ -5,7 +5,7 @@ class Worker < ApplicationRecord
   has_many :sites, through: :positions
   has_one_attached :photo, dependent: :destroy
 
-  validates :first_name, :last_name, :birth_date, :hire_date, :matricule, presence: true
+  validates :first_name, :last_name, :birth_date, :hire_date, :matricule, :photo, presence: true
   validates :matricule, uniqueness: true
   validate :worker_cannot_be_minor, :hire_date_cannot_be_in_the_future
 
