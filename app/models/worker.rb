@@ -7,6 +7,8 @@ class Worker < ApplicationRecord
 
   validates :first_name, :last_name, :birth_date, :hire_date, :matricule, :photo, presence: true
   validates :matricule, uniqueness: true
+  validates :first_name, uniqueness: { scope: :last_name,
+    message: "Worker is already in the DB", case_sensitive: false }
   validate :worker_cannot_be_minor, :hire_date_cannot_be_in_the_future
 
   def age_in_year

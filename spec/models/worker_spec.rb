@@ -58,11 +58,21 @@ RSpec.describe Worker, type: :model do
     end
   end
 
-  context 'first_name is already taken' do
-    it 'is valid' do
+
+  context 'first_name & last_name is already taken' do
+    it 'is not valid' do
       bad_subject = FactoryBot.build(:worker)
       bad_subject.first_name = subject.first_name
-      expect(bad_subject).to be_valid
+      bad_subject.last_name = subject.last_name
+      expect(bad_subject).to_not be_valid
+    end
+  end
+
+  context 'matricule is already taken' do
+    it 'is not valid' do
+      bad_subject = FactoryBot.build(:worker)
+      bad_subject.matricule = subject.matricule
+      expect(bad_subject).to_not be_valid
     end
   end
 
