@@ -66,7 +66,7 @@ clients = []
 puts ">> #{Client.count} Clients created !"
 
 companies = []
-terideal = ['Terideal - DTSS', 'Terideal - DROS', 'Terideal - DREN', 'Terideal - DRST', 'Terideal - DE', 'Terideal - DRCE']
+terideal = ["#{ENV['CLIENT'].capitalize} - DTSS", "#{ENV['CLIENT'].capitalize} - DROS", "#{ENV['CLIENT'].capitalize} - DREN", "#{ENV['CLIENT'].capitalize} - DRST", "#{ENV['CLIENT'].capitalize} - DE", "#{ENV['CLIENT'].capitalize} - DRCE"]
 terideal.each { |company| companies << Company.create!(name: company, city: 'Wissous') }
 puts ">> #{Company.count} Company created !"
 
@@ -144,13 +144,13 @@ positions.each { |position| position.save! }
 puts ">> #{Position.count} Positions created !"
 
 puts 'Creating users'
-me_admin = User.new(email: 'barnabe.dubus@gmail.com', password: '123456', password_confirmation: '123456', admin: true)
+me_admin = User.new(email: ENV['ADMIN_MAIL'], password: ENV['ADMIN_PASSWORD'], password_confirmation: ENV['ADMIN_PASSWORD'], admin: true)
 me_admin.skip_confirmation!
 me_admin.save!(validate: false)
-admin = User.new(email: 'admin@terideal.fr', password: '123456', password_confirmation: '123456', admin: true)
+admin = User.new(email: ENV['CLIENT_ADMIN_MAIL'], password: ENV['CLIENT_ADMIN_PASSWORD'], password_confirmation: ENV['CLIENT_ADMIN_PASSWORD'], admin: true)
 admin.skip_confirmation!
 admin.save!(validate: false)
-user = User.new(email: 'nonadmin@gmail.com', password: '123456', password_confirmation: '123456', admin: false)
+user = User.new(email: ENV['CLIENT_USER_MAIL'], password: ENV['CLIENT_USER_PASSWORD'], password_confirmation: ENV['CLIENT_USER_PASSWORD'], admin: false)
 user.skip_confirmation!
 user.save!(validate: false)
 puts "creating #{User.count} users : #{user.email}"

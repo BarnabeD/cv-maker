@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: 'https://terideal-cv-maker.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: "https://#{ENV['CLIENT']}-cv-maker.herokuapp.com" }
 
   # Settings specified here will take precedence over those in config/application.rb.
 
