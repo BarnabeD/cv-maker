@@ -25,12 +25,17 @@ Rails.application.routes.draw do
     get '/profil/:id', to: 'pages#profil_show'
 
 
+    # export worker PDF
+    # get '/collaborateurs/:id', to: 'workers#export'
+
+
     # Non admin
     resources :positions, only: [:edit, :update, :destroy ]
     resources :chantiers, controller: 'sites', as: 'sites'
     resources :companies, exept: [:show, :index]
 
     resources :collaborateurs, controller: 'workers', as: 'workers' do
+      get '/pdf', to: 'workers#pdf'
       resources :positions, only: [:new, :create]
       resources :graduates, only: [:new, :create]
 

@@ -65,3 +65,5 @@ gem 'pg_search'
 gem 'query_diet', group: :development
 
 gem 'rubocop-rails'
+
+gem 'grover'

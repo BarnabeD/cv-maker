@@ -1,9 +1,9 @@
 fr:
   search_a_worker: Chercher un salarié
-  search_a_user: Chercher un utilisateur 
-  search_a_site: Chercher un chantier 
+  search_a_user: Chercher un utilisateur
+  search_a_site: Chercher un chantier
   search_a_position: Chercher un poste
-  search_a_company: Chercher une sociétée 
+  search_a_company: Chercher une sociétée
   worker:
     zero: "aucun salarié"
     one: "un salarié"
@@ -24,7 +24,7 @@ fr:
     zero: "aucun poste"
     one: "un poste"
     other: "%{count} poste"
-  final_client: Terideal
+  final_client: 'Terideal'
   cancel: Annuler
   no_data: pas d'info
   no_exerienence: pas d'exérience
