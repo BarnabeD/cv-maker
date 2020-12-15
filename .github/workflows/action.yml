@@ -23,4 +23,4 @@ jobs:
     - uses: ruby/setup-ruby@v1
     - name : run the bundle install
       run: bundle install
-    - run: bundle exec rake
+    - run: bundle exec rspec
