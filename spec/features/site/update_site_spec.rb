@@ -24,6 +24,6 @@ before do
 
   scenario 'valid inputs' do
     click_on "Modifier ce(tte) Chantier"
-    expect(page).to have_content(@new_site.first_name)
+    expect(page).to have_content(@new_site.name)
   end
 end

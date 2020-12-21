@@ -30,7 +30,7 @@ class SitesController < ApplicationController
   end
 
   def update
-    if @site.update(strong_params)
+    if @site.update(site_params)
       redirect_to admin_path
     else
       render 'edit'
