@@ -8,7 +8,7 @@ class Site < ApplicationRecord
   validates :name, :site_type, :start_date, :end_date, :amount, :money_unit, presence: true
   validates :site_type, inclusion: { in: ['Marché unique', 'Marché à bon de commande', 'Accord cadre'] }
   validates :money_unit, inclusion: { in: ['€', 'K€', 'M€', 'Mrd€'] }
-  validate :start_date_cannot_be_in_the_future, :start_date_cannot_be_iafter_end_date
+  validate :start_date_cannot_be_in_the_future, :start_date_cannot_be_after_end_date
 
   # PG-search:
   include PgSearch::Model
@@ -53,7 +53,7 @@ class Site < ApplicationRecord
     errors.add(:start_date, "can't be in the future") if start_date.present? && start_date > Time.zone.today
   end
 
-  def start_date_cannot_be_iafter_end_date
+  def start_date_cannot_be_after_end_date
     if start_date.present? && end_date.present? && start_date > end_date
       errors.add(:start_date, "can't be in the future")
     end

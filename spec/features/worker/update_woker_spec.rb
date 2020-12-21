@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Update a wokers", type: :feature do
+RSpec.feature "Update a woker", type: :feature do
 before do
     sign_in FactoryBot.create(:user)
     @worker = FactoryBot.create(:worker, :skip_validate)

@@ -1,4 +1,7 @@
 <%= simple_form_for @site do |f| %>
+    <%= f.simple_fields_for :client do |client| %>
+    <%= client.input :id, label: 'Client', collection: Client.all, selected: Client.first %>
+  <% end %>
     <%= f.input :name, label: "site Name" %>
     <%= f.input :site_type, collection: ['Marché unique', 'Marché à bon de commande', 'Accord cadre'], default: 1 %>
     <%= f.input :start_date, as: :date, start_year: Date.today.year - 110, end_year: Date.today.year + 5 %>
