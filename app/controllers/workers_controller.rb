@@ -20,7 +20,7 @@ class WorkersController < ApplicationController
 
   def update
     @worker.update(worker_params)
-    redirect_to admin_path
+    redirect_to admin_path notice: "Worker updated"
   end
 
   def index

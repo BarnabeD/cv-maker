@@ -62,7 +62,7 @@ site_positions = [
 puts 'Creating complete sets...'
 
 clients = []
-30.times { clients << Client.create!(name: "Ville de #{Faker::Address.city}") }
+30.times { clients << Client.create!(name: "Ville de #{Faker::Address.unique.city}") }
 puts ">> #{Client.count} Clients created !"
 
 companies = []
@@ -73,8 +73,8 @@ puts ">> #{Company.count} Company created !"
 workers = []
 100.times do
   workers << Worker.create!(first_name: Faker::Name.first_name,
-                            last_name: Faker::Name.last_name,
-                            birth_date: Faker::Date.birthday(min_age: 16, max_age: 65),
+                            last_name: Faker::Name.unique.last_name,
+                            birth_date: Faker::Date.birthday(min_age: 18, max_age: 65),
                             hire_date: Faker::Date.between(from: 25.years.ago, to: Date.today),
                             matricule: Faker::Number.unique.number(digits: 5))
 end
@@ -117,10 +117,12 @@ sites = []
 positions = []
 
 800.times do
+  start_date = Faker::Date.between(from: 5.years.ago, to: 1.month.ago)
+  end_date = Faker::Date.between(from: start_date, to: Date.today)
   sites << Site.new(name: "#{site_suffixes.sample} #{Faker::Lorem.sentence(word_count: 3)} à #{Faker::Address.city}",
                     site_type: site_type.sample,
-                    start_date: Faker::Date.between(from: 5.years.ago, to: Date.today),
-                    end_date: Faker::Date.between(from: 4.years.ago, to: Date.today),
+                    start_date: start_date,
+                    end_date: end_date,
                     amount: Faker::Number.between(from: 1, to: 100),
                     money_unit: money_unit.sample)
   positions << Position.new(position_name: site_positions.sample)

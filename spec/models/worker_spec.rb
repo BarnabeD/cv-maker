@@ -78,14 +78,14 @@ RSpec.describe Worker, type: :model do
 
   context 'worker is minor' do
     it 'is not valid' do
-      worker_minor = build(:worker, :is_minor)
+      worker_minor = build(:worker, :minor)
       expect(worker_minor).to_not be_valid
     end
   end
 
   context '#age_in_year' do
     it 'return the good age' do
-      worker_is_twenty_five_years_old = create(:worker, :is_twenty_five_years_old)
+      worker_is_twenty_five_years_old = create(:worker, :twenty_five_years_old)
       expect(worker_is_twenty_five_years_old.age_in_year).to eq(25)
     end
   end
@@ -99,7 +99,7 @@ RSpec.describe Worker, type: :model do
 
   context '#duration_since_last_graduate_in_years' do
     it 'return duration since 18 old if note graduated' do
-      worker_is_twenty_five_years_old = create(:worker, :is_twenty_five_years_old)
+      worker_is_twenty_five_years_old = create(:worker, :twenty_five_years_old)
       expect(worker_is_twenty_five_years_old.duration_since_last_graduate_in_years(worker_is_twenty_five_years_old.graduates)).to eq(25 - 18)
     end
   end

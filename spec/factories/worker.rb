@@ -7,22 +7,21 @@ FactoryBot.define do
     matricule { Faker::Number.unique.number(digits: 5) }
     photo { FilesTestHelper.png }
 
-    trait :is_twenty_five_years_old do
+    trait :twenty_five_years_old do
       birth_date { Date.today - 25.years }
     end
 
-    trait :is_minor do
+    trait :minor do
       birth_date { Date.today - 17.years }
     end
 
-    trait :is_graduated do
+    trait :graduated do
       after :create do |worker|
         create_list :graduate, 5, worker: worker
       end
     end
 
     trait :five_years_old_graduated do
-      is_graduated
       after :create do |worker|
         create_list :graduate, 1, :five_years_old, worker: worker
       end

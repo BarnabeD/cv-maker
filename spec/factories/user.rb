@@ -1,9 +1,12 @@
 FactoryBot.define do
   factory :user do
-    email { 'admin@terideal.fr' }
+    email { Faker::Internet.email }
     password { '123456' }
     password_confirmation { '123456' }
-    admin { true }
     confirmed_at { Time.now }
+
+    trait :admin do
+      admin { true }
+    end
   end
 end
