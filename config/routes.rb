@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   authenticated do
-    root to: 'workers#index', as: :authenticated_root
+    root to: 'pages#admin', as: :authenticated_root
 
     # admin
     get '/admin', to: 'pages#admin'
