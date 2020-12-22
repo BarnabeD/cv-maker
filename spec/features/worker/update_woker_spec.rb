@@ -24,4 +24,10 @@ before do
     click_on "Modifier ce(tte) Salarié"
     expect(page).to have_content(@new_worker.first_name)
   end
+
+  scenario 'missing first_name' do
+    fill_in 'worker_first_name', with: nil
+    click_on "Modifier ce(tte) Salarié"
+    expect(page).to have_content("First name doit être rempli(e)")
+  end
 end

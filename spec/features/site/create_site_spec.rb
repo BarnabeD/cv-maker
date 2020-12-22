@@ -9,7 +9,6 @@ RSpec.describe 'Creating a Site', type: :feature do
     select(@site.client.name, from: 'site_client_id')
     fill_in 'site_name', with: @site.name
     select(@site.site_type, from: 'site_site_type')
-    sleep 2
     select(@site.start_date.day, from: 'site_start_date_3i')
     select(FRENCH_MONTH[@site.start_date.month.to_s], from: 'site_start_date_2i')
     select(@site.start_date.year, from: 'site_start_date_1i')

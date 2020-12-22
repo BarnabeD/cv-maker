@@ -11,7 +11,6 @@ before do
     select(@new_site.client.name, from: 'site_client_id')
     fill_in 'site_name', with: @new_site.name
     select(@new_site.site_type, from: 'site_site_type')
-    sleep 2
     select(@new_site.start_date.day, from: 'site_start_date_3i')
     select(FRENCH_MONTH[@new_site.start_date.month.to_s], from: 'site_start_date_2i')
     select(@new_site.start_date.year, from: 'site_start_date_1i')
@@ -25,5 +24,11 @@ before do
   scenario 'valid inputs' do
     click_on "Modifier ce(tte) Chantier"
     expect(page).to have_content(@new_site.name)
+  end
+
+  scenario 'missing name' do
+    fill_in 'site_name', with: nil
+    click_on "Modifier ce(tte) Chantier"
+    expect(page).to have_content("Name doit être rempli(e)")
   end
 end
