@@ -1,5 +1,7 @@
 class SitesController < ApplicationController
   before_action :set_site, only: [:show, :edit, :update, :destroy, :toggle_confidence]
+  before_action :check_current_user_admin?, only: [:destroy, :new]
+
 
   def destroy
     @site.destroy

@@ -1,5 +1,7 @@
 class WorkersController < ApplicationController
   before_action :set_worker, only: [:show, :edit, :update, :destroy]
+  before_action :check_current_user_admin?, only: :destroy
+
 
   def create
     @worker = Worker.new(worker_params)
@@ -19,8 +21,11 @@ class WorkersController < ApplicationController
   end
 
   def update
-    @worker.update(worker_params)
-    redirect_to admin_path notice: "Worker updated"
+    if @worker.update(worker_params)
+      redirect_to admin_path notice: "Worker updated"
+    else
+      render :edit
+    end
   end
 
   def index

@@ -1,5 +1,7 @@
 class PositionsController < ApplicationController
   before_action :set_position, only: [:edit, :update, :destroy]
+  before_action :check_current_user_admin?, only: :destroy
+
 
   def create
     @worker = set_worker

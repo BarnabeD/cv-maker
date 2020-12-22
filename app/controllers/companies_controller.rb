@@ -1,5 +1,7 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:edit, :update, :destroy]
+  before_action :check_current_user_admin?
+
 
   def create
     @company = Company.new(company_params)
@@ -23,8 +25,11 @@ class CompaniesController < ApplicationController
   end
 
   def update
-    @company.update(company_params)
-    redirect_to admin_path
+    if @company.update(company_params)
+      redirect_to admin_path
+    else
+      render :edit
+    end
   end
 
   private

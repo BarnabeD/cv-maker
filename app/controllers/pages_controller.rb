@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
+  before_action :check_current_user_admin?, only: :admin
 
   def home
   end

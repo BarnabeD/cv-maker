@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:destroy, :edit, :update]
+  before_action :check_current_user_admin?, only: :destroy
 
   def destroy
     set_user
@@ -17,7 +18,6 @@ class UsersController < ApplicationController
     if @user.save(validate: false)
       redirect_to admin_path
     else
-      raise
       render '_new'
     end
   end
