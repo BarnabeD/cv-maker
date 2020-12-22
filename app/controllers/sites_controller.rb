@@ -5,7 +5,7 @@ class SitesController < ApplicationController
 
   def destroy
     @site.destroy
-    redirect_to admin_path
+    redirect_to root_path
   end
 
   def edit
@@ -33,9 +33,9 @@ class SitesController < ApplicationController
 
   def update
     if @site.update(site_params)
-      redirect_to admin_path
+      redirect_to root_path
     else
-      render 'edit'
+      render :edit
     end
   end
 
@@ -48,7 +48,7 @@ class SitesController < ApplicationController
     when 'false'
       @site.update(confidence: 'confident')
     end
-    redirect_to admin_path
+    redirect_to root_path
   end
 
   private

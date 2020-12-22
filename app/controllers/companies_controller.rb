@@ -6,7 +6,7 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     if @company.save
-      redirect_to admin_path
+      redirect_to root_path
     else
       render :new
     end
@@ -14,7 +14,7 @@ class CompaniesController < ApplicationController
 
   def destroy
     @company.destroy
-    redirect_to admin_path
+    redirect_to root_path
   end
 
   def edit
@@ -26,7 +26,7 @@ class CompaniesController < ApplicationController
 
   def update
     if @company.update(company_params)
-      redirect_to admin_path
+      redirect_to root_path
     else
       render :edit
     end

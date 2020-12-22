@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def destroy
     set_user
     @user.destroy
-    redirect_to admin_path
+    redirect_to root_path
   end
 
   def new
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.skip_confirmation!
     if @user.save(validate: false)
-      redirect_to admin_path
+      redirect_to root_path
     else
       render '_new'
     end

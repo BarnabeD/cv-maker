@@ -14,7 +14,7 @@ class WorkersController < ApplicationController
 
   def destroy
     @worker.destroy
-    redirect_to admin_path
+    redirect_to root_path
   end
 
   def edit
@@ -22,7 +22,7 @@ class WorkersController < ApplicationController
 
   def update
     if @worker.update(worker_params)
-      redirect_to admin_path notice: "Worker updated"
+      redirect_to root_path notice: "Worker updated"
     else
       render :edit
     end

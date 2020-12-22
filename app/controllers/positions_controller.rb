@@ -31,12 +31,12 @@ class PositionsController < ApplicationController
 
   def update
     @position.update(position_params)
-    redirect_to admin_path
+    redirect_to root_path
   end
 
   def destroy
     @position.destroy
-    redirect_to admin_path
+    redirect_to root_path
   end
 
   private
