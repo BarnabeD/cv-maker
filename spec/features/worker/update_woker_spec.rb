@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Update a woker", type: :feature do
 before do
-    sign_in FactoryBot.create(:user)
+    sign_in FactoryBot.create(:user, :admin)
     @old_worker = FactoryBot.create(:worker, :skip_validate)
     @new_worker = FactoryBot.build(:worker, :skip_validate)
     visit edit_worker_path(@old_worker)

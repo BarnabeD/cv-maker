@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Update a site", type: :feature do
 before do
-    sign_in FactoryBot.create(:user)
+    sign_in FactoryBot.create(:user, :admin)
     clients = FactoryBot.create_list(:client, 10)
     @old_site = FactoryBot.create(:site)
     @new_site = FactoryBot.build(:site, client: clients.last)
@@ -21,8 +21,9 @@ before do
     select(@new_site.money_unit, from: 'site_money_unit')
   end
 
-  scenario 'valid inputs' do
+  scenario 'valid inputs', js: true do
     click_on "Modifier ce(tte) Chantier"
+    click_link "sites-tab"
     expect(page).to have_content(@new_site.name)
   end
 
