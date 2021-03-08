@@ -3,7 +3,7 @@ class Graduate < ApplicationRecord
   # attr_reader :french_departments
   belongs_to :worker
   validates :name, :speciality, :graduation_date, :school_name, :school_department, presence: true
-  # validates :name, uniqueness: true
+  validates :name, uniqueness: true
   validate :graduation_date_cannot_be_in_the_future
   validate :department_must_be_included_in_list
 
