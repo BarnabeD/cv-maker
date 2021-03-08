@@ -9,10 +9,12 @@ RSpec.feature "Site search", type: :feature do
   end
 
   scenario 'Click "flag" to toggle from confident to not sure', js: true do
-    find("tr[data-id=\"#{@sites.first.id}\"]").click
+    find("#toggle-confidence-site-#{@sites.first.id}").click
     sleep 0.5
     click_link "sites-tab"
-    expect(find("tr[data-id=\"#{@sites.first.id}\"]").assert_selector('.table-warning'))
+    # byebug
+    # sleep 0.5
+    expect(find("tr[data-id=\"#{@sites.first.id}\"]").matches_selector?('.table-warning'))
   end
 
   # scenario 'find the good result with a name search', js: true do
