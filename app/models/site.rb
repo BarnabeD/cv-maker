@@ -60,7 +60,7 @@ class Site < ApplicationRecord
   end
 
   def calcul_duration_between_two_dates(start_date, end_date)
-    duration_in_second = (end_date - start_date).to_i
-    ActiveSupport::Duration.build(duration_in_second * 24 * 3600).parts
+    duration_in_days = (end_date - start_date + 1).to_i
+    ActiveSupport::Duration.build(duration_in_days * 24 * 3600).parts
   end
 end
