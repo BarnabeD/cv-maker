@@ -44,7 +44,7 @@ class SitesController < ApplicationController
     when 'confident'
       @site.update(confidence: 'not sure')
     when 'not sure'
-      @site.update(confidence: 'false')
+      @site.update(confidence: 'not confident')
     when 'false'
       @site.update(confidence: 'confident')
     end
