@@ -28,13 +28,13 @@
         <td><%= worker.matricule %></td>
         <td>
           <span class="m-auto">
-            <%= link_to icon('far','eye'), worker_path(worker), class: "text-succes" %>
+            <%= link_to icon('far','eye'), worker_path(worker), class: "text-succes", id: "show-worker-#{worker.id}" %>
           </span>
           <span class="m-auto">
-            <%= link_to icon('far','edit'), edit_worker_path(worker), class: "text-info" %>
+            <%= link_to icon('far','edit'), edit_worker_path(worker), class: "text-info", id: "edit-worker-#{worker.id}" %>
           </span>
           <span class="m-auto">
-            <%= link_to worker_path(worker), method: :delete, class: "text-danger", data: { confirm: "Voulez-vous supprimer #{worker.first_name} #{worker.last_name}?" } do %>
+            <%= link_to worker_path(worker), method: :delete, class: "text-danger",  id: "delete-worker-#{worker.id}", data: { confirm: "Voulez-vous supprimer #{worker.first_name} #{worker.last_name}?" } do %>
               <%= icon('far','trash-alt') %>
             <% end %>
           </span>

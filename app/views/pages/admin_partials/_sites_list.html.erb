@@ -32,20 +32,20 @@
         <td><%= site.client.name %></td>
         <td>
           <span class="ml-2">
-            <%= link_to toggle_site_confidence_path(site), method: :patch, class: "text-#{class_to_add}", remote: true do %>
+            <%= link_to toggle_site_confidence_path(site), method: :patch, class: "text-#{class_to_add}", id: "toggle-confidence-site-#{site.id}", remote: true do %>
               <%= icon('far','flag') %>
             <% end %>
           </span>
         </td>
         <td>
           <span class="m-auto">
-            <%= link_to icon('far','eye'), site_path(site), class: "text-succes" %>
+            <%= link_to icon('far','eye'), site_path(site), class: "text-succes", id: "show-site-#{site.id}" %>
           </span>
           <span class="m-auto">
-            <%= link_to icon('far','edit'), edit_site_path(site), class: "text-info" %>
+            <%= link_to icon('far','edit'), edit_site_path(site), class: "text-info", id: "edit-site-#{site.id}" %>
           </span>
           <span class="m-auto">
-            <%= link_to site_path(site), method: :delete, class: "text-danger", data: { confirm: "Voulez-vous supprimer #{site.name} ?" } do %>
+            <%= link_to site_path(site), method: :delete, class: "text-danger", id: "delete-site-#{site.id}", data: { confirm: "Voulez-vous supprimer #{site.name} ?" } do %>
               <%= icon('far','trash-alt') %>
             <% end %>
           </span>

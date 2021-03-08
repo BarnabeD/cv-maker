@@ -30,20 +30,20 @@
         <td><%= position.company.name %></td>
         <td>
           <span class="ml-1">
-            <%= link_to position, controller: "positions", action: "toggle_position_confidence", method: :patch, class: "text-#{class_to_add}", remote: true do %>
+            <%= link_to position, controller: "positions", action: "toggle_position_confidence", method: :patch, class: "text-#{class_to_add}", id: "toggle-confidence-position-#{position.id}", remote: true do %>
               <%= icon('far','flag') %>
             <% end %>
           </span>
         </td>
         <td>
           <span class="m-auto">
-            <%= link_to icon('far','eye'), position_path(position), class: "text-succes" %>
+            <%= link_to icon('far','eye'), position_path(position), class: "text-succes", id: "show-position-#{position.id}" %>
           </span>
           <span class="m-auto">
-            <%= link_to icon('far','edit'), edit_position_path(position), class: "text-info" %>
+            <%= link_to icon('far','edit'), edit_position_path(position), class: "text-info", id: "edit-position-#{position.id}" %>
             </span>
           <span class="m-auto">
-            <%= link_to position_path(position), method: :delete, class: "text-danger", data: { confirm: "Voulez-vous supprimer la mission : \n#{position.position_name} \ndu CV de  #{position.worker.first_name} #{position.worker.last_name} \nsur le chantier : #{position.site.name} ?" } do %>
+            <%= link_to position_path(position), method: :delete, class: "text-danger", id: "delete-position-#{position.id}", data: { confirm: "Voulez-vous supprimer la mission : \n#{position.position_name} \ndu CV de  #{position.worker.first_name} #{position.worker.last_name} \nsur le chantier : #{position.site.name} ?" } do %>
               <%= icon('far','trash-alt') %>
             <% end %>
           </span>

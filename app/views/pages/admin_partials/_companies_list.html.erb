@@ -16,13 +16,13 @@
         <td><%= company.city %></td>
         <td>
           <span class="m-auto">
-            <%= link_to icon('far','eye'), company_path(company), class: "text-succes" %>
+            <%= link_to icon('far','eye'), company_path(company), class: "text-succes", id: "show-company-#{company.id}" %>
           </span>
           <span class="m-auto">
-            <%= link_to icon('far','edit'), edit_company_path(company), class: "text-info" %>
+            <%= link_to icon('far','edit'), edit_company_path(company), class: "text-info", id: "edit-company-#{company.id}" %>
           </span>
           <span class="m-auto">
-            <%= link_to company_path(company), method: :delete, class: "text-danger", data: { confirm: "Voulez-vous supprimer #{company.name} ?" } do %>
+            <%= link_to company_path(company), method: :delete, class: "text-danger", id: "delete-company-#{company.id}", data: { confirm: "Voulez-vous supprimer #{company.name} ?" } do %>
               <%= icon('far','trash-alt') %>
             <% end %>
           </span>
