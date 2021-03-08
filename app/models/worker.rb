@@ -38,7 +38,7 @@ class Worker < ApplicationRecord
   private
 
   def calcul_duration_between_date_and_now(date)
-    duration_in_second = (Time.zone.today - date).to_i
+    duration_in_second = (Time.zone.today - date + 1).to_i
     ActiveSupport::Duration.build(duration_in_second * 24 * 3600).parts
   end
 
