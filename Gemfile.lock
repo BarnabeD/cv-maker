@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 677ac8fd96213a188a5512cf3aa78c89f1fcda91
+  revision: 71f3b74aab28903b1b34bccd17cf9739ef630db0
   branch: master
   specs:
     faker (2.16.0)
@@ -159,7 +159,7 @@ GEM
     msgpack (1.4.2)
     netrc (0.11.0)
     nio4r (2.5.7)
-    nokogiri (1.11.1)
+    nokogiri (1.11.2)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     orm_adapter (0.5.0)
