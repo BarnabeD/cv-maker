@@ -30,11 +30,11 @@ class PagesController < ApplicationController
       format.json do
         render json:
         {
-          workers: @workers,
-          users: @users,
-          positions: @positions,
-          sites: @sites,
-          companies: @companies
+          workers: @workers.as_json,
+          users: @users.as_json,
+          positions: @positions.as_json,
+          sites: @sites.as_json,
+          companies: @companies.as_json
         }
       end
     end
