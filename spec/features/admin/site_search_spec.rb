@@ -11,8 +11,8 @@ RSpec.feature "Site search", type: :feature do
   scenario 'Reduce the table with a name search', js: true do
     fill_in 'query_site', with: @sites.first.name
     find('button[data-model="site"][data-target="search.button"]').click
-    sleep 1
-    within('#sites-table') do
+    sleep 0.25
+    within('#sites-table>tbody') do
       expect(all('tr').count).to be < 30
     end
   end
@@ -20,15 +20,15 @@ RSpec.feature "Site search", type: :feature do
   scenario 'find the good result with a name search', js: true do
     fill_in 'query_site', with: @sites.first.name
     find('button[data-model="site"][data-target="search.button"]').click
-    sleep 1
+    sleep 0.25
     expect(page).to have_content(@sites.first.name)
   end
 
   scenario 'Reduce the table with name first letters search', js: true do
     fill_in 'query_site', with: @sites.first.name[0, 3]
     find('button[data-model="site"][data-target="search.button"]').click
-    sleep 1
-    within('#sites-table') do
+    sleep 0.25
+    within('#sites-table>tbody') do
       expect(all('tr').count).to be < 30
     end
   end
@@ -36,16 +36,16 @@ RSpec.feature "Site search", type: :feature do
   scenario 'find the good result with name first letters search', js: true do
     fill_in 'query_site', with: @sites.first.name[0, 3]
     find('button[data-model="site"][data-target="search.button"]').click
-    sleep 1
+    sleep 0.25
     expect(page).to have_content(@sites.first.name)
   end
 
   scenario 'Invalid search', js: true do
     fill_in 'query_site', with: '@@@'
     find('button[data-model="site"][data-target="search.button"]').click
-    sleep 1
-    within('#sites-table') do
-      expect(all('tr').count).to eq(1)
+    sleep 0.25
+    within('#sites-table>tbody') do
+      expect(all('tr').count).to eq()
     end
   end
 end
