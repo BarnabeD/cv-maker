@@ -45,7 +45,7 @@ class SitesController < ApplicationController
       @site.update(confidence: 'not sure')
     when 'not sure'
       @site.update(confidence: 'not confident')
-    when 'false'
+    when 'not confident'
       @site.update(confidence: 'confident')
     end
     redirect_to root_path
