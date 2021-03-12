@@ -4,9 +4,10 @@ RSpec.describe 'Creating a Graduate', type: :feature do
   before do
     sign_in FactoryBot.create(:user)
     @graduate = FactoryBot.build(:graduate)
-    @worker = FactoryBot.create(:worker, :skip_validate)
+    @graduate.worker.save
+    byebug
+    visit worker_path(@graduate.worker)
 
-    visit worker_path(@worker)
     click_on "Ajouter un diplôme"
     fill_in 'graduate_name', with: @graduate.name
     fill_in 'graduate_speciality', with: @graduate.speciality
