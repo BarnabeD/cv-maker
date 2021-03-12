@@ -8,42 +8,37 @@ RSpec.feature "Company search", type: :feature do
     click_link "companies-tab"
   end
 
-  scenario 'Reduce the table with a name search', js: true do
+  scenario 'Reduce the table with a name search' do
     fill_in 'query_company', with: @companies.first.name
     find('button[data-model="company"][data-target="search.button"]').click
-    sleep 0.25
     within('#companies-table>tbody') do
       expect(all('tr').count).to be < 30
     end
   end
 
-  scenario 'find the good result with a name search', js: true do
+  scenario 'find the good result with a name search' do
     fill_in 'query_company', with: @companies.first.name
     find('button[data-model="company"][data-target="search.button"]').click
-    sleep 0.25
     expect(page).to have_content(@companies.first.name)
   end
 
-  scenario 'Reduce the table with name first letters search', js: true do
+  scenario 'Reduce the table with name first letters search' do
     fill_in 'query_company', with: @companies.first.name[0, 3]
     find('button[data-model="company"][data-target="search.button"]').click
-    sleep 0.25
     within('#companies-table>tbody') do
       expect(all('tr').count).to be < 30
     end
   end
 
-  scenario 'find the good result with name first letters search', js: true do
+  scenario 'find the good result with name first letters search' do
     fill_in 'query_company', with: @companies.first.name[0, 3]
     find('button[data-model="company"][data-target="search.button"]').click
-    sleep 0.25
     expect(page).to have_content(@companies.first.name)
   end
 
-  scenario 'Invalid search', js: true do
+  scenario 'Invalid search' do
     fill_in 'query_company', with: '@@@'
     find('button[data-model="company"][data-target="search.button"]').click
-    sleep 0.25
     within('#companies-table>tbody') do
       expect(all('tr').count).to eq(0)
     end

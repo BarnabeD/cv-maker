@@ -13,13 +13,13 @@ RSpec.feature "Delete a woker", type: :feature do
 
   scenario 'confirm destroy', js: true do
     page.driver.browser.switch_to.alert.accept
-    sleep 1
+    sleep 0.25
     expect(Worker.count).to eq(@created_worker_count -1)
   end
 
   scenario 'cancel destroy', js: true do
     page.driver.browser.switch_to.alert.dismiss
-    sleep 1
+    sleep 0.25
     expect(Worker.count).to eq(@created_worker_count)
   end
 end

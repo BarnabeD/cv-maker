@@ -13,7 +13,7 @@ RSpec.feature "Delete a Company", type: :feature do
     tr = find("tr[data-id=\"#{@company.id}\"]")
     tr.click_link(class: 'text-danger')
     page.driver.browser.switch_to.alert.accept
-    sleep 1
+    sleep 0.25
     expect(Company.count).to eq(@created_company_count -1)
   end
 
@@ -23,7 +23,7 @@ RSpec.feature "Delete a Company", type: :feature do
     tr = find("tr[data-id=\"#{@company.id}\"]")
     tr.click_link(class: 'text-danger')
     page.driver.browser.switch_to.alert.dismiss
-    sleep 1
+    sleep 0.25
     expect(Company.count).to eq(@created_company_count)
   end
 end

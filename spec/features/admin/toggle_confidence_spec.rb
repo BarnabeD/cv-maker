@@ -8,16 +8,14 @@ RSpec.feature "Toggle confidence from 'sure' to 'not sure'", type: :feature do
     click_link "sites-tab"
   end
 
-  scenario "Click 'flag' to toggle correctly", js: true do
+  scenario "Click 'flag' to toggle correctly" do
     find("#toggle-confidence-site-#{@sites.first.id}").click
-    sleep 0.5
     click_link "sites-tab"
     expect(find("tr[data-id=\"#{@sites.first.id}\"]").matches_selector?('.table-warning'))
   end
 
-  scenario "Click 'flag' doesn't toggle incorrectly", js: true do
+  scenario "Click 'flag' doesn't toggle incorrectly" do
     find("#toggle-confidence-site-#{@sites.first.id}").click
-    sleep 0.5
     click_link "sites-tab"
     expect(find("tr[data-id=\"#{@sites.first.id}\"]").not_matches_selector?('.table-success'))
   end
@@ -32,16 +30,14 @@ RSpec.feature "Toggle confidence from 'not sure' to 'not confident'", type: :fea
     click_link "sites-tab"
   end
 
-  scenario "Click 'flag' to toggle correctly", js: true do
+  scenario "Click 'flag' to toggle correctly" do
     find("#toggle-confidence-site-#{@sites.first.id}").click
-    sleep 0.5
     click_link "sites-tab"
     expect(find("tr[data-id=\"#{@sites.first.id}\"]").matches_selector?('.table-danger'))
   end
 
-  scenario "Click 'flag' doesn't toggle incorrectly", js: true do
+  scenario "Click 'flag' doesn't toggle incorrectly" do
     find("#toggle-confidence-site-#{@sites.first.id}").click
-    sleep 0.5
     click_link "sites-tab"
     expect(find("tr[data-id=\"#{@sites.first.id}\"]").not_matches_selector?('.table-warning'))
   end
@@ -55,16 +51,14 @@ RSpec.feature "Toggle confidence from 'not confident' to 'confident'", type: :fe
     click_link "sites-tab"
   end
 
-  scenario "Click 'flag' to toggle correctly", js: true do
+  scenario "Click 'flag' to toggle correctly" do
     find("#toggle-confidence-site-#{@sites.first.id}").click
-    sleep 0.5
     click_link "sites-tab"
     expect(find("tr[data-id=\"#{@sites.first.id}\"]").matches_selector?('.table-success'))
   end
 
-  scenario "Click 'flag' doesn't toggle incorrectly", js: true do
+  scenario "Click 'flag' doesn't toggle incorrectly" do
     find("#toggle-confidence-site-#{@sites.first.id}").click
-    sleep 0.5
     click_link "sites-tab"
     expect(find("tr[data-id=\"#{@sites.first.id}\"]").not_matches_selector?('.table-danger'))
   end

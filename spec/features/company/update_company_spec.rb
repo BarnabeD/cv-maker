@@ -6,7 +6,6 @@ before do
     @old_company = FactoryBot.create(:company)
     @new_company = FactoryBot.build(:company)
     visit edit_company_path(@old_company)
-    sleep 0.5
     fill_in 'company_name', with: @new_company.name
     fill_in 'company_city', with: @new_company.city
   end
