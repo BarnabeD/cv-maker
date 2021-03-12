@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Creating a Position', type: :feature do
+RSpec.describe 'Creating a Position via worker', type: :feature do
   before do
     sign_in FactoryBot.create(:user)
     @position = FactoryBot.build(:position)
