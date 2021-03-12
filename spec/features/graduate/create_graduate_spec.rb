@@ -5,7 +5,6 @@ RSpec.describe 'Creating a Graduate', type: :feature do
     sign_in FactoryBot.create(:user)
     @graduate = FactoryBot.build(:graduate)
     @graduate.worker.save
-    byebug
     visit worker_path(@graduate.worker)
 
     click_on "Ajouter un diplôme"
