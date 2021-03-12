@@ -47,4 +47,15 @@ RSpec.describe 'Creating a Position', type: :feature do
     click_on "Créer un(e) Poste"
     expect(page).to have_content("Amount doit être rempli(e)")
   end
+
+  scenario "Invert stard / end date" do
+    select(@position.site.end_date.day, from: 'position_site_attributes_start_date_3i')
+    select(FRENCH_MONTH[@position.site.end_date.month.to_s], from: 'position_site_attributes_start_date_2i')
+    select(@position.site.end_date.year, from: 'position_site_attributes_start_date_1i')
+    select(@position.site.start_date.day, from: 'position_site_attributes_end_date_3i')
+    select(FRENCH_MONTH[@position.site.start_date.month.to_s], from: 'position_site_attributes_end_date_2i')
+    select(@position.site.start_date.year, from: 'position_site_attributes_end_date_1i')
+    click_on "Créer un(e) Poste"
+    expect(page).to have_content("Start date can't be in the future")
+  end
 end
