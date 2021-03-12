@@ -35,4 +35,15 @@ RSpec.describe 'Creating a Site', type: :feature do
     click_on "Créer un(e) Chantier"
     expect(page).to have_content("Amount doit être rempli(e)")
   end
+
+  scenario "Invert stard / end date" do
+    select(@site.end_date.day, from: 'site_start_date_3i')
+    select(FRENCH_MONTH[@site.end_date.month.to_s], from: 'site_start_date_2i')
+    select(@site.end_date.year, from: 'site_start_date_1i')
+    select(@site.start_date.day, from: 'site_end_date_3i')
+    select(FRENCH_MONTH[@site.start_date.month.to_s], from: 'site_end_date_2i')
+    select(@site.start_date.year, from: 'site_end_date_1i')
+    click_on "Créer un(e) Chantier"
+    expect(page).to have_content("Start date can't be in the future")
+  end
 end
